@@ -9,7 +9,7 @@ Pernille Deijlen
 Mijn visualisaties zullen informatie over fietspaden laten zien in hoofdsteden van Europa. Veel mensen weten waarschijnlijk niet hoe dit in vergelijking staat tot onze eigen hoofdstad Amsterdam. Op deze manier hoop ik hier een idee over te geven.
 
 # Sketch:
-![](doc/sketch.png)
+![sketch](doc/sketch.png)
 
 # Features:
 Je begint dus met een kaart van Europa met de hoofdsteden en hierbij het aantal km aan fietspaden. Hierna wordt dit vergeleken met de grootte, het aantal inwoners en de hoogteverschillen van deze steden. Verder kan verder worden ingezoomd op de inwoners en hoe vaak zij de fiets gebruiken tov auto/openbaar vervoer enz. en hun redenen voor het gebruiken van de fiets (werk, school, oid). Ik twijfel hierbij nog of twee donut charts hier goed bij passen.
