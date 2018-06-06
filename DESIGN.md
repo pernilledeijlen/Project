@@ -26,7 +26,7 @@ alle visualisaties met uitleg
 ## list
 
 ## voorbeelden
--	![map van Europe](doc/europemap.png)
+-	![map van Europe](doc/mapeurope.png)
 -	[scatterplot](link)
 -	[bullet chart](link)
 
