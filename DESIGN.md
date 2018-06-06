@@ -1,3 +1,8 @@
+# author
+
+Pernille Deijlen
+10747354
+
 # design
 
 ## data sources
@@ -11,10 +16,9 @@ Ik ga data gebruiken van eurostat, de database van de Europese Unie, van de OECD
 html / javascript (functies) / css
 
 ## description
-[titel](link)
-Als eerste zie je een map van Europa (choropleth). Als het lukt wil ik graag een stip toevoegen op de locatie van de hoofdstad. De kleuren op de map duiden van licht naar donker de hoeveelheid geboren kinderen aan. Wanneer je erover hovert licht het land op en komt de titel van het land, de hoofstad en het aantal geboren kinderen in dat jaar in beeld.
+Als eerste zie je een map van Europa (choropleth). Als het lukt wil ik graag een stip toevoegen op de locatie van de hoofdstad. De kleuren op de map duiden van licht naar donker de hoeveelheid geboren kinderen aan. Wanneer je erover hovert licht het land op en komt de titel van het land, de hoofstad en het aantal geboren kinderen in dat jaar in beeld. Deze map heb ik bij een eerdere opdracht al gemaakt en kan ik hier dus goed bij gebruiken.
 
-Naast de map komt meteen de scatterplot in beeld. Hierbij zie je op de x-as het aantal geboren kinderen en voor de y-as komt er een drop down menu voor het kiezen van de variabele. Je kunt kiezen voor de grootte (in km2) of voor het aantal inwoners van de stad.
+Naast de map komt meteen de scatterplot in beeld. Hierbij zie je op de x-as het aantal geboren kinderen en voor de y-as komt er een drop down menu voor het kiezen van de variabele. Je kunt kiezen voor de grootte (in km2) of voor het aantal inwoners van de stad. De kleuren van de steden in de scatterplot komen overeen met de kleuren op de map. Bij het hoveren over de map wordt de bijbehorende stip in de scatterplot iets groter.
 
 
 alle visualisaties met uitleg
@@ -22,7 +26,7 @@ alle visualisaties met uitleg
 ## list
 
 ## voorbeelden
--	[map van Europa](link)
+-	![map van Europe](doc/europemap.png)
 -	[scatterplot](link)
 -	[bullet chart](link)
 
