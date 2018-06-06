@@ -17,7 +17,7 @@ Je begint met een kaart van Europa met de hoofdsteden en hierbij het aantal gebo
 Naast de interactieve elementen van het veranderen van de variable voor de y-as en de zoekbalk wil ik ook graag een dropdown menu maken waarbij je meer informatie kan vinden over de variabelen in de visualisaties (hoe ze gedefinieerd zijn). Daarnaast misschien ook een button waarbij je van "thema" kan veranderen (misschien te moeilijk).
 
 ## data sources
-Op dit moment heb ik voor alle hoofdsteden data gevonden over geboortes, educatie, environment, populatie, grootte in km2, quality of life (per land), happy planet index ( per land), criminaliteit, economie en een life satisfaction rate.
+Op dit moment heb ik voor alle hoofdsteden data gevonden over geboortes, educatie, environment, populatie, grootte in km2, quality of life (per land), happy planet index (per land), criminaliteit, economie en een life satisfaction rate.
 
 De data komt van Eurostat, OECD en happy planet index.
 

@@ -13,7 +13,6 @@ Ik ga data gebruiken van eurostat, de database van de Europese Unie, van de OECD
 
 ## diagram
 ![diagram](doc/diagram.PNG)
-html / javascript (functies) / css
 
 ## description
 Als eerste zie je een map van Europa (choropleth). Als het lukt wil ik graag een stip toevoegen op de locatie van de hoofdstad. De kleuren op de map duiden van licht naar donker de hoeveelheid geboren kinderen aan. Wanneer je erover hovert licht het land op en komt de titel van het land, de hoofstad en het aantal geboren kinderen in dat jaar in beeld. Deze map heb ik bij een eerdere opdracht al gemaakt en kan ik hier dus goed bij gebruiken.
