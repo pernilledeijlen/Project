@@ -24,6 +24,7 @@ Naast de map komt meteen de scatterplot in beeld. Hierbij zie je op de x-as het 
 alle visualisaties met uitleg
 
 ## list
+Ik zal ... nodig hebben voor de map en queue voor de functies.
 
 ## voorbeelden
 -	Hieronder een voorbeeld van een map van Europa die ik voor een vorige opdracht al heb gemaakt.
