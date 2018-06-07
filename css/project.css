@@ -1,25 +1,10 @@
 /*Pernille Deijlen
-10747354
-style for linked views*/
+10747354*/
 
-body
-{
-  font: "Times New Roman";
-}
-
-.text
-{
-    font: "Times New Roman";
-}
-
-.axis path,
-.axis line
-{
-    fill: none;
-    stroke: black;
-    shape-rendering: crispEdges;
-}
-
-.bar:hover {
-	fill: black;
+.bottomtext {
+  position: absolute;
+  width: 1280px;
+  bottom: 20px;
+  font-size: 10px;
+  text-align: center;
 }

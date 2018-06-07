@@ -2,11 +2,51 @@
 10747354 -->
 
 <!DOCTYPE html>
-<html>
-  <head>
-  	<title>Visualisations</title>  
-  </head>
-  
-  <body>
-  </body>
+<html lang="en">
+	<head>
+	  	<title>Project - visualisations</title>
+	  	<meta charset="utf-8">
+	  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	  	<link rel="stylesheet" type="text/css" href="css/project.css">
+
+	  	<script src="https://d3js.org/d3.v3.min.js"></script>
+	    <script src="https://d3js.org/queue.v1.min.js"></script>
+	    <script src="https://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+	    <script src="javascript/datamaps.world.min.js"></script>
+	    <script src="javascript/map.js"></script>
+
+	</head>
+	<body>
+		<div class="jumbotron text-center">
+	  		<h1>Babies in Europe</h1>
+	  		<h4>amount of babies born in European capitals</h4> 
+		</div>
+
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand">Project</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li><a href="index.html">Main</a></li>
+		      <li class="active"><a href="#">Visualisations</a></li>
+		    </ul>
+		  </div>
+		</nav>
+		  
+		<div class="container">
+		  <h3>On this page you will see all my visualisations</h3>
+		  <p>map of Europe - scatterplot - bullet chart</p>
+		</div>
+
+		<!-- <div class="bottomtext">Pernille Deijlen, 10747354, programmeerproject 2018</div> -->
+
+		<div id="map" style="position: relative; width: 800px; height: 600px; left: 50px"></div>
+
+	</body>
 </html>
