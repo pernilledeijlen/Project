@@ -5,11 +5,7 @@ Pernille Deijlen
 
 # process book
 
-## day 1
-Het fietspaden idee.
+## week 1 day 4:
+Vandaag heb ik gewerkt aan het prototype, hoe de site zal zijn opgebouwd met de meerdere pagina's. Daarnaast heb ik gewerkt aan het inladen van de data.
 
-## day 2
-Nieuw idee: geboren kinderen.
-
-## day 3
-Design document.
+## week 1 day 5:

@@ -25,7 +25,7 @@ Als de data het toe laat zou ik de visualaties graag voor meerdere jaren laten z
 ## list
 Ik zal d3 libraries nodig hebben voor de visualisaties en d3.queue voor de functies.
 
-## voorbeelden
+## examples
 -	Hieronder een voorbeeld van een map van Europa die ik voor een vorige opdracht al heb gemaakt.
 ![map van Europe](doc/mapeurope.png)
 -	[scatterplot](http://bl.ocks.org/weiglemc/6185069)
