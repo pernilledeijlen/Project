@@ -3,7 +3,7 @@
 Pernille Deijlen
 10747354
 
-[Pages](https://pernilledeijlen.github.io/Project/)
+[Mijn project](https://pernilledeijlen.github.io/Project/)
 
 # project proposal
 Mijn visualisaties zullen informatie over het aantal geboortes laten zien van hoofdsteden van Europa. Veel mensen weten waarschijnlijk niet hoe dit in vergelijking staat tot onze eigen hoofdstad Amsterdam. Op deze manier hoop ik hier een idee over te geven. Verder zal ik meer informatie geven over de steden, deze variabelen zijn eventueel van invloed op het aantal geboortes. 
