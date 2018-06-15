@@ -19,3 +19,9 @@ De map gemaakt en bezig met het weergeven van data op de map. Besloten om van 20
 
 ## week 2 day 3:
 Data is helemaal gefixt, map geeft data weer maar moet nog even lukken in combinatie met de slider. Heb nu beide maar nog niet linkt.
+
+## week 2 day 4:
+Map geeft data weer in combinatie met slider. Ook begonnen aan de scatterplot.
+
+## week 2 day 5:
+Verder gewerkt aan de lay-out en aan de scatterplot.

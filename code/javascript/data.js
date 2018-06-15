@@ -3,14 +3,13 @@
 * 10747354
 */
 
-
 window.onload = function() {
 
 	queue()
-		.defer(d3.json, "scripts/babies.json")
-		.defer(d3.json, "scripts/education.json")
-		.defer(d3.json, "scripts/information.json")
-		.defer(d3.json, "scripts/popandsize.json")
+		.defer(d3.json, "babies.json")
+		.defer(d3.json, "education.json")
+		.defer(d3.json, "information.json")
+		.defer(d3.json, "popandsize.json")
 		.awaitAll(load);
 };
 
@@ -43,15 +42,15 @@ function dataMap(error, data) {
 	};
 	console.log(infoBaby)
 
-	// min and max values amount of babies born
+	// min and max values amount of babies born (zelf bepaalt, london erg hoge uitschieter)
 	var minValue = 1089; // math.min()
 	var maxValue = 38030; //math.max()
 
 	// create color palette
 	var paletteScale = d3.scale.quantize()
 		.domain([minValue, maxValue])
-		.range(["#f2f0f7", "#cbc9e2", "#9e9ac8", "#6a51a3"])
-
+		.range(["#f1eef6", "#d7b5d8", "#df65b0", "#ce1256"])
+		
 	var babiessss = [];
 	
 	for (var i = 0; i < 7; i++) {
@@ -67,7 +66,7 @@ function dataMap(error, data) {
 	
 	// default map for year 2008
 	makeMap(error, babiessss[0])
-	
+
 	var slider = document.getElementById("myRange");
 	var output = document.getElementById("demo");
 	output.innerHTML = slider.value; // Display the default slider value
@@ -78,6 +77,7 @@ function dataMap(error, data) {
 	    console.log(this.value)
 	    $("#map").empty()
 	    makeMap(error, babiessss[this.value - 2008])
+
 	};	
 };
 
@@ -167,7 +167,6 @@ function dataScatter(error, data1, data2) {
 		}
 		datasetSize.push(datayear)
 	};
-	console.log(datasetSize)
 	
 	// var slider = document.getElementById("myRange");
 	// var output = document.getElementById("demo");
@@ -188,5 +187,4 @@ function dataScatter(error, data1, data2) {
 	
 	// default is x as babies y as population 2008
 	makeScatter(error, datasetPop[0])
-	console.log(datasetPop[0])
 };

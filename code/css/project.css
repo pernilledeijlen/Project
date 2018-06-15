@@ -19,19 +19,20 @@
 }
 
 .jumbotron {
-	color: pink;
+	color: #ce1256;
 }
 
 .container {
-	color: deepskyblue;
+	color: black;
 }
 
 .slidecontainer {
+    position: relative;
+    left: 400px;
 	width: 400px;
-	left: 50px;
-	font-size: 10px;
+	font-size: 12px;
 	text-align: center;
-	color: deepskyblue;
+	color: black;
 }
 
 .slider {
@@ -39,7 +40,7 @@
     width: 400px;
     height: 10px;
     border-radius: 5px;   
-    background: pink;
+    background: lightgrey;
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
@@ -56,7 +57,7 @@
     width: 25px;
     height: 25px;
     border-radius: 50%; 
-    background: pink;
+    background: #ce1256;
     cursor: pointer;
 }
 
@@ -64,6 +65,28 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: pink;
+    background: lightgrey;
     cursor: pointer;
+}
+
+.col-sm-6 {
+    text-align: center;
+}
+
+#map {
+    position: relative;
+    width: 600px;
+    height: 400px;
+}
+
+#scatter {
+    position: relative;
+    width: 600px;
+    height: 400px;
+}
+
+#space {
+    position: relative;
+    width: 600px;
+    height: 400px;
 }

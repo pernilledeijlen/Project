@@ -24,8 +24,6 @@ localhost: py -m http.server 8888 & -->
 	    <script src="javascript/data.js"></script>
 	    <script src="javascript/scatter.js"></script>
 	    
-
-
 	</head>
 	<body>
 		<div class="jumbotron text-center">
@@ -44,24 +42,29 @@ localhost: py -m http.server 8888 & -->
 		    </ul>
 		  </div>
 		</nav>
-		  
-		<div class="container">
-		  <h3>On this page you will see all my visualisations</h3>
-		  <p>map of Europe - scatterplot - bullet chart</p>
-		</div>
 
 		<div class="slidecontainer">
 		  <input type="range" min="2008" max="2014" value="0" step="1" class="slider" id="myRange">
 		  <p>Year: <span id="demo"></span></p>
 		</div>
 
-		<div id="map" style="position: relative; width: 400px; height: 300px; left: 50px;"></div>
-
-		<div id="scatter" style="position: relative; width: 400px; height: 300px; left: 50px;"></div>
+		<div class="container-fluid">
+		  	<div class="row">
+		    	<div class="col-sm-6">
+			      	<h3>A map with the amount of babies</h3>
+			      	<div id="map"></div>
+		    	</div>
+		    	<div class="col-sm-6">
+			     	<h3>A scatter with more info</h3>
+			      	<div id="scatter"></div>
+		    	</div>
+		  	</div>
+		</div>
 	
+		<div id="space"></div>
 		
-		<!-- <div id="bottomtext"></div>
+		<div id="bottomtext"></div>
 		<div class="bottomtext">Pernille Deijlen, 10747354, programmeerproject 2018</div>
-		 -->
+		
 	</body>
 </html>

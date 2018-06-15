@@ -3,9 +3,6 @@
 * 10747354
 */
 
-// getElementsByClassName
-// getElementById
-// default year is 2008, met slider kan je 2008-2014
 function makeMap(error, babies) {
 	if (error) throw error;
 
@@ -47,9 +44,6 @@ function makeMap(error, babies) {
 };
 
 
-
-// nieuwe idee: maak een functie voor een basic map vervolgens een update functie
-// die oude data eerst verwijdert en vervolgens nieuwe data toevoegt
 // function makeMap(error) {
 // 	if (error) throw error;
 
