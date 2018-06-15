@@ -14,7 +14,7 @@ Pernille Deijlen
 XXXXXX
 
 ## data sources
-De data komt van Eurostat en de OCED:
+De data komt van Eurostat en OECD:
 -	[eurostat](http://ec.europa.eu/eurostat/data/database)
 -	[OECD](https://data.oecd.org/)
 

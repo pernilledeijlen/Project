@@ -3,12 +3,12 @@
 * 10747354
 */
 
-//default year 2008
+//default year 2008 // check de ymax, anders bij size instead of pop
 function makeScatter(error, data){
 	if (error) throw error;
 
 	// setting the size of the canvas
-	var margin = {top: 40, right: 20, bottom: 40, left: 200}
+	var margin = {top: 40, right: 100, bottom: 60, left: 100}
 	var totalWidth = 600
 	var totalHeight = 400
 	var width = totalWidth - margin.left - margin.right
@@ -20,21 +20,23 @@ function makeScatter(error, data){
 		.attr("height", totalHeight)
 		.attr("width", totalWidth);
 
-	var g = svg.append("g")
-	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	// max value axes
+	var xMax = Math.ceil(d3.max(data, function(d) {return d[0];}) / 10000)
+	// if statement toevoegen: if size is ticked or pop is ticked, below is only for pop!
+	var yMax = Math.ceil(d3.max(data, function(d) {return d[1];}) / 1000000)
 
 	// scaling the x-axis
 	var xScale = d3.scale.linear()
-		.domain([0, d3.max(data, function(d) {return d[0];})])
+		.domain([0, xMax])
 		.range([margin.left, totalWidth - margin.right])
 
 	// max pop van alles = 9942283 en max size van alles = 12089.37
 	// scaling the y-axis
 	var yScale = d3.scale.linear()
-        .domain([0, d3.max(data, function(d) {return d[1];})])
+        .domain([0, yMax])
         .range([totalHeight - margin.bottom, margin.top])
 
-	// min and max values amount of babies born (zelf bepaalt, london erg hoge uitschieter)
+	// min and max values amount of babies born for colorscheme (zelf bepaalt, london erg hoge uitschieter)
 	var minValue = 1089;
 	var maxValue = 38030;
 
@@ -48,50 +50,70 @@ function makeScatter(error, data){
         .data(data)
         .enter()
         .append("circle")
-            .attr("cx", function(d) {return xScale(d[0]);})
-            .attr("cy", function(d) {return yScale(d[1]);})
-            .attr("r", 4)
-        	.style("fill", function(d) {return paletteScale(d[0])})
+            .attr("cx", function(d) {return xScale(d[0] / 10000);})
+            .attr("cy", function(d) {return yScale(d[1] / 1000000);})
+            .attr("r", function(d) {
+            	if (isNaN(d[0]) == true) {
+            		return 0
+            	}
+            	else {
+            		return 4
+            	}})            	
+        	.style("fill", function(d) {return paletteScale(d[0]);});
 
     // svg.selecAll("circle")
     // 	.on("mouseover", functionn)
     // 	.on("mouseout", functionnout)
+    
+      //     .on("mouseover", function(d) {
+      //     tooltip.transition()
+      //          .duration(200)
+      //          .style("opacity", .9);
+      //     tooltip.html(d["Cereal Name"] + "<br/> (" + xValue(d) 
+	     //    + ", " + yValue(d) + ")")
+      //          .style("left", (d3.event.pageX + 5) + "px")
+      //          .style("top", (d3.event.pageY - 28) + "px");
+      // })
+      // .on("mouseout", function(d) {
+      //     tooltip.transition()
+      //          .duration(500)
+      //          .style("opacity", 0);
+      // });
 
 	var xAxis = d3.svg.axis()
 		.scale(xScale)
 		.orient("bottom")
 		.ticks(4);
 
-    // creating the x axis
-    g.append("g")
-        .attr("class", "axis")
-        .attr("transform", "translate(" + (-margin.left) + "," + (height - margin.right) + ")") 
-        .call(xAxis);
-
-    g.append("text")
-    	.attr("class", "text")
-    	.attr("x", margin.left)
-    	.attr("y", height + margin.top)
-    	.style("text-anchor", "end")
-    	.text("amount of babies born in YEAR");
-	
 	var yAxis = d3.svg.axis()
-		.scale(yScale)
-		.orient("left")
-		.ticks(4);
+			.scale(yScale)
+			.orient("left")
+			.ticks(4);
 
-   	// creating the y axis
-	g.append("g")
-        .attr("class", "axis")
-        .attr("transform", "translate(" + (width - margin.left - margin.left) + (-margin.right) + ")")
-        .call(yAxis);
+	svg.append("g")
+		.attr("class", "axis")
+	    .attr("transform", "translate(0," + (totalHeight - margin.bottom) + ")")
+	    .call(xAxis)
 
-   	g.append("text")
-   		.attr("class", "text")
-   		.attr("transform", "rotate(-90)")
-    	.attr("x", margin.top)
-    	.attr("y", width - margin.left - 160)
+	svg.append("g")
+		.attr("class", "axis")
+	    .attr("transform", "translate(" + (margin.left) + ", 0)")
+	    .call(yAxis)
+
+    // text x axis
+    svg.append("text")
+    	.attr("class", "text")
+    	.attr("x", totalWidth - margin.right)
+    	.attr("y", totalHeight - 10)
     	.style("text-anchor", "end")
-    	.text("afhankelijk van dataset");	
+    	.text("amount of babies born (in tens of thousands)");
+
+ 	// text y axis
+   	svg.append("text")
+   		.attr("class", "text")
+    	.attr("x", 25)
+    	.attr("y", 20)
+    	.style("text-anchor", "left")
+    	.text("city population (in millions)");	
 	
 };

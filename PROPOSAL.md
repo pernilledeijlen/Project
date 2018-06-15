@@ -1,6 +1,3 @@
-# project proposal
-Mijn visualisaties zullen informatie over het aantal geboortes laten zien van hoofdsteden van Europa. Veel mensen weten waarschijnlijk niet hoe dit in vergelijking staat tot onze eigen hoofdstad Amsterdam. Op deze manier hoop ik hier een idee over te geven. Verder zal ik meer informatie geven over de steden, deze variabelen zijn eventueel van invloed op het aantal geboortes. 
-
 # author
 
 Pernille Deijlen
