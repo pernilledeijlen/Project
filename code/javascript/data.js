@@ -187,4 +187,18 @@ function dataScatter(error, data1, data2) {
 	
 	// default is x as babies y as population 2008
 	makeScatter(error, datasetPop[0])
+
+	// if (document.getElementById("pop").checked == true) {
+	// 	console.log(document.getElementById("pop").checked)
+	// 	makeScatter(error, datasetPop[0])
+	// }
+
+	if (document.getElementById("size").checked == true) {
+		updateScatter(error, datasetSize[0], document.getElementById("size").id)
+	}
+
+	// makeScatter(error, datasetSize[0])
+
+
+	// een ifje met de tickboxes
 };
