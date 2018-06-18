@@ -44,7 +44,7 @@ function makeScatter(error){
 	// create color palette
 	var paletteScale = d3.scale.quantize()
 		.domain([minValue, maxValue])
-		.range(["#f1eef6", "#d7b5d8", "#df65b0", "#ce1256"])
+		.range(["#d7b5d8", "#df65b0", "#dd1c77", "980043"])
 
     // creating circles
 	svg.selectAll("circle")
@@ -159,7 +159,7 @@ function updateScatter(error, data, yvalue, text, year) {
 	// create color palette
 	var paletteScale = d3.scale.quantize()
 		.domain([minValue, maxValue])
-		.range(["#f1eef6", "#d7b5d8", "#df65b0", "#ce1256"])
+		.range(["#d7b5d8", "#df65b0", "#dd1c77", "980043"])
 
     // creating circles
 	svg.selectAll("circle")
@@ -185,7 +185,7 @@ function updateScatter(error, data, yvalue, text, year) {
         	.style("fill", function(d) {return paletteScale(d[0]);});
 
     svg.selectAll("circle")
-    	.on("mouseover", mouseOver(yvalue))
+    	.on("mouseover", mouseOver)
     	.on("mouseout", mouseOut)
 
 	var xAxis = d3.svg.axis()
@@ -232,26 +232,25 @@ function updateScatter(error, data, yvalue, text, year) {
     // 	.text("current year: " + year);
 };
 
-function mouseOver(d, yvalue) {
+function mouseOver(d) {
 	var self = this;
 
 	// make circle bigger
 	d3.select(self)
 		.attr("r", 8)
-
+	
 	// add tooltip text
-	d3.select("#scatter").select("svg")
-		.append("text")
-		.attr({id: "tooltip", x: 110, y: 40})
-	   	// .text(d[4] + " is " + d[1] + " km2 and " + d[0] + " babies have been born")
-	   	.text(function(d) {
-	   		if (yvalue == "pop") {
-				return (d[4] + " has a populaton of " + d[1] + " and " + d[0] + " babies have been born")
-	   		}
-	   		if (yvalue == "size") {
-				return (d[4] + " is " + d[1] + " km2 and " + d[0] + " babies have been born")
-	   		}
-	   	});
+	if (d3.select("#pop").property("checked") == true) {
+		d3.select("#scatter").select("svg")
+			.append("text")
+			.attr({id: "tooltip", x: 110, y: 40})
+		   	.text(d[4] + " has a population of " + d[1] + " and " + d[0] + " babies have been born")}
+
+	if (d3.select("#size").property("checked") == true) {
+		d3.select("#scatter").select("svg")
+			.append("text")
+			.attr({id: "tooltip", x: 110, y: 40})
+		   	.text(d[4] + " is " + d[1] + " km2 and " + d[0] + " babies have been born")}
 
 	// make other circles lighter
 	d3.selectAll("circle")

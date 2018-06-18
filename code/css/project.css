@@ -1,6 +1,13 @@
 /*Pernille Deijlen
 10747354*/
 
+
+/*style for page*/
+/*style for map*/
+/*style for scatter*/
+/*style for bulletchart*/
+
+
 /* fixed zorgt ervoor dat hij meebeweegt bij het scrollen*/
 #bottomtext {
 	position: fixed;
@@ -19,7 +26,7 @@
 }
 
 .jumbotron {
-	color: #ce1256;
+	color: #dd1c77;
 }
 
 .container {
@@ -57,7 +64,7 @@
     width: 25px;
     height: 25px;
     border-radius: 50%; 
-    background: #ce1256;
+    background: #dd1c77;
     cursor: pointer;
 }
 
@@ -75,11 +82,18 @@
 
 #map {
     position: relative;
+    width: 400px;
+    height: 600px;
+    left: 100px;
+}
+
+#scatter {
+    position: relative;
     width: 600px;
     height: 400px;
 }
 
-#scatter {
+#bulletchart {
     position: relative;
     width: 600px;
     height: 400px;
@@ -97,4 +111,18 @@
   stroke: #000;
   shape-rendering: crispEdges;
   stroke-width: 1px;
+}
+
+#tooltip {
+    color: #dd1c77;
+    font-size: 10px;
+}
+
+/*.radio {
+    line-height: 10em;
+}*/
+
+.col-sm-1 {
+    /*line-height: 10em;*/
+    margin-top: 200px;
 }

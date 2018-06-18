@@ -46,23 +46,33 @@ localhost: py -m http.server 8888 & -->
 
 		<div class="slidecontainer">
 		  <input type="range" min="2008" max="2014" value="0" step="1" class="slider" id="myRange">
+		  <p></p>
 		  <p>Year: <span id="demo"></span></p>
 		</div>
 
 		<div class="container-fluid">
 		  	<div class="row">
-		    	<div class="col-sm-6">
+		    	<div class="col-sm-5">
 			      	<h3>A map with the amount of babies</h3>
-			      	<h5>A legenddddd</h5>
+			      	<h5>A</h5>
+			      	<h5>leg</h5>
+			      	<h5>end</h5>
 			      	<div id="map"></div>
+		    	</div>
+		    	<div class="col-sm-1">
+		    		<h5>Choose the y axis</h5>
+		    		<div class="radio">
+			    		<form>
+							<input type="radio" id="pop" name="var" checked=> city population<br>
+							<input type="radio" id="size" name="var"> city size<br>
+						</form>
+					</div>
 		    	</div>
 		    	<div class="col-sm-6">
 			     	<h3>A scatter with more info</h3>
-			     	<form>
-						<input type="radio" id="pop" name="var" checked=>city population<br>
-						 <input type="radio" id="size" name="var">city size<br>
-					</form>
 			      	<div id="scatter"></div>
+			      	<h3>A bulletchart with more info</h3>
+			      	<div id="bulletchart"></div>
 		    	</div>
 		  	</div>
 		</div>

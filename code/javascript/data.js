@@ -3,6 +3,7 @@
 * 10747354
 */
 
+// gobal data arrays
 var mapData;
 var datasetPop;
 var datasetSize;
@@ -52,7 +53,7 @@ function dataMap(error, data) {
 	// create color palette
 	var paletteScale = d3.scale.quantize()
 		.domain([minValue, maxValue])
-		.range(["#f1eef6", "#d7b5d8", "#df65b0", "#ce1256"])
+		.range(["#d7b5d8", "#df65b0", "#dd1c77", "980043"])
 		
 	mapData = [];
 	
@@ -69,8 +70,6 @@ function dataMap(error, data) {
 
 	// default map for year 2008
 	makeMap(error, mapData[0])
-	
-	// updateSliderMap(error, babiessss)
 };
 
 function dataScatter(error, data1, data2) {
@@ -168,9 +167,9 @@ function dataScatter(error, data1, data2) {
 		datasetSize.push(datayear)
 	};
 
-	// default babies vs population 2008
+	// default babies vs population 2008 misschien hoeft dit niet? meteen updateslider pakken met current year
 	makeScatter(error)
 
 	// updating scatter
-	updateSliderScatter(error)
+	updateSlider(error)
 };
