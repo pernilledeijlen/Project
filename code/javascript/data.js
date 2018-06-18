@@ -3,6 +3,10 @@
 * 10747354
 */
 
+var mapData;
+var datasetPop;
+var datasetSize;
+
 window.onload = function() {
 
 	queue()
@@ -40,7 +44,6 @@ function dataMap(error, data) {
 		begin += 1
 		infoBaby.push(year);
 	};
-	console.log(infoBaby)
 
 	// min and max values amount of babies born (zelf bepaalt, london erg hoge uitschieter)
 	var minValue = 1089; // math.min()
@@ -51,34 +54,23 @@ function dataMap(error, data) {
 		.domain([minValue, maxValue])
 		.range(["#f1eef6", "#d7b5d8", "#df65b0", "#ce1256"])
 		
-	var babiessss = [];
+	mapData = [];
 	
 	for (var i = 0; i < 7; i++) {
-		var babiesss = {};
+		var babies = {};
 		infoBaby[i].forEach(function(item){
 			var countrycode = item["countrycode"]
 			var value = item["value"]
 			var city = item["city"]
-			babiesss[countrycode] = {city: city, value: value, fillColor: paletteScale(value)}
+			babies[countrycode] = {city: city, value: value, fillColor: paletteScale(value)}
 		})
-		babiessss.push(babiesss)
+		mapData.push(babies)
 	};
-	
+
 	// default map for year 2008
-	makeMap(error, babiessss[0])
-
-	var slider = document.getElementById("myRange");
-	var output = document.getElementById("demo");
-	output.innerHTML = slider.value; // Display the default slider value
-
-	// Update the current slider value (each time you drag the slider handle)
-	slider.oninput = function() {
-	    output.innerHTML = this.value;
-	    console.log(this.value)
-	    $("#map").empty()
-	    makeMap(error, babiessss[this.value - 2008])
-
-	};	
+	makeMap(error, mapData[0])
+	
+	// updateSliderMap(error, babiessss)
 };
 
 function dataScatter(error, data1, data2) {
@@ -86,7 +78,7 @@ function dataScatter(error, data1, data2) {
 
 	var babies = data1;
 	var popandsize = data2;
-
+	console.log(popandsize)
 	var totalsize = [];
 	var begin1 = 1
 
@@ -113,10 +105,14 @@ function dataScatter(error, data1, data2) {
 		population.push(pop)
 	};
 
-	// country array for above datasets
-	var countries = [];
+	// countrycode/country/capital array for above datasets
+	var infoCountry = [];
 	for (var i = 1; i < 295; i +=7) {
-		countries.push(popandsize[i]["country"])
+		var info = []
+		info.push(popandsize[i]["countrycode"])
+		info.push(popandsize[i]["country"])
+		info.push(popandsize[i]["city"])
+		infoCountry.push(info)
 	};
 
 	var infoBaby = [];
@@ -132,73 +128,49 @@ function dataScatter(error, data1, data2) {
 		infoBaby.push(baby);
 	};
 
-	// dataset x as babies y as population [[[1, a], [2, b]], [[1, a], [2, b]]]
-	// dus datasetPop[0] = 2008, datasetPop[1] = 2009 etc
-	var datasetPop = []
+	// dataset for population cities
+	datasetPop = []
 	for (var i = 0; i < 7; i++) {
 		var datayear = [];
 		for (var k = 0; k < 21; k++){
 			datapoint = [];
 			for (var j = 0; j < 30; j++) {
-				if (countries[k] == infoBaby[i][j]["country"]) {
+				if (infoCountry[k][1] == infoBaby[i][j]["country"]) {
 					datapoint.push(parseFloat(infoBaby[i][j]["value"].replace(/[^\d\.\-]/g, "")))
 					datapoint.push(parseFloat(population[i][k].replace(/[^\d\.\-]/g, "")))
+					datapoint.push(infoCountry[k][0])
+					datapoint.push(infoCountry[k][1])
+					datapoint.push(infoCountry[k][2])
 				}
 			}
 			datayear.push(datapoint)
 		}
 		datasetPop.push(datayear)
 	};
-	console.log(datasetPop)
 
-	// dataset x as babies y as size [[1, a], [2, b]]
-	var datasetSize = []
+	// dataset for size cities
+	datasetSize = []
 	for (var i = 0; i < 7; i++) {
 		var datayear = [];
 		for (var k = 0; k < 21; k++){
 			datapoint = [];
 			for (var j = 0; j < 30; j++) {
-				if (countries[k] == infoBaby[i][j]["country"]) {
+				if (infoCountry[k][1] == infoBaby[i][j]["country"]) {
 					datapoint.push(parseFloat(infoBaby[i][j]["value"].replace(/[^\d\.\-]/g, "")))
 					datapoint.push(parseFloat(totalsize[i][k].replace(/[^\d\.\-]/g, "")))
+					datapoint.push(infoCountry[k][0])
+					datapoint.push(infoCountry[k][1])
+					datapoint.push(infoCountry[k][2])
 				}
 			}
 			datayear.push(datapoint)
 		}
 		datasetSize.push(datayear)
 	};
-	
-	// var slider = document.getElementById("myRange");
-	// var output = document.getElementById("demo");
-	// output.innerHTML = slider.value; // Display the default slider value
 
-	// Update the current slider value (each time you drag the slider handle)
-	// slider.oninput = function() {
-	//     output.innerHTML = this.value;
-	//     // $("#map").empty()
-	//     // makeScatter(error, babiessss[this.value - 2008], )
-	// }
+	// default babies vs population 2008
+	makeScatter(error)
 
-	// default map for year 2008
-	// makeScatter(error, babiessss[0])
-
-	// makeMap(error)
-	// updateMap(error, babiesss[0])
-	
-	// default is x as babies y as population 2008
-	makeScatter(error, datasetPop[0])
-
-	// if (document.getElementById("pop").checked == true) {
-	// 	console.log(document.getElementById("pop").checked)
-	// 	makeScatter(error, datasetPop[0])
-	// }
-
-	if (document.getElementById("size").checked == true) {
-		updateScatter(error, datasetSize[0], document.getElementById("size").id)
-	}
-
-	// makeScatter(error, datasetSize[0])
-
-
-	// een ifje met de tickboxes
+	// updating scatter
+	updateSliderScatter(error)
 };

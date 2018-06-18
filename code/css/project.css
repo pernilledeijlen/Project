@@ -91,6 +91,10 @@
     height: 400px;
 }
 
-.axis {
-    
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+  stroke-width: 1px;
 }

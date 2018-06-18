@@ -20,9 +20,10 @@ localhost: py -m http.server 8888 & -->
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
 	    <script src="javascript/index.js"></script>
 	    <script src="javascript/datamaps.world.min.js"></script>
-	    <script src="javascript/map.js"></script>
 	    <script src="javascript/data.js"></script>
 	    <script src="javascript/scatter.js"></script>
+	     <script src="javascript/map.js"></script>
+	     <script src="javascript/update.js"></script>
 	    
 	</head>
 	<body>
@@ -58,8 +59,8 @@ localhost: py -m http.server 8888 & -->
 		    	<div class="col-sm-6">
 			     	<h3>A scatter with more info</h3>
 			     	<form>
-						<input type="radio" id="pop" name="var">city population<br>
-						 <input type="radio" id="size" name="var" checked>city size<br>
+						<input type="radio" id="pop" name="var" checked=>city population<br>
+						 <input type="radio" id="size" name="var">city size<br>
 					</form>
 			      	<div id="scatter"></div>
 		    	</div>

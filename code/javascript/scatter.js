@@ -3,9 +3,11 @@
 * 10747354
 */
 
-//default year 2008 // check de ymax, anders bij size instead of pop
-function makeScatter(error, data){
+function makeScatter(error){
 	if (error) throw error;
+
+	// default 2008 and city population
+	data = datasetPop[0]
 
 	// setting the size of the canvas
 	var margin = {top: 40, right: 100, bottom: 60, left: 100}
@@ -60,24 +62,9 @@ function makeScatter(error, data){
             	}})            	
         	.style("fill", function(d) {return paletteScale(d[0]);});
 
-    // svg.selecAll("circle")
-    // 	.on("mouseover", functionn)
-    // 	.on("mouseout", functionnout)
-    
-      //     .on("mouseover", function(d) {
-      //     tooltip.transition()
-      //          .duration(200)
-      //          .style("opacity", .9);
-      //     tooltip.html(d["Cereal Name"] + "<br/> (" + xValue(d) 
-	     //    + ", " + yValue(d) + ")")
-      //          .style("left", (d3.event.pageX + 5) + "px")
-      //          .style("top", (d3.event.pageY - 28) + "px");
-      // })
-      // .on("mouseout", function(d) {
-      //     tooltip.transition()
-      //          .duration(500)
-      //          .style("opacity", 0);
-      // });
+    svg.selectAll("circle")
+    	.on("mouseover", mouseOver)
+    	.on("mouseout", mouseOut);
 
 	var xAxis = d3.svg.axis()
 		.scale(xScale)
@@ -92,12 +79,12 @@ function makeScatter(error, data){
 	svg.append("g")
 		.attr("class", "axis")
 	    .attr("transform", "translate(0," + (totalHeight - margin.bottom) + ")")
-	    .call(xAxis)
+	    .call(xAxis);
 
 	svg.append("g")
 		.attr("class", "axis")
 	    .attr("transform", "translate(" + (margin.left) + ", 0)")
-	    .call(yAxis)
+	    .call(yAxis);
 
     // text x axis
     svg.append("text")
@@ -114,18 +101,25 @@ function makeScatter(error, data){
     	.attr("y", 20)
     	.style("text-anchor", "left")
     	.text("city population (in millions)");	
+
+    // svg.append("text")
+   	// 	.attr("class", "text")
+    // 	.attr("x", totalWidth - margin.right)
+    // 	.attr("y", 20)
+    // 	.style("text-anchor", "end")
+    // 	.text("current year: 2008");
 	
 };
 
-function updateScatter(error, data, yvalue) {
+function updateScatter(error, data, yvalue, text, year) {
 	if (error) throw error;
 
 	// setting the size of the canvas
-	var margin = {top: 40, right: 100, bottom: 60, left: 100}
-	var totalWidth = 600
-	var totalHeight = 400
-	var width = totalWidth - margin.left - margin.right
-	var height = totalHeight - margin.top - margin.bottom
+	var margin = {top: 40, right: 100, bottom: 60, left: 100};
+	var totalWidth = 600;
+	var totalHeight = 400;
+	var width = totalWidth - margin.left - margin.right;
+	var height = totalHeight - margin.top - margin.bottom;
 
 	svg = d3.select("#scatter").select("svg")
 
@@ -135,16 +129,16 @@ function updateScatter(error, data, yvalue) {
 
 	// max value axes
 	var xMax = Math.ceil(d3.max(data, function(d) {return d[0];}) / 10000)
-	
-	// if (yvalue == pop) {
-	// 	var yMax = Math.ceil(d3.max(data, function(d) {return d[1];}) / 1000000)
-	// }
 
-	// if (yvalue == size) {
-	// 	var yMax = Math.ceil(d3.max(data, function(d) {return d[1];}) / 10000)
-	// 	console.log(yMax)
-	// }
-	var yMax = Math.ceil(d3.max(data, function(d) {return d[1];}) / 1000)
+	if (yvalue == "pop") {
+		var yMax = Math.ceil(d3.max(data, function(d) {return d[1];}) / 1000000)
+	}
+
+	if (yvalue == "size") {
+		var yMax = Math.ceil(d3.max(data, function(d) {return d[1];}) / 1000)
+		console.log(yMax)
+	}
+	// var yMax = Math.ceil(d3.max(data, function(d) {return d[1];}) / 1000)
 	console.log(yMax)
 
 	// scaling the x-axis
@@ -175,12 +169,12 @@ function updateScatter(error, data, yvalue) {
             .attr("cx", function(d) {return xScale(d[0] / 10000);})
             	
             .attr("cy", function(d) {
-				// if (yvalue == pop) {
-				// 	return yScale(d[1] / 1000000)
-				// }
-				// if (yvalue == size) {
-					return yScale(d[1] / 1000)})
-				// }})
+				if (yvalue == "pop") {
+					return yScale(d[1] / 1000000)
+				}
+				if (yvalue == "size") {
+					return yScale(d[1] / 1000)
+				}})
             .attr("r", function(d) {
             	if (isNaN(d[0]) == true) {
             		return 0
@@ -190,25 +184,9 @@ function updateScatter(error, data, yvalue) {
             	}})            	
         	.style("fill", function(d) {return paletteScale(d[0]);});
 
-
-    // svg.selecAll("circle")
-    // 	.on("mouseover", functionn)
-    // 	.on("mouseout", functionnout)
-    
-      //     .on("mouseover", function(d) {
-      //     tooltip.transition()
-      //          .duration(200)
-      //          .style("opacity", .9);
-      //     tooltip.html(d["Cereal Name"] + "<br/> (" + xValue(d) 
-	     //    + ", " + yValue(d) + ")")
-      //          .style("left", (d3.event.pageX + 5) + "px")
-      //          .style("top", (d3.event.pageY - 28) + "px");
-      // })
-      // .on("mouseout", function(d) {
-      //     tooltip.transition()
-      //          .duration(500)
-      //          .style("opacity", 0);
-      // });
+    svg.selectAll("circle")
+    	.on("mouseover", mouseOver(yvalue))
+    	.on("mouseout", mouseOut)
 
 	var xAxis = d3.svg.axis()
 		.scale(xScale)
@@ -223,12 +201,12 @@ function updateScatter(error, data, yvalue) {
 	svg.append("g")
 		.attr("class", "axis")
 	    .attr("transform", "translate(0," + (totalHeight - margin.bottom) + ")")
-	    .call(xAxis)
+	    .call(xAxis);
 
 	svg.append("g")
 		.attr("class", "axis")
 	    .attr("transform", "translate(" + (margin.left) + ", 0)")
-	    .call(yAxis)
+	    .call(yAxis);
 
     // text x axis
     svg.append("text")
@@ -244,6 +222,56 @@ function updateScatter(error, data, yvalue) {
     	.attr("x", 25)
     	.attr("y", 20)
     	.style("text-anchor", "left")
-    	.text("nog even aanpassen")
+    	.text(text);
+
+    // svg.append("text")
+   	// 	.attr("class", "text")
+    // 	.attr("x", totalWidth - margin.right)
+    // 	.attr("y", 20)
+    // 	.style("text-anchor", "end")
+    // 	.text("current year: " + year);
 };
 
+function mouseOver(d, yvalue) {
+	var self = this;
+
+	// make circle bigger
+	d3.select(self)
+		.attr("r", 8)
+
+	// add tooltip text
+	d3.select("#scatter").select("svg")
+		.append("text")
+		.attr({id: "tooltip", x: 110, y: 40})
+	   	// .text(d[4] + " is " + d[1] + " km2 and " + d[0] + " babies have been born")
+	   	.text(function(d) {
+	   		if (yvalue == "pop") {
+				return (d[4] + " has a populaton of " + d[1] + " and " + d[0] + " babies have been born")
+	   		}
+	   		if (yvalue == "size") {
+				return (d[4] + " is " + d[1] + " km2 and " + d[0] + " babies have been born")
+	   		}
+	   	});
+
+	// make other circles lighter
+	d3.selectAll("circle")
+		.style("opacity", function() {
+			if (self != this) {
+				return 0.2
+			}})
+};
+
+function mouseOut(d) {
+	// circles back to normal size
+	d3.select(this)
+		.transition().delay(300)
+	    .attr("r", 4)
+
+	// remove tooltip text
+    d3.select("#tooltip")
+    	.remove()
+    
+    // circles normal opcacity again
+    d3.selectAll("circle")
+		.style("opacity", 1)
+};
