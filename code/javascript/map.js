@@ -50,41 +50,74 @@ function makeMap(error, data) {
 		}
 	});
 
-	var svg = d3.select("#legend");
+	var svg = d3.select("#map");
 
-	var labels = ['0-10000', '10000-20000', '20000-30000', '30000-40000', '> 40000'];
-	var colors = ["#d4b9da", "#c994c7", "#df65b0", "#dd1c77", "#980043"];
-	var data = [10, 40, 70, 90, 120]
+	var labels = ["no data", "0 - 10", "10 - 20", "20 - 30", "30 - 40", "> 40"];
+	var colors = ["lightgrey", "#d4b9da", "#c994c7", "#df65b0", "#dd1c77", "#980043"];
+	var data = [10, 40, 70, 90, 120, 150];
 
-	var henk = svg.append("svg").append("g").selectAll(".legendBoxes")
+	var legend = svg.append("svg").append("g").selectAll(".legend")
 		.data(data)
 		.enter().append("g")
-		.attr("class", "legendBoxes")
+		.attr("class", "legend")
 		
-	henk.append("rect")
+	legend.append("rect")
 		.attr("fill", function(d, i){return colors[i];})
-		.attr("width", 40)
-		.attr("height", 20)
-		.attr("x", "20")
-		.attr("y", function(d){return d + 30;})
+		.attr("width", 25)
+		.attr("height", 15)
+		.attr("x", 20)
+		.attr("y", function(d, i){return i * 30;})
 
-	henk.append("text")
-	    .attr("class", "caption")
-	    .attr("x", 50)
-	    .attr("y", 15)
-	    .text("Babies born");
+	legend.selectAll("rect")
+    	.on("mouseover", mouseOverMap)
+    	.on("mouseout", mouseOutMap);
 
-	henk.append("text")
+	// legend.append("text")
+	//     .attr("class", "legendtitle")
+	//     .attr("x", 140)
+	//     .attr("y", 73)
+	//     .text("Babies born in thousands");
+
+	legend.append("text")
 		.text(function(d, i){return labels[i];})
-		.attr("x", "70")
-		.attr("y", function(d){return d + 45;})
-
-
+		.attr("x", 55)
+		.attr("y", function(d, i){return 13 + i * 30;})
 };
 
-// updating map for slider year
+// updating map for slider year (er gaat iets mis bij het teruggaan naar 2008)
 function updateMap(error, year) {
 	if (error) throw error;
+	console.log(year)
+	console.log(mapData[year - 2008])
 
 	map.updateChoropleth(mapData[year - 2008]);
+};
+
+function mouseOverMap(d) {
+	var self = this;
+
+	// make rects bigger
+	d3.select(self)
+		.attr("width", 30)
+		.attr("height", 20)
+
+	console.log(self.fill)
+
+	d3.selectAll("rect")
+		.style("opacity", function() {
+			if (self != this) {
+				return 0.2
+			}})
+};
+
+function mouseOutMap(d) {
+	var self = this;
+
+	d3.select(self)
+		.transition().delay(200)
+	    .attr("width", 25)
+		.attr("height", 15)
+
+	d3.selectAll("rect")
+		.style("opacity", 1)
 };

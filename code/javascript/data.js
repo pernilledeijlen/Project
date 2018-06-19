@@ -76,9 +76,10 @@ function dataMap(error, data) {
 		});
 		mapData.push(babies);
 	};
-
+	console.log(mapData[0])
 	// default map for year 2008
 	makeMap(error, mapData[0]);
+
 };
 
 // data for scatterplot in right format

@@ -23,7 +23,7 @@ function makeScatter(error){
 		.attr("width", totalWidth);
 
 	// max value axes
-	var xMax = Math.ceil(d3.max(data, function(d) {return d[0];}) / 10000)
+	var xMax = Math.ceil(d3.max(data, function(d) {return d[0];}) / 1000)
 	var yMax = Math.ceil(d3.max(data, function(d) {return d[1];}) / 1000000)
 	
 	// scaling the x-axis
@@ -50,7 +50,7 @@ function makeScatter(error){
         .data(data)
         .enter()
         .append("circle")
-            .attr("cx", function(d) {return xScale(d[0] / 10000);})
+            .attr("cx", function(d) {return xScale(d[0] / 1000);})
             .attr("cy", function(d) {return yScale(d[1] / 1000000);})
             .attr("r", function(d) {
             	if (isNaN(d[0]) == true) {
@@ -62,8 +62,8 @@ function makeScatter(error){
         	.style("fill", function(d) {return paletteScale(d[0]);});
 
     svg.selectAll("circle")
-    	.on("mouseover", mouseOver)
-    	.on("mouseout", mouseOut);
+    	.on("mouseover", mouseOverScatter)
+    	.on("mouseout", mouseOutScatter);
 
 	var xAxis = d3.svg.axis()
 		.scale(xScale)
@@ -91,11 +91,11 @@ function makeScatter(error){
     	.attr("x", totalWidth - margin.right)
     	.attr("y", totalHeight - 10)
     	.style("text-anchor", "end")
-    	.text("amount of babies born (in tens of thousands)");
+    	.text("amount of babies born (in thousands)");
 
  	// text y axis
    	svg.append("text")
-   		.attr("class", "text")
+   		.attr("class", "poep")
     	.attr("x", 25)
     	.attr("y", 20)
     	.style("text-anchor", "left")
@@ -118,23 +118,22 @@ function updateScatter(error, data, yvalue, text) {
 	svg.selectAll("text").remove()
 	svg.selectAll("g").remove()
 
-
 	// console.log(d3.min(data, function(d) { return d[0]; }));		//x
  //  	console.log(d3.max(data, function(d) { return d[1]; }));		//y
 	
-	// max value from all years for population
+	// max value from all years for population (bij makeScatter)
 	for (var i = 0; i < 7; i++) {
 
 	} 
 	
 
-	// max value from all years for size
+	// max value from all years for size (deze wel hier aangezien makeScatter hier niets mee moet)
 	for (var i = 0; i < 7; i++) {
 
 	}
 	
 
-	// max value from all years for amount of babies born
+	// max value from all years for amount of babies born (bij makeScatter)
 	var xMax;
 	for (var i = 0; i < 7; i++) {
 
@@ -149,8 +148,6 @@ function updateScatter(error, data, yvalue, text) {
 	if (yvalue == "size") {
 
 	}
-
-
 
 
 	// max value axes
@@ -220,8 +217,8 @@ function updateScatter(error, data, yvalue, text) {
 
     // tooltip
     svg.selectAll("circle")
-    	.on("mouseover", mouseOver)
-    	.on("mouseout", mouseOut)
+    	.on("mouseover", mouseOverScatter)
+    	.on("mouseout", mouseOutScatter)
 
 	var xAxis = d3.svg.axis()
 		.scale(xScale)
@@ -229,9 +226,9 @@ function updateScatter(error, data, yvalue, text) {
 		.ticks(4);
 
 	var yAxis = d3.svg.axis()
-			.scale(yScale)
-			.orient("left")
-			.ticks(4);
+		.scale(yScale)
+		.orient("left")
+		.ticks(5);
 
 	// create x axis
 	svg.append("g")
@@ -263,7 +260,7 @@ function updateScatter(error, data, yvalue, text) {
 };
 
 // tooltip when hovering over circle
-function mouseOver(d) {
+function mouseOverScatter(d) {
 	var self = this;
 
 	// make circle bigger
@@ -292,10 +289,12 @@ function mouseOver(d) {
 };
 
 // removing tooltip when hovering over circle
-function mouseOut(d) {
+function mouseOutScatter(d) {
+	var self = this;
+
 	// circles back to normal size
-	d3.select(this)
-		.transition().delay(300)
+	d3.select(self)
+		.transition().delay(200)
 	    .attr("r", 4)
 
 	// remove tooltip text
