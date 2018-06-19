@@ -87,6 +87,13 @@
     left: 100px;
 }
 
+#legend {
+    position: relative;
+    width: 400px;
+    height: 100px;
+    /*left: 100px;*/
+}
+
 #scatter {
     position: relative;
     width: 600px;

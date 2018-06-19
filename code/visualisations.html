@@ -18,7 +18,7 @@ localhost: py -m http.server 8888 & -->
 	    <script src="https://d3js.org/queue.v1.min.js"></script>
 	    <script src="https://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
-	    <script src="javascript/index.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.1.0/d3-legend.js"></script>
 	    <script src="javascript/datamaps.world.min.js"></script>
 	    <script src="javascript/data.js"></script>
 	    <script src="javascript/scatter.js"></script>
@@ -52,24 +52,20 @@ localhost: py -m http.server 8888 & -->
 
 		<div class="container-fluid">
 		  	<div class="row">
-		    	<div class="col-sm-5">
+		    	<div class="col-sm-6">
 			      	<h3>A map with the amount of babies</h3>
-			      	<h5>A</h5>
-			      	<h5>leg</h5>
-			      	<h5>end</h5>
+			      	<div id="legend"></div>
 			      	<div id="map"></div>
 		    	</div>
-		    	<div class="col-sm-1">
-		    		<h5>Choose the y axis</h5>
+		    	<div class="col-sm-6">
+			     	<h3>A scatter with more info</h3>
+			     	<h5>Choose the y axis</h5>
 		    		<div class="radio">
 			    		<form>
 							<input type="radio" id="pop" name="var" checked=> city population<br>
 							<input type="radio" id="size" name="var"> city size<br>
 						</form>
 					</div>
-		    	</div>
-		    	<div class="col-sm-6">
-			     	<h3>A scatter with more info</h3>
 			      	<div id="scatter"></div>
 			      	<h3>A bulletchart with more info</h3>
 			      	<div id="bulletchart"></div>

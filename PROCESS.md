@@ -25,3 +25,6 @@ Map geeft data weer in combinatie met slider. Ook begonnen aan de scatterplot.
 
 ## week 2 day 5:
 Verder gewerkt aan de lay-out en aan de scatterplot.
+
+## week 3 day 1:
+Dropdown menu gemaakt voor de y-as van de scatterplot, slider afgemaakt voor map en scatter, ingezoomd op de kaart en een tooltop voor de scatterplot.
