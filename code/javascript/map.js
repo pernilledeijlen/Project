@@ -57,8 +57,8 @@ function makeMap(error, dataInMakeMap) {
 	});
 
 	// interactivity map and scatter
-	mouseOverMapScatter()
-	mouseOutMapScatter()
+	mouseOverMapScatter();
+	mouseOutMapScatter();
 
 	// creating map legend
 	var svg = d3.select(".datamap");

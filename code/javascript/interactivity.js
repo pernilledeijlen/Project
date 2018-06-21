@@ -58,20 +58,16 @@ function mouseOutScatter() {
 function mouseOverMapScatter() {
 	d3.selectAll("#map").on("mouseover", function() {
 		var countryid = d3.select(d3.event.target).data()[0].id
-		console.log(countryid)
 		var circle = d3.select("#scatter").select("svg").selectAll("circle")[0]
 
 		for (var i = 0; i < 21; i++) {
 			// make other circles lighter
 			if (circle[i].id != countryid) {
-				console.log("not the same")
 				d3.select(circle[i])
 					.style("opacity", 0.2)
 			}
 			// make corresponding circle larger
 			else {
-				console.log(circle[i].id)
-				console.log(countryid)
 				// check if value of circle is not NaN
 				if (isNaN(circle[i].__data__[0]) == false) {
 					d3.select(circle[i])
@@ -207,8 +203,39 @@ function mouseOverLegendMap(rect) {
 	// 	make corresponding countries highlight
 	// 	make other countries lighter
 	// }
-}
+};
 
 function mouseOutLegendMap(rect) {
 
-}
+};
+
+// functions for bullet
+// when you click on a country show corresponding bulletchart
+function clickMapBullet(error, year) {
+	d3.selectAll("#map").on("click", function() {
+		var country = d3.select(d3.event.target).data()[0].properties.name
+		console.log(country)
+		// nog steeds default 2008
+		for (var i = 0; i < bulletData[year - 2008].length; i++) {
+			if (bulletData[year - 2008][i][6] == country) {
+				dataMakeBulletchart(error, bulletData[year - 2008][i])
+			}
+		}
+	});
+};
+
+// when you click on a circle show corresponding bulletchart
+function clickScatterBullet(error, year) {
+	var circles = d3.select("#scatter").select("svg").selectAll("circle")[0]
+	d3.selectAll("circle").on("click", function() {
+		var circle = this
+		var country = d3.select(circle)[0][0].__data__[3]
+		console.log(country)
+
+		for (var i = 0; i < bulletData[year - 2008].length; i++) {
+			if (bulletData[year - 2008][i][6] == country) {
+				dataMakeBulletchart(error, bulletData[year - 2008][i])
+			};
+		};
+	});
+};

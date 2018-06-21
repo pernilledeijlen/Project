@@ -6,7 +6,7 @@
 */
 
 // updating map and scatterplot for slider value
-function updateSlider(error, test) {
+function updateSlider(error) {
 	if (error) throw error;
 
 	var slider = d3.select("#myRange")
@@ -15,14 +15,21 @@ function updateSlider(error, test) {
 	var defaultSliderValue = 2008
 
 	output.html(defaultSliderValue)
+	// choosing y axis scatterplot
 	updateRadio(error, defaultSliderValue)
+
+	// interactivity map and bullet
+	clickMapBullet(error, defaultSliderValue);
+
+	// interacitivy scatter and bullet
+	clickScatterBullet(error, defaultSliderValue)
 
 	// current slider value
 	slider.on("input", function() {
 		var year = this.value
 	   	output.html(year)
 
-	   	// check which y axis was chosen
+	   	// check which y axis was chosen for scatter
 	    if (d3.select("#pop").property("checked") == true) {
 			updateScatter(error, datasetPop[year - defaultSliderValue], "pop", "city population (in millions)")
 		}
@@ -31,6 +38,16 @@ function updateSlider(error, test) {
 		}
 		updateRadio(error, year)
 		updateMap(error, year)
+		clickMapBullet(error, year);
+		clickScatterBullet(error, year)
+
+		// checking which country has been selected and updating it with year
+		var country = d3.select("#countrytitle")[0][0].textContent.split(":")[0]
+		for (var i = 0; i < bulletData[year - defaultSliderValue].length; i++) {
+			if (bulletData[year - defaultSliderValue][i][6] == country) {
+				dataMakeBulletchart(error, bulletData[year - defaultSliderValue][i])
+			};
+		};
 	});
 };
 

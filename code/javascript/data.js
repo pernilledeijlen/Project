@@ -185,16 +185,15 @@ function dataScatter(error, data1, data2) {
 	};
 
 	// default babies vs population 2008 misschien hoeft dit niet? meteen updateslider pakken met current year
-	makeScatter(error)
+	makeScatter(error, datasetPop[0])
 
-	console.log(mapData);
-	// updating scatter and map
-	updateSlider(error, mapData)
+	// updating scatter map and bullet
+	updateSlider(error)
 };
 
 // // data for bulletchart in right format
 function dataBulletchart(error, data1, data2, data3) {
-// 	// global array maken voor deze data
+	if (error) throw error;
 	
 	var births = data1;
 	var educ = data2;
@@ -251,25 +250,37 @@ function dataBulletchart(error, data1, data2, data3) {
 			var datapoint = [];
 			for (var l = 0; l < infoBaby[i].length; l++) {
 				if (informationCountry[i][0][k]["country"] == infoBaby[i][l]["country"]) {
-					datapoint.push(parseFloat(infoBaby[i][l]["value"].replace(/[^\d\.\-]/g, "")))
-					for (var j = 0; j < 4; j++) {
-						datapoint.push(parseFloat(informationCountry[i][j][k]["value"].replace(/[^\d\.\-]/g, "")))
+					if (infoBaby[i][l]["value"] != "-") {
+						datapoint.push(parseFloat(infoBaby[i][l]["value"].replace(/[^\d\.\-]/g, "")))
 					}
-					datapoint.push(parseFloat(educationCountry[i][l]["value"].replace(/[^\d\.\-]/g, "")))
-					datapoint.push(infoBaby[i][l]["country"])
-					datapoint.push(infoBaby[i][l]["city"])
-
+					else {
+						datapoint.push(0)
+					}
+					for (var j = 0; j < 4; j++) {
+						if (informationCountry[i][j][k]["value"] != "-") {
+							datapoint.push(parseFloat(informationCountry[i][j][k]["value"].replace(/[^\d\.\-]/g, "")))
+						}
+						else {
+							datapoint.push(0);
+						}
+					}
+					if (educationCountry[i][l]["value"] != "-") {
+						datapoint.push(parseFloat(educationCountry[i][l]["value"].replace(/[^\d\.\-]/g, "")))
+					}
+					else {
+						datapoint.push(0);
+					}
+					if (infoBaby[i][l]["country"] == "The Netherlands") {
+						datapoint.push("Netherlands")
+					}
+					else {
+						datapoint.push(infoBaby[i][l]["country"]);
+					}
+					datapoint.push(infoBaby[i][l]["city"]);
 				};
 			};
 			datayear.push(datapoint);
 		};
 		bulletData.push(datayear);
 	};
-
-	// voorbeeld voor make bulletchart jaar 2008 en nederland
-	for (var i = 0; i < bulletData[0].length; i++) {
-		if (bulletData[0][i][6] == "The Netherlands") {
-			dataMakeBulletchart(error, bulletData[0][i])
-		}
-	}
 };

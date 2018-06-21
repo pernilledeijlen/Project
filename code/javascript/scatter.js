@@ -5,11 +5,8 @@
 */
 
 // making default scatterplot for year 2008 and y axis population
-function makeScatter(error){
+function makeScatter(error, data){
 	if (error) throw error;
-
-	// default 2008 and city population
-	data = datasetPop[0]
 
 	// setting the size of the canvas
 	var margin = {top: 40, right: 100, bottom: 60, left: 100}
@@ -223,7 +220,8 @@ function updateScatter(error, data, yvalue, text) {
     // tooltip
     svg.selectAll("circle")
     	.on("mouseover", mouseOverScatter)
-    	.on("mouseout", mouseOutScatter)
+    	.on("mouseout", mouseOutScatter);
+    	
 
 	var xAxis = d3.svg.axis()
 		.scale(xScale)
