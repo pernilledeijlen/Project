@@ -8,11 +8,8 @@
 function dataMakeBulletchart(error, data) {
 	if (error) throw error;
 
-	console.log(data)
 	var country = data[6]
-	console.log(country)
 	var city = data[7]
-	console.log(city)
 
 	// marker een streepje die het gemiddelde aangeeft van dat jaar van alle landen
 	// ranges zijn de kleuren, de min en max van dat jaar verdeeld de balk in 3 delen
@@ -25,17 +22,23 @@ function dataMakeBulletchart(error, data) {
 		{"title":"population density", "subtitle":"people per km2", "ranges":[994.48,7657.80,8000], "measures":[data[4]], "markers":[2870.99]},
 		{"title":"education", "subtitle":"proportion of popluation aged 25-64 qualified at level 5 to 8 ISCED", "ranges":[24.2,50.1,55], "measures":[data[5]], "markers":[41.35]}
 	]
-
-	makeBulletchart(error, dataBullet, country, city)
+	if (data[0] != 0) {
+		makeBulletchart(error, dataBullet, country, city)
+	}
+	else {
+		d3.select("#countrytitle").selectAll("h3").remove()
+		d3.select("#bullet").selectAll("svg").remove()
+		d3.select("#countrytitle")
+		    .append("h3")
+		    .attr('x', 100)
+		    .attr('y', 10)
+		    .text("Sorry there is no data available for " + city + ", " + country + " for this year");
+	};
 };
 
 // making bulletchart for chosen year and country or circle clicked
 function makeBulletchart(error, data, country, city) {
 	if (error) throw error;
-
-	// gemiddelde met een zwart streepje aangeven
-	// dan min en max een kleur geven dus min naar links en max naar rechts, 3 kleuren dus
-	// dan een bar met de actual value voor dat land
 	
 	// "update functie"
 	d3.select("#countrytitle").selectAll("h3").remove()

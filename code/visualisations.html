@@ -55,26 +55,26 @@ localhost: py -m http.server 8888 & hard reload: crtl f5 -->
 		</div>
 
 		<div class="container-fluid">
-		  	<div class="row">
-		  		<!-- <div class -->
-		    	<div class="col-sm-6">
-			      	<h3>A map with the amount of babies</h3>
-			      	<div id="map"></div>
-		    	</div>
-		    	<div class="col-sm-6">
-			     	<h3>A scatter with more info</h3>
-			     	<h5>Choose the y axis</h5>
-		    		<div class="radio">
-			    		<form>
-							<input type="radio" id="pop" name="var" checked=> city population<br>
-							<input type="radio" id="size" name="var"> city size<br>
-						</form>
-					</div>
-			      	<div id="scatter"></div>
-			      	<h3 id="countrytitle"></h3>
-			      	<div id="bullet"></div>
-		    	</div>
-		  	</div>
+			  	<div class="row">
+			    	<div class="col-sm-6">
+				      	<h3>A map with the amount of babies</h3>
+				      	<div id="map"></div>
+			    	</div>
+			    	<div class="col-sm-6">
+			    		<div id="information"></div>
+				     	<h3>A scatter with more info</h3>
+				     	<h5>Choose the y axis</h5>
+			    		<div class="radio">
+				    		<form>
+								<input type="radio" id="pop" name="var" checked=> city population<br>
+								<input type="radio" id="size" name="var"> city size<br>
+							</form>
+						</div>
+				      	<div id="scatter"></div>
+			    	</div>
+			  	</div>
+		  	<h3 id="countrytitle"></h3>
+		  	<div id="bullet"></div>
 		</div>
 	
 		<div id="space"></div>

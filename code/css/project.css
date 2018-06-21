@@ -12,7 +12,7 @@
 .bullet .range.s0 { fill: #eee; }
 .bullet .range.s1 { fill: #ddd; }
 .bullet .range.s2 { fill: #ccc; }
-.bullet .measure.s0 { fill: steelblue; }
+.bullet .measure.s0 { fill: steelblue }
 .bullet .title { font-size: 14px; font-weight: bold; }
 .bullet .subtitle { fill: #999; }
 
@@ -103,16 +103,26 @@
     /*left: 100px;*/
 }
 
+#information {
+    position: relative;
+    width: 600px;
+    height: 120px;
+}
+
 #scatter {
     position: relative;
     width: 600px;
     height: 400px;
 }
 
+#countrytitle {
+    text-align: center;
+}
 #bullet {
     position: relative;
-    width: 600px;
+    width: 800px;
     height: 400px;
+    left: 200px;
 }
 
 #space {

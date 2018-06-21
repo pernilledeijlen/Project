@@ -11,6 +11,7 @@ bullet:
 -	als er geen baby data is voor dat jaar voor dat land, dan ook geen bullet?
 -	kleuren van het land in dat jaar
 -	mooi maken, goede grootte, goede plek
+-	hover over title, met dan de subtitle
 
 
 Hoe kan ik bij mijn data? ../ maar de local host dan in map project doen (vanwege dit deed index het ook nie)
