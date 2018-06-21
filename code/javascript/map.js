@@ -1,14 +1,19 @@
 /*
 * Pernille Deijlen
 * 10747354
+* In this file you will find the functions for making and updating the map.
 */
 
 // global map variable
 var map;
 
 // making map, default year 2008
-function makeMap(error, data) {
+function makeMap(error, dataInMakeMap) {
 	if (error) throw error;
+	console.log(dataInMakeMap);
+	dataInMakeMap = dataInMakeMap[0];
+
+	console.log(mapData);
 
 	map = new Datamap({
 		element: document.getElementById("map"),
@@ -24,23 +29,24 @@ function makeMap(error, data) {
 	 			.projection(projection);
 			return {path: path, projection: projection};
  		},
- 		data: data,
+ 		data: dataInMakeMap,
  		geographyConfig: {
 			borderWidth: 1.3,
 			borderOpacity: 1,
 			borderColor: "white",
-			popupTemplate: function(geo, data) {
-			// tooltip for countries
-			if (!data) { return ['<div class="hoverinfo">',
-	                '<strong>', geo.properties.name, '</strong>',
-	                '<br>No data available<strong></strong>',
-	                '</div>'].join('');}
-	        else {
-				return ['<div class="hoverinfo">',
-	                '<strong>', geo.properties.name, '</strong>',
-	                '<br>Capital: <strong>', data.city, '</strong>',
-	                '<br>Babies born: <strong>', data.value, '</strong>',
-	                '</div>'].join('');}},
+			popupTemplate: function(geo, d) {
+				// mouseOverMap();
+				// tooltip for countries
+				if (!d) { return ['<div class="hoverinfo">',
+		                '<strong>', geo.properties.name, '</strong>',
+		                '<br>No data available<strong></strong>',
+		                '</div>'].join('');}
+		        else {
+					return ['<div class="hoverinfo">',
+		                '<strong>', geo.properties.name, '</strong>',
+		                '<br>Capital: <strong>', d.city, '</strong>',
+		                '<br>Babies born: <strong>', d.value, '</strong>',
+		                '</div>'].join('');}},
 			popOnHover: true,
 			highlightOnHover: true,
 			highlightFillColor: function(geo) {return geo["fillColor"] || "lightgrey"; },
@@ -50,14 +56,20 @@ function makeMap(error, data) {
 		}
 	});
 
-	var svg = d3.select("#map");
+	// interactivity map and scatter
+	mouseOverMapScatter()
+	mouseOutMapScatter()
+
+	// creating map legend
+	var svg = d3.select(".datamap");
 
 	var labels = ["no data", "0 - 10", "10 - 20", "20 - 30", "30 - 40", "> 40"];
 	var colors = ["lightgrey", "#d4b9da", "#c994c7", "#df65b0", "#dd1c77", "#980043"];
-	var data = [10, 40, 70, 90, 120, 150];
+	var dataLegend = [10, 40, 70, 90, 120, 150];
 
-	var legend = svg.append("svg").append("g").selectAll(".legend")
-		.data(data)
+	var legend = svg
+	.append("g").selectAll(".legend")
+		.data(dataLegend)
 		.enter().append("g")
 		.attr("class", "legend")
 		
@@ -69,8 +81,8 @@ function makeMap(error, data) {
 		.attr("y", function(d, i){return i * 30;})
 
 	legend.selectAll("rect")
-    	.on("mouseover", mouseOverMap)
-    	.on("mouseout", mouseOutMap);
+    	.on("mouseover", mouseOverLegend)
+    	.on("mouseout", mouseOutLegend);
 
 	// legend.append("text")
 	//     .attr("class", "legendtitle")
@@ -82,42 +94,16 @@ function makeMap(error, data) {
 		.text(function(d, i){return labels[i];})
 		.attr("x", 55)
 		.attr("y", function(d, i){return 13 + i * 30;})
+
+	console.log(mapData);
 };
 
 // updating map for slider year (er gaat iets mis bij het teruggaan naar 2008)
 function updateMap(error, year) {
 	if (error) throw error;
-	console.log(year)
+	console.log(year - 2008)
+	console.log(mapData);
 	console.log(mapData[year - 2008])
 
-	map.updateChoropleth(mapData[year - 2008]);
-};
-
-function mouseOverMap(d) {
-	var self = this;
-
-	// make rects bigger
-	d3.select(self)
-		.attr("width", 30)
-		.attr("height", 20)
-
-	console.log(self.fill)
-
-	d3.selectAll("rect")
-		.style("opacity", function() {
-			if (self != this) {
-				return 0.2
-			}})
-};
-
-function mouseOutMap(d) {
-	var self = this;
-
-	d3.select(self)
-		.transition().delay(200)
-	    .attr("width", 25)
-		.attr("height", 15)
-
-	d3.selectAll("rect")
-		.style("opacity", 1)
+	map.updateChoropleth(uberData[year]);
 };

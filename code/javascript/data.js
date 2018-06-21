@@ -1,14 +1,18 @@
 /*
 * Pernille Deijlen
 * 10747354
+* In this file you will find the functions for loading the data for each visualisation.
 */
 
 // gobal data arrays
 var mapData;
 var datasetPop;
 var datasetSize;
+var data2008;
+var uberData = {};
 
 window.onload = function() {
+
 
 	queue()
 		.defer(d3.json, "babies.json")
@@ -18,13 +22,13 @@ window.onload = function() {
 		.awaitAll(load);
 };
 
-function load(error, data) {
+function load(error, response) {
 	if (error) throw error;
 
-	var babies = data[0];
-	var education = data[1];
-	var information = data[2];
-	var popandsize = data[3];
+	var babies = response[0];
+	var education = response[1];
+	var information = response[2];
+	var popandsize = response[3];
 
 	// dataset for map
 	dataMap(error, babies)
@@ -33,11 +37,11 @@ function load(error, data) {
 	dataScatter(error, babies, popandsize)
 
 	// dataset for bulletchart
-	// dataBulletchart()
+	dataBulletchart(error, babies, education, information)
 };
 
 // data for map in right format
-function dataMap(error, data) {
+function dataMap(error, dataForMap) {
 	if (error) throw error;
 
 	var infoBaby = [];
@@ -47,7 +51,7 @@ function dataMap(error, data) {
 	for (var i = 0; i < 7; i++) {
 		var year = [];
 		for (var j = begin; j < 301; j += 10) {
-			year.push(data[j])
+			year.push(dataForMap[j])
 		}
 		begin += 1;
 		infoBaby.push(year);
@@ -62,31 +66,37 @@ function dataMap(error, data) {
 	mapData = [];
 	
 	for (var i = 0; i < 7; i++) {
-		var babies = {};
+		let timTest = {};
+		let uberTest = {};
 		infoBaby[i].forEach(function(item){
 			var countrycode = item["countrycode"];
 			var value = item["value"];
 			var city = item["city"];
+			uberTest[countrycode] = {city: city, value: value, fillColor: value == "-" ? "lightgrey" : paletteScale(value)};
 			if (value == "-") {
-				babies[countrycode] = {city: city, value: value, fillColor: "lightgrey"};
+				timTest[countrycode] = {city: city, value: value, fillColor: "lightgrey"};
 			}
 			else {
-				babies[countrycode] = {city: city, value: value, fillColor: paletteScale(value)};
+				timTest[countrycode] = {city: city, value: value, fillColor: paletteScale(value)};
 			}
 		});
-		mapData.push(babies);
+		mapData.push(timTest);
+		uberData[2008 + i] = uberTest;
+		console.log(mapData);
+		
 	};
-	console.log(mapData[0])
+	console.log(mapData)
 	// default map for year 2008
-	makeMap(error, mapData[0]);
+	makeMap(error, mapData);
 
 };
 
 // data for scatterplot in right format
 function dataScatter(error, data1, data2) {
+	console.log(mapData);
 	if (error) throw error;
 
-	var babies = data1;
+	var tim = data1;
 	var popandsize = data2;
 	var totalsize = [];
 	var begin1 = 1;
@@ -131,7 +141,7 @@ function dataScatter(error, data1, data2) {
 	for (var i = 0; i < 7; i++) {
 		var baby = [];
 		for (var j = begin; j < 301; j += 10) {
-			baby.push(babies[j])
+			baby.push(tim[j])
 		}
 		begin += 1
 		infoBaby.push(baby);
@@ -180,6 +190,14 @@ function dataScatter(error, data1, data2) {
 	// default babies vs population 2008 misschien hoeft dit niet? meteen updateslider pakken met current year
 	makeScatter(error)
 
+	console.log(mapData);
 	// updating scatter and map
-	updateSlider(error)
+	updateSlider(error, mapData)
 };
+
+// // data for bulletchart in right format
+// function dataBulletchart(error, data1, data2, data3) {
+// 	// global array maken voor deze data
+
+
+// };

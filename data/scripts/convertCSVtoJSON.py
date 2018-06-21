@@ -10,7 +10,7 @@ data source: World Development Indicators
 import csv
 import json
 
-csv_name = "popandsize.csv"
+csv_name = "information.csv"
 csv_file = open(csv_name, "r")
 json_filename = csv_name.split(".csv")[0] + ".json"
 json_file = open(json_filename, "w")

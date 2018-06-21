@@ -1,0 +1,301 @@
+countrycode,country,city,year,subject,value
+NLD,The Netherlands,Amsterdam,2007,Number of live births per year,-
+NLD,The Netherlands,Amsterdam,2008,Number of live births per year,-
+NLD,The Netherlands,Amsterdam,2009,Number of live births per year,-
+NLD,The Netherlands,Amsterdam,2010,Number of live births per year,-
+NLD,The Netherlands,Amsterdam,2011,Number of live births per year,-
+NLD,The Netherlands,Amsterdam,2012,Number of live births per year,10992
+NLD,The Netherlands,Amsterdam,2013,Number of live births per year,11063
+NLD,The Netherlands,Amsterdam,2014,Number of live births per year,10703
+NLD,The Netherlands,Amsterdam,2015,Number of live births per year,-
+NLD,The Netherlands,Amsterdam,2016,Number of live births per year,-
+TUR,Turkey,Ankara,2007,Number of live births per year,-
+TUR,Turkey,Ankara,2008,Number of live births per year,-
+TUR,Turkey,Ankara,2009,Number of live births per year,-
+TUR,Turkey,Ankara,2010,Number of live births per year,-
+TUR,Turkey,Ankara,2011,Number of live births per year,-
+TUR,Turkey,Ankara,2012,Number of live births per year,-
+TUR,Turkey,Ankara,2013,Number of live births per year,-
+TUR,Turkey,Ankara,2014,Number of live births per year,-
+TUR,Turkey,Ankara,2015,Number of live births per year,-
+TUR,Turkey,Ankara,2016,Number of live births per year,-
+GRC,Greece,Athens,2007,Number of live births per year,16812
+GRC,Greece,Athens,2008,Number of live births per year,17486
+GRC,Greece,Athens,2009,Number of live births per year,18155
+GRC,Greece,Athens,2010,Number of live births per year,-
+GRC,Greece,Athens,2011,Number of live births per year,19019
+GRC,Greece,Athens,2012,Number of live births per year,14755
+GRC,Greece,Athens,2013,Number of live births per year,12789
+GRC,Greece,Athens,2014,Number of live births per year,-
+GRC,Greece,Athens,2015,Number of live births per year,-
+GRC,Greece,Athens,2016,Number of live births per year,-
+DEU,Germany,Berlin,2007,Number of live births per year,31174
+DEU,Germany,Berlin,2008,Number of live births per year,31936
+DEU,Germany,Berlin,2009,Number of live births per year,32104
+DEU,Germany,Berlin,2010,Number of live births per year,33393
+DEU,Germany,Berlin,2011,Number of live births per year,33075
+DEU,Germany,Berlin,2012,Number of live births per year,34678
+DEU,Germany,Berlin,2013,Number of live births per year,35038
+DEU,Germany,Berlin,2014,Number of live births per year,37368
+DEU,Germany,Berlin,2015,Number of live births per year,38030
+DEU,Germany,Berlin,2016,Number of live births per year,-
+CHE,Switzerland,Bern,2007,Number of live births per year,1297
+CHE,Switzerland,Bern,2008,Number of live births per year,1312
+CHE,Switzerland,Bern,2009,Number of live births per year,1409
+CHE,Switzerland,Bern,2010,Number of live births per year,1456
+CHE,Switzerland,Bern,2011,Number of live births per year,1426
+CHE,Switzerland,Bern,2012,Number of live births per year,1491
+CHE,Switzerland,Bern,2013,Number of live births per year,1457
+CHE,Switzerland,Bern,2014,Number of live births per year,1514
+CHE,Switzerland,Bern,2015,Number of live births per year,1670
+CHE,Switzerland,Bern,2016,Number of live births per year,1653
+SVK,Slovakia,Bratislava,2007,Number of live births per year,4317
+SVK,Slovakia,Bratislava,2008,Number of live births per year,4688
+SVK,Slovakia,Bratislava,2009,Number of live births per year,5052
+SVK,Slovakia,Bratislava,2010,Number of live births per year,5163
+SVK,Slovakia,Bratislava,2011,Number of live births per year,5356
+SVK,Slovakia,Bratislava,2012,Number of live births per year,5088
+SVK,Slovakia,Bratislava,2013,Number of live births per year,-
+SVK,Slovakia,Bratislava,2014,Number of live births per year,-
+SVK,Slovakia,Bratislava,2015,Number of live births per year,-
+SVK,Slovakia,Bratislava,2016,Number of live births per year,-
+BEL,Belgium,Brussels,2007,Number of live births per year,16161
+BEL,Belgium,Brussels,2008,Number of live births per year,17730
+BEL,Belgium,Brussels,2009,Number of live births per year,18176
+BEL,Belgium,Brussels,2010,Number of live births per year,18612
+BEL,Belgium,Brussels,2011,Number of live births per year,18301
+BEL,Belgium,Brussels,2012,Number of live births per year,-
+BEL,Belgium,Brussels,2013,Number of live births per year,18408
+BEL,Belgium,Brussels,2014,Number of live births per year,18594
+BEL,Belgium,Brussels,2015,Number of live births per year,18312
+BEL,Belgium,Brussels,2016,Number of live births per year,18017
+ROU,Romania,Bucharest,2007,Number of live births per year,19232
+ROU,Romania,Bucharest,2008,Number of live births per year,20590
+ROU,Romania,Bucharest,2009,Number of live births per year,21447
+ROU,Romania,Bucharest,2010,Number of live births per year,21147
+ROU,Romania,Bucharest,2011,Number of live births per year,19103
+ROU,Romania,Bucharest,2012,Number of live births per year,17937
+ROU,Romania,Bucharest,2013,Number of live births per year,17823
+ROU,Romania,Bucharest,2014,Number of live births per year,9183
+ROU,Romania,Bucharest,2015,Number of live births per year,19197
+ROU,Romania,Bucharest,2016,Number of live births per year,19549
+HUN,Hungary,Budapest,2007,Number of live births per year,16957
+HUN,Hungary,Budapest,2008,Number of live births per year,17270
+HUN,Hungary,Budapest,2009,Number of live births per year,21995
+HUN,Hungary,Budapest,2010,Number of live births per year,16458
+HUN,Hungary,Budapest,2011,Number of live births per year,16029
+HUN,Hungary,Budapest,2012,Number of live births per year,16507
+HUN,Hungary,Budapest,2013,Number of live births per year,16001
+HUN,Hungary,Budapest,2014,Number of live births per year,16048
+HUN,Hungary,Budapest,2015,Number of live births per year,16086
+HUN,Hungary,Budapest,2016,Number of live births per year,-
+DNK,Denmark,Copenhagen,2007,Number of live births per year,-
+DNK,Denmark,Copenhagen,2008,Number of live births per year,-
+DNK,Denmark,Copenhagen,2009,Number of live births per year,-
+DNK,Denmark,Copenhagen,2010,Number of live births per year,9319
+DNK,Denmark,Copenhagen,2011,Number of live births per year,9054
+DNK,Denmark,Copenhagen,2012,Number of live births per year,9076
+DNK,Denmark,Copenhagen,2013,Number of live births per year,-
+DNK,Denmark,Copenhagen,2014,Number of live births per year,-
+DNK,Denmark,Copenhagen,2015,Number of live births per year,-
+DNK,Denmark,Copenhagen,2016,Number of live births per year,-
+IRL,Ireland,Dublin,2007,Number of live births per year,-
+IRL,Ireland,Dublin,2008,Number of live births per year,-
+IRL,Ireland,Dublin,2009,Number of live births per year,-
+IRL,Ireland,Dublin,2010,Number of live births per year,-
+IRL,Ireland,Dublin,2011,Number of live births per year,8131
+IRL,Ireland,Dublin,2012,Number of live births per year,-
+IRL,Ireland,Dublin,2013,Number of live births per year,-
+IRL,Ireland,Dublin,2014,Number of live births per year,-
+IRL,Ireland,Dublin,2015,Number of live births per year,-
+IRL,Ireland,Dublin,2016,Number of live births per year,-
+FIN,Finland,Helsinki,2007,Number of live births per year,-
+FIN,Finland,Helsinki,2008,Number of live births per year,-
+FIN,Finland,Helsinki,2009,Number of live births per year,-
+FIN,Finland,Helsinki,2010,Number of live births per year,6709
+FIN,Finland,Helsinki,2011,Number of live births per year,6619
+FIN,Finland,Helsinki,2012,Number of live births per year,6748
+FIN,Finland,Helsinki,2013,Number of live births per year,6789
+FIN,Finland,Helsinki,2014,Number of live births per year,6907
+FIN,Finland,Helsinki,2015,Number of live births per year,7016
+FIN,Finland,Helsinki,2016,Number of live births per year,6803
+CYP,Cyprus,Lefkosia,2007,Number of live births per year,-
+CYP,Cyprus,Lefkosia,2008,Number of live births per year,-
+CYP,Cyprus,Lefkosia,2009,Number of live births per year,-
+CYP,Cyprus,Lefkosia,2010,Number of live births per year,-
+CYP,Cyprus,Lefkosia,2011,Number of live births per year,-
+CYP,Cyprus,Lefkosia,2012,Number of live births per year,-
+CYP,Cyprus,Lefkosia,2013,Number of live births per year,-
+CYP,Cyprus,Lefkosia,2014,Number of live births per year,-
+CYP,Cyprus,Lefkosia,2015,Number of live births per year,-
+CYP,Cyprus,Lefkosia,2016,Number of live births per year,2569
+PRT,Portugal,Lisbon,2007,Number of live births per year,5697
+PRT,Portugal,Lisbon,2008,Number of live births per year,6041
+PRT,Portugal,Lisbon,2009,Number of live births per year,6220
+PRT,Portugal,Lisbon,2010,Number of live births per year,6236
+PRT,Portugal,Lisbon,2011,Number of live births per year,5733
+PRT,Portugal,Lisbon,2012,Number of live births per year,5409
+PRT,Portugal,Lisbon,2013,Number of live births per year,-
+PRT,Portugal,Lisbon,2014,Number of live births per year,5454
+PRT,Portugal,Lisbon,2015,Number of live births per year,5778
+PRT,Portugal,Lisbon,2016,Number of live births per year,6022
+SVN,Slovenia,Ljubljana,2007,Number of live births per year,2664
+SVN,Slovenia,Ljubljana,2008,Number of live births per year,2950
+SVN,Slovenia,Ljubljana,2009,Number of live births per year,2963
+SVN,Slovenia,Ljubljana,2010,Number of live births per year,3182
+SVN,Slovenia,Ljubljana,2011,Number of live births per year,2971
+SVN,Slovenia,Ljubljana,2012,Number of live births per year,3084
+SVN,Slovenia,Ljubljana,2013,Number of live births per year,2982
+SVN,Slovenia,Ljubljana,2014,Number of live births per year,2891
+SVN,Slovenia,Ljubljana,2015,Number of live births per year,2903
+SVN,Slovenia,Ljubljana,2016,Number of live births per year,2797
+GBR,United Kingdom,London,2007,Number of live births per year,125505
+GBR,United Kingdom,London,2008,Number of live births per year,198719
+GBR,United Kingdom,London,2009,Number of live births per year,-
+GBR,United Kingdom,London,2010,Number of live births per year,-
+GBR,United Kingdom,London,2011,Number of live births per year,132843
+GBR,United Kingdom,London,2012,Number of live births per year,134186
+GBR,United Kingdom,London,2013,Number of live births per year,128332
+GBR,United Kingdom,London,2014,Number of live births per year,127399
+GBR,United Kingdom,London,2015,Number of live births per year,129615
+GBR,United Kingdom,London,2016,Number of live births per year,-
+LUX,Luxembourg,Luxembourg,2007,Number of live births per year,1089
+LUX,Luxembourg,Luxembourg,2008,Number of live births per year,1101
+LUX,Luxembourg,Luxembourg,2009,Number of live births per year,1131
+LUX,Luxembourg,Luxembourg,2010,Number of live births per year,-
+LUX,Luxembourg,Luxembourg,2011,Number of live births per year,-
+LUX,Luxembourg,Luxembourg,2012,Number of live births per year,-
+LUX,Luxembourg,Luxembourg,2013,Number of live births per year,-
+LUX,Luxembourg,Luxembourg,2014,Number of live births per year,-
+LUX,Luxembourg,Luxembourg,2015,Number of live births per year,-
+LUX,Luxembourg,Luxembourg,2016,Number of live births per year,-
+ESP,Spain,Madrid,2007,Number of live births per year,34515
+ESP,Spain,Madrid,2008,Number of live births per year,36663
+ESP,Spain,Madrid,2009,Number of live births per year,35147
+ESP,Spain,Madrid,2010,Number of live births per year,33987
+ESP,Spain,Madrid,2011,Number of live births per year,32938
+ESP,Spain,Madrid,2012,Number of live births per year,32302
+ESP,Spain,Madrid,2013,Number of live births per year,30655
+ESP,Spain,Madrid,2014,Number of live births per year,30463
+ESP,Spain,Madrid,2015,Number of live births per year,30592
+ESP,Spain,Madrid,2016,Number of live births per year,29952
+NOR,Norway,Oslo,2007,Number of live births per year,9444
+NOR,Norway,Oslo,2008,Number of live births per year,9948
+NOR,Norway,Oslo,2009,Number of live births per year,10254
+NOR,Norway,Oslo,2010,Number of live births per year,10267
+NOR,Norway,Oslo,2011,Number of live births per year,10168
+NOR,Norway,Oslo,2012,Number of live births per year,10133
+NOR,Norway,Oslo,2013,Number of live births per year,-
+NOR,Norway,Oslo,2014,Number of live births per year,-
+NOR,Norway,Oslo,2015,Number of live births per year,-
+NOR,Norway,Oslo,2016,Number of live births per year,-
+FRA,France,Paris,2007,Number of live births per year,-
+FRA,France,Paris,2008,Number of live births per year,-
+FRA,France,Paris,2009,Number of live births per year,-
+FRA,France,Paris,2010,Number of live births per year,-
+FRA,France,Paris,2011,Number of live births per year,30083
+FRA,France,Paris,2012,Number of live births per year,29274
+FRA,France,Paris,2013,Number of live births per year,28930
+FRA,France,Paris,2014,Number of live births per year,29121
+FRA,France,Paris,2015,Number of live births per year,28254
+FRA,France,Paris,2016,Number of live births per year,28375
+CZE,Czech Republic,Prague,2007,Number of live births per year,13195
+CZE,Czech Republic,Prague,2008,Number of live births per year,14339
+CZE,Czech Republic,Prague,2009,Number of live births per year,14488
+CZE,Czech Republic,Prague,2010,Number of live births per year,14792
+CZE,Czech Republic,Prague,2011,Number of live births per year,13968
+CZE,Czech Republic,Prague,2012,Number of live births per year,14176
+CZE,Czech Republic,Prague,2013,Number of live births per year,13867
+CZE,Czech Republic,Prague,2014,Number of live births per year,14624
+CZE,Czech Republic,Prague,2015,Number of live births per year,14759
+CZE,Czech Republic,Prague,2016,Number of live births per year,-
+LVA,Latvia,Riga,2007,Number of live births per year,7945
+LVA,Latvia,Riga,2008,Number of live births per year,8106
+LVA,Latvia,Riga,2009,Number of live births per year,7182
+LVA,Latvia,Riga,2010,Number of live births per year,6627
+LVA,Latvia,Riga,2011,Number of live births per year,6739
+LVA,Latvia,Riga,2012,Number of live births per year,6739
+LVA,Latvia,Riga,2013,Number of live births per year,7040
+LVA,Latvia,Riga,2014,Number of live births per year,7514
+LVA,Latvia,Riga,2015,Number of live births per year,7521
+LVA,Latvia,Riga,2016,Number of live births per year,7582
+ITA,Italy,Rome,2007,Number of live births per year,24645
+ITA,Italy,Rome,2008,Number of live births per year,27603
+ITA,Italy,Rome,2009,Number of live births per year,25958
+ITA,Italy,Rome,2010,Number of live births per year,25282
+ITA,Italy,Rome,2011,Number of live births per year,19096
+ITA,Italy,Rome,2012,Number of live births per year,24645
+ITA,Italy,Rome,2013,Number of live births per year,25448
+ITA,Italy,Rome,2014,Number of live births per year,24111
+ITA,Italy,Rome,2015,Number of live births per year,23051
+ITA,Italy,Rome,2016,Number of live births per year,-
+BGR,Bulgaria,Sofia,2007,Number of live births per year,12723
+BGR,Bulgaria,Sofia,2008,Number of live births per year,13619
+BGR,Bulgaria,Sofia,2009,Number of live births per year,14526
+BGR,Bulgaria,Sofia,2010,Number of live births per year,14167
+BGR,Bulgaria,Sofia,2011,Number of live births per year,13086
+BGR,Bulgaria,Sofia,2012,Number of live births per year,12925
+BGR,Bulgaria,Sofia,2013,Number of live births per year,12446
+BGR,Bulgaria,Sofia,2014,Number of live births per year,-
+BGR,Bulgaria,Sofia,2015,Number of live births per year,12805
+BGR,Bulgaria,Sofia,2016,Number of live births per year,12814
+SWE,Sweden,Stockholm,2007,Number of live births per year,12411
+SWE,Sweden,Stockholm,2008,Number of live births per year,12867
+SWE,Sweden,Stockholm,2009,Number of live births per year,13267
+SWE,Sweden,Stockholm,2010,Number of live births per year,13896
+SWE,Sweden,Stockholm,2011,Number of live births per year,13620
+SWE,Sweden,Stockholm,2012,Number of live births per year,-
+SWE,Sweden,Stockholm,2013,Number of live births per year,-
+SWE,Sweden,Stockholm,2014,Number of live births per year,-
+SWE,Sweden,Stockholm,2015,Number of live births per year,-
+SWE,Sweden,Stockholm,2016,Number of live births per year,-
+EST,Estionia,Tallinn,2007,Number of live births per year,5440
+EST,Estionia,Tallinn,2008,Number of live births per year,5421
+EST,Estionia,Tallinn,2009,Number of live births per year,5150
+EST,Estionia,Tallinn,2010,Number of live births per year,5170
+EST,Estionia,Tallinn,2011,Number of live births per year,4986
+EST,Estionia,Tallinn,2012,Number of live births per year,4787
+EST,Estionia,Tallinn,2013,Number of live births per year,4651
+EST,Estionia,Tallinn,2014,Number of live births per year,4936
+EST,Estionia,Tallinn,2015,Number of live births per year,5118
+EST,Estionia,Tallinn,2016,Number of live births per year,5126
+AUT,Austria,Vienna,2007,Number of live births per year,-
+AUT,Austria,Vienna,2008,Number of live births per year,-
+AUT,Austria,Vienna,2009,Number of live births per year,-
+AUT,Austria,Vienna,2010,Number of live births per year,-
+AUT,Austria,Vienna,2011,Number of live births per year,-
+AUT,Austria,Vienna,2012,Number of live births per year,-
+AUT,Austria,Vienna,2013,Number of live births per year,18691
+AUT,Austria,Vienna,2014,Number of live births per year,19260
+AUT,Austria,Vienna,2015,Number of live births per year,-
+AUT,Austria,Vienna,2016,Number of live births per year,-
+LTU,Lithuania,Vilnius,2007,Number of live births per year,5972
+LTU,Lithuania,Vilnius,2008,Number of live births per year,6786
+LTU,Lithuania,Vilnius,2009,Number of live births per year,7403
+LTU,Lithuania,Vilnius,2010,Number of live births per year,7613
+LTU,Lithuania,Vilnius,2011,Number of live births per year,7127
+LTU,Lithuania,Vilnius,2012,Number of live births per year,6245
+LTU,Lithuania,Vilnius,2013,Number of live births per year,6287
+LTU,Lithuania,Vilnius,2014,Number of live births per year,6737
+LTU,Lithuania,Vilnius,2015,Number of live births per year,6991
+LTU,Lithuania,Vilnius,2016,Number of live births per year,7179
+POL,Poland,Warsaw,2007,Number of live births per year,17325
+POL,Poland,Warsaw,2008,Number of live births per year,18523
+POL,Poland,Warsaw,2009,Number of live births per year,18848
+POL,Poland,Warsaw,2010,Number of live births per year,-
+POL,Poland,Warsaw,2011,Number of live births per year,18863
+POL,Poland,Warsaw,2012,Number of live births per year,18795
+POL,Poland,Warsaw,2013,Number of live births per year,18438
+POL,Poland,Warsaw,2014,Number of live births per year,19511
+POL,Poland,Warsaw,2015,Number of live births per year,-
+POL,Poland,Warsaw,2016,Number of live births per year,-
+HRV,Croatia,Zagreb,2007,Number of live births per year,-
+HRV,Croatia,Zagreb,2008,Number of live births per year,-
+HRV,Croatia,Zagreb,2009,Number of live births per year,-
+HRV,Croatia,Zagreb,2010,Number of live births per year,-
+HRV,Croatia,Zagreb,2011,Number of live births per year,-
+HRV,Croatia,Zagreb,2012,Number of live births per year,-
+HRV,Croatia,Zagreb,2013,Number of live births per year,8254
+HRV,Croatia,Zagreb,2014,Number of live births per year,-
+HRV,Croatia,Zagreb,2015,Number of live births per year,8039
+HRV,Croatia,Zagreb,2016,Number of live births per year,8120

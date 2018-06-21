@@ -1,6 +1,6 @@
 <!-- Pernille Deijlen
 10747354 
-localhost: py -m http.server 8888 & -->
+localhost: py -m http.server 8888 & hard reload: crtl f5 -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,21 +9,25 @@ localhost: py -m http.server 8888 & -->
 	  	<meta charset="utf-8">
 	  	<meta name="viewport" content="width=device-width, initial-scale=1">
 	  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 	  	<link rel="stylesheet" type="text/css" href="css/project.css">
 
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	  	<script src="https://d3js.org/d3.v3.min.js"></script>
 	    <script src="https://d3js.org/queue.v1.min.js"></script>
 	    <script src="https://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.1.0/d3-legend.js"></script>
+
 	    <script src="javascript/datamaps.world.min.js"></script>
 	    <script src="javascript/data.js"></script>
 	    <script src="javascript/scatter.js"></script>
-	     <script src="javascript/map.js"></script>
-	     <script src="javascript/update.js"></script>
+	    <script src="javascript/map.js"></script>
+	    <script src="javascript/update.js"></script>
+	    <script src="javascript/interactivity.js"></script>
+	    <script src="javascript/bullet.js"></script>
+	    <script src="javascript/bulletchart.js"></script>
+
 	    
 	</head>
 	<body>
@@ -52,6 +56,7 @@ localhost: py -m http.server 8888 & -->
 
 		<div class="container-fluid">
 		  	<div class="row">
+		  		<!-- <div class -->
 		    	<div class="col-sm-6">
 			      	<h3>A map with the amount of babies</h3>
 			      	<div id="legend"></div>
@@ -67,8 +72,8 @@ localhost: py -m http.server 8888 & -->
 						</form>
 					</div>
 			      	<div id="scatter"></div>
-			      	<h3>A bulletchart with more info</h3>
-			      	<div id="bulletchart"></div>
+			      	<h3 id="countrytitle"></h3>
+			      	<div id="bullet"></div>
 		    	</div>
 		  	</div>
 		</div>

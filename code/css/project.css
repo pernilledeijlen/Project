@@ -100,7 +100,7 @@
     height: 400px;
 }
 
-#bulletchart {
+#bullet {
     position: relative;
     width: 600px;
     height: 400px;
@@ -118,18 +118,4 @@
   stroke: #000;
   shape-rendering: crispEdges;
   stroke-width: 1px;
-}
-
-#tooltip {
-    color: #dd1c77;
-    font-size: 10px;
-}
-
-/*.radio {
-    line-height: 10em;
-}*/
-
-.col-sm-1 {
-    /*line-height: 10em;*/
-    margin-top: 200px;
 }

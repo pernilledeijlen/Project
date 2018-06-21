@@ -1,8 +1,10 @@
 /*
 * Pernille Deijlen
 * 10747354
+* In this file you will find the functions for making and updating the scatterplot.
 */
 
+// making default scatterplot for year 2008 and y axis population
 function makeScatter(error){
 	if (error) throw error;
 
@@ -50,6 +52,7 @@ function makeScatter(error){
         .data(data)
         .enter()
         .append("circle")
+        	.attr("id", function(d) {return d[2];})
             .attr("cx", function(d) {return xScale(d[0] / 1000);})
             .attr("cy", function(d) {return yScale(d[1] / 1000000);})
             .attr("r", function(d) {
@@ -102,6 +105,7 @@ function makeScatter(error){
     	.text("city population (in millions)");	
 };
 
+// updating scatterplot for chosen year and y axis
 function updateScatter(error, data, yvalue, text) {
 	if (error) throw error;
 
@@ -112,7 +116,7 @@ function updateScatter(error, data, yvalue, text) {
 	var width = totalWidth - margin.left - margin.right;
 	var height = totalHeight - margin.top - margin.bottom;
 
-	svg = d3.select("#scatter").select("svg")
+	var svg = d3.select("#scatter").select("svg")
 
 	svg.selectAll("circle").remove()
 	svg.selectAll("text").remove()
@@ -197,6 +201,7 @@ function updateScatter(error, data, yvalue, text) {
         .data(data)
         .enter()
         .append("circle")
+        	.attr("id", function(d) {return d[2];})
             .attr("cx", function(d) {return xScale(d[0] / 10000);})
             	
             .attr("cy", function(d) {
@@ -257,51 +262,4 @@ function updateScatter(error, data, yvalue, text) {
     	.attr("y", 20)
     	.style("text-anchor", "left")
     	.text(text);
-};
-
-// tooltip when hovering over circle
-function mouseOverScatter(d) {
-	var self = this;
-
-	// make circle bigger
-	d3.select(self)
-		.attr("r", 8)
-	
-	// add tooltip text
-	if (d3.select("#pop").property("checked") == true) {
-		d3.select("#scatter").select("svg")
-			.append("text")
-			.attr({id: "tooltip", x: 110, y: 40})
-		   	.text(d[4] + " has a population of " + d[1] + " and " + d[0] + " babies have been born")}
-
-	if (d3.select("#size").property("checked") == true) {
-		d3.select("#scatter").select("svg")
-			.append("text")
-			.attr({id: "tooltip", x: 110, y: 40})
-		   	.text(d[4] + " is " + d[1] + " km2 and " + d[0] + " babies have been born")}
-
-	// make other circles lighter
-	d3.selectAll("circle")
-		.style("opacity", function() {
-			if (self != this) {
-				return 0.2
-			}})
-};
-
-// removing tooltip when hovering over circle
-function mouseOutScatter(d) {
-	var self = this;
-
-	// circles back to normal size
-	d3.select(self)
-		.transition().delay(200)
-	    .attr("r", 4)
-
-	// remove tooltip text
-    d3.select("#tooltip")
-    	.remove()
-    
-    // circles normal opcacity again
-    d3.selectAll("circle")
-		.style("opacity", 1)
 };
