@@ -126,12 +126,12 @@ function mouseOverLegendScatter(rect) {
 	}
  
 	for (var i = 0; i < circle.length; i++) {
-		// 	make corresponding circles larger
+		// make corresponding circles larger
 		if (circle[i].style.fill == rgb) {
 			d3.select(circle[i])
 				.attr("r", 8);
 		}
-		// 	make other circles lighter
+		// make other circles lighter
 		else {
 			d3.select(circle[i])
 				.style("opacity", 0.2)

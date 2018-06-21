@@ -19,7 +19,6 @@ function updateSlider(error, test) {
 
 	// current slider value
 	slider.on("input", function() {
-		console.log(uberData);
 		var year = this.value
 	   	output.html(year)
 

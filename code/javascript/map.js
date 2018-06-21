@@ -101,9 +101,6 @@ function makeMap(error, dataInMakeMap) {
 // updating map for slider year (er gaat iets mis bij het teruggaan naar 2008)
 function updateMap(error, year) {
 	if (error) throw error;
-	console.log(year - 2008)
-	console.log(mapData);
-	console.log(mapData[year - 2008])
 
 	map.updateChoropleth(uberData[year]);
 };
