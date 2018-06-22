@@ -15,12 +15,12 @@ function dataMakeBulletchart(error, data) {
 	// ranges zijn de kleuren, de min en max van dat jaar verdeeld de balk in 3 delen
 	// nu gemiddelde en min en max gehardcoded voor het jaar 2008
 	var dataBullet = [
-		{"title":"babies born", "subtitle":"hello", "ranges":[1101,198719,200000], "measures":[data[0]], "markers":[22557]},
+		{"title":"babies born", "subtitle":"hello", "ranges":[1101,198719,220000], "measures":[data[0]], "markers":[22557]},
 		{"title":"CO2", "subtitle":"emissions per capita in tonnes", "ranges":[5.1,15.78,16], "measures":[data[1]], "markers":[9.76]},
-		{"title":"GDP", "subtitle":"per capita in US $", "ranges":[35845.51,63065.8,65000], "measures":[data[2]], "markers":[49041.01]},
+		{"title":"GDP", "subtitle":"per capita in US $", "ranges":[35845.51,63065.8,70000], "measures":[data[2]], "markers":[49041.01]},
 		{"title":"green area", "subtitle":"square meters per million people ", "ranges":[0.96,1468.15,1600], "measures":[data[3]], "markers":[333.28]},
 		{"title":"population density", "subtitle":"people per km2", "ranges":[994.48,7657.80,8000], "measures":[data[4]], "markers":[2870.99]},
-		{"title":"education", "subtitle":"proportion of popluation aged 25-64 qualified at level 5 to 8 ISCED", "ranges":[24.2,50.1,55], "measures":[data[5]], "markers":[41.35]}
+		{"title":"education", "subtitle":"proportion of popluation aged 25-64 qualified at level 5 to 8 ISCED", "ranges":[24.2,50.1,60], "measures":[data[5]], "markers":[41.35]}
 	]
 	if (data[0] != 0) {
 		makeBulletchart(error, dataBullet, country, city)
