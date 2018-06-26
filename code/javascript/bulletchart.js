@@ -8,17 +8,17 @@
 function dataMakeBulletchart(error, data, year) {
 	if (error) throw error;
 
-	var country = data[6]
-	var city = data[7]
-	var defaultYear = 2008
+	var country = data[6];
+	var city = data[7];
+	var defaultYear = 2008;
 	
 	// calculating mean values
-	var meanBabies = d3.mean(infoBullet[0][year - defaultYear])
-	var meanCO2 = d3.mean(infoBullet[1][year - defaultYear])
-	var meanGDP = d3.mean(infoBullet[2][year - defaultYear])
-	var meanGreen = d3.mean(infoBullet[3][year - defaultYear])
-	var meanPopDens = d3.mean(infoBullet[4][year - defaultYear])
-	var meanEduc = d3.mean(infoBullet[5][year - defaultYear])
+	var meanBabies = d3.mean(infoBullet[0][year - defaultYear]);
+	var meanCO2 = d3.mean(infoBullet[1][year - defaultYear]);
+	var meanGDP = d3.mean(infoBullet[2][year - defaultYear]);
+	var meanGreen = d3.mean(infoBullet[3][year - defaultYear]);
+	var meanPopDens = d3.mean(infoBullet[4][year - defaultYear]);
+	var meanEduc = d3.mean(infoBullet[5][year - defaultYear]);
 	
 	// calculating minimum values
 	var minBabies = d3.min(infoBullet[0][year - defaultYear])
@@ -29,12 +29,12 @@ function dataMakeBulletchart(error, data, year) {
 	var minEduc = d3.min(infoBullet[5][year - defaultYear])
 	
 	// calculating maximum values
-	var maxBabies = d3.max(infoBullet[0][year - defaultYear])
-	var maxCO2 = d3.max(infoBullet[1][year - defaultYear])
-	var maxGDP = d3.max(infoBullet[2][year - defaultYear])
-	var maxGreen = d3.max(infoBullet[3][year - defaultYear])
-	var maxPopDens = d3.max(infoBullet[4][year - defaultYear])
-	var maxEduc = d3.max(infoBullet[5][year - defaultYear])
+	var maxBabies = d3.max(infoBullet[0][year - defaultYear]);
+	var maxCO2 = d3.max(infoBullet[1][year - defaultYear]);
+	var maxGDP = d3.max(infoBullet[2][year - defaultYear]);
+	var maxGreen = d3.max(infoBullet[3][year - defaultYear]);
+	var maxPopDens = d3.max(infoBullet[4][year - defaultYear]);
+	var maxEduc = d3.max(infoBullet[5][year - defaultYear]);
 
 	// calculating maximum range chart using the maximum values of all years together
 	var maxRangeBabies = Math.ceil(d3.max(infoBullet[6][0]) / 100000) * 100000 + 20000;
@@ -52,14 +52,14 @@ function dataMakeBulletchart(error, data, year) {
 		{"title":"green area", "subtitle":"square meters per million people ", "ranges":[minGreen,maxGreen,maxRangeGreen], "measures":[data[3]], "markers":[meanGreen]},
 		{"title":"population density", "subtitle":"people per km2", "ranges":[minPopDens,maxPopDens,maxRangePopDens], "measures":[data[4]], "markers":[meanPopDens]},
 		{"title":"education", "subtitle":"proportion of popluation aged 25-64 qualified at level 5 to 8 ISCED", "ranges":[minEduc,maxEduc,maxRangeEduc], "measures":[data[5]], "markers":[meanEduc]}
-	]
+	];
 
-	// if there is baby data, create bulletchart
+	// create bulletchart if there is data about births
 	if (data[0] != 0) {
-		makeBulletchart(error, dataBullet, country, city)
+		makeBulletchart(error, dataBullet, country, city);
 	}
 
-	// if there is no baby data, show in title
+	// show error if there is no baby data
 	else {
 		d3.select("#countrytitle").selectAll("h3").remove()
 		d3.select("#bullet").selectAll("svg").remove()
@@ -71,15 +71,15 @@ function dataMakeBulletchart(error, data, year) {
 	};
 };
 
-// making bulletchart for chosen year and country or circle clicked
+// make bulletchart for chosen year and country or circle clicked
 function makeBulletchart(error, data, country, city) {
 	if (error) throw error;
 	
 	// "update functie"
-	d3.select("#countrytitle").selectAll("h3").remove()
-	d3.select("#bullet").selectAll("svg").remove()
+	d3.select("#countrytitle").selectAll("h3").remove();
+	d3.select("#bullet").selectAll("svg").remove();
 	
-	// get height and width
+	// get margins,  height and width
 	var margin = {top: 5, right: 40, bottom: 20, left: 130};
 	var width = 800 - margin.left - margin.right;
 	var height = 50 - margin.top - margin.bottom;
@@ -87,7 +87,7 @@ function makeBulletchart(error, data, country, city) {
 	// create chart
 	var chart = d3.bullet()
 		.width(width)
-		.height(height)
+		.height(height);
 
 	// create svg
 	var svg = d3.select("#bullet").selectAll("svg")
@@ -99,9 +99,9 @@ function makeBulletchart(error, data, country, city) {
 		.attr("height", height + margin.top + margin.bottom)
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-		.call(chart)
+		.call(chart);
 
-	// add title
+	// add title of bars
 	var title = svg.append("g")
 		.style("text-anchor", "end")
 		.attr("transform", "translate(-6," + height / 2 + ")");
@@ -119,6 +119,7 @@ function makeBulletchart(error, data, country, city) {
 
 	// hover over title tooltip with more explanaiton about it
 
+	// add title
 	d3.select("#countrytitle")
 	    .append("h3")
 	    .attr('x', 100)
@@ -127,8 +128,8 @@ function makeBulletchart(error, data, country, city) {
 };
 
 function mouseOverTitle(d) {
-	var hover = this
-	console.log(d3.select(hover))
+	var hover = this;
+	console.log(d3.select(hover));
 	// console.log(d3.select(".title")[0][0].__data__.title)
 	
 	// title = d3.selectAll(".title")[0]
