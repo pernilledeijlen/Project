@@ -46,7 +46,7 @@ function dataMakeBulletchart(error, data, year) {
 
 	// get data ready for making bulletchart
 	var dataBullet = [
-		{"title":"babies born", "subtitle":"", "ranges":[minBabies,maxBabies,maxRangeBabies], "measures":[data[0]], "markers":[meanBabies]},
+		{"title":"births", "subtitle":"", "ranges":[minBabies,maxBabies,maxRangeBabies], "measures":[data[0]], "markers":[meanBabies]},
 		{"title":"CO2", "subtitle":"emissions per capita in tonnes", "ranges":[minCO2,maxCO2,maxRangeCO2], "measures":[data[1]], "markers":[meanCO2]},
 		{"title":"GDP", "subtitle":"per capita in US $", "ranges":[minGDP,maxGDP,maxRangeGDP], "measures":[data[2]], "markers":[meanGDP]},
 		{"title":"green area", "subtitle":"square meters per million people ", "ranges":[minGreen,maxGreen,maxRangeGreen], "measures":[data[3]], "markers":[meanGreen]},
@@ -77,6 +77,7 @@ function makeBulletchart(error, data, country, city) {
 	
 	// "update functie"
 	d3.select("#countrytitle").selectAll("h3").remove()
+	d3.select("#subtitle").selectAll("h5").remove()
 	d3.select("#bullet").selectAll("svg").remove()
 	
 	// get height and width
@@ -124,58 +125,65 @@ function makeBulletchart(error, data, country, city) {
 	    .attr('x', 100)
 	    .attr('y', 10)
 	    .text(country + ": " + city);
+
+	d3.select("#subtitle")
+	    .append("h5")
+	    .attr('x', 100)
+	    .attr('y', 10)
+	    .text("Hover over a bar title to see more information!");
 };
 
 function mouseOverTitle(d) {
+	d3.select("#subtitle").selectAll("h5")
+		.remove()
+
 	var hover = this
-	console.log(d3.select(hover))
-	// console.log(d3.select(".title")[0][0].__data__.title)
-	
-	// title = d3.selectAll(".title")[0]
-	// console.log(title)
-	// console.log(title.length)
-	
-	var cordX;
-	var cordY;
+	var text;
 
-	console.log(d3.select(hover)[0][0].__data__.title)
+	if (d3.select(hover)[0][0].__data__.title == "births") {
+		text = "amount of babies born";
+	}
 
-	if (d3.select(hover)[0][0].__data__.title == "CO2") {
-		console.log("yes")
-		cordX = 50;
-		cordY = 10;
-
-		select svg met deze titel
-
+	else if (d3.select(hover)[0][0].__data__.title == "CO2") {
+		text = "CO2 emissions per capita in tonnes";
 	}
 	else if (d3.select(hover)[0][0].__data__.title == "GDP") {
-		console.log("yes")
-		cordX = 50;
-		cordY = 20;
+		text = "GDP per capita in US dollars";
 	}
 
-	// for (var i = 0; i < title.length; i++) {
-	// 	if (title[i].__data__.title == "babies born") {
-	// 		console.log("yes")
-	// 		cordX = 50;
-	// 		cordY = 50;
-	// 	}
-	// 	if (title[i].__data__.title == "CO2") {
-	// 		console.log("jaa")
-	// 		cordX = 50;
-	// 		cordY = 110;
-	// 	}
-	// };
+	else if (d3.select(hover)[0][0].__data__.title == "green area") {
+		text = "green area per million people in square meters";
+	}
+	else if (d3.select(hover)[0][0].__data__.title == "population density") {
+		text = "population density of city area in persons per km2";
+	}
+	else if (d3.select(hover)[0][0].__data__.title == "education") {
+		text = "proportion of population aged 25-64 qualified at level 5 to 8 ISCED";
+		// een link maken van ISCED naar een pagina met wat dit is????
+	}
+	d3.select("#subtitle")
+		    .append("h5")
+		    .attr('x', 100)
+		    .attr('y', 10)
+		    .text(text);
 
-	// hij select nu telkens de eerste svg, dus die met titel babies born
-	d3.select("#bullet").select("svg")
-			.append("text")
-			.attr("id", "tooltipbullet")
-			.attr("x", cordX)
-			.attr("y", cordY)
-		   	.text(d.subtitle);
+	// // hij select nu telkens de eerste svg, dus die met titel babies born
+	// d3.select("#bullet").select("svg")
+	// 		.append("text")
+	// 		.attr("id", "tooltipbullet")
+	// 		.attr("x", cordX)
+	// 		.attr("y", cordY)
+	// 	   	.text(text);
 };
 
 function mouseOutTitle() {
+	// remove tooltip text
+	d3.select("#subtitle").selectAll("h5")
+		.remove()
 
+	d3.select("#subtitle")
+	    .append("h5")
+	    .attr('x', 100)
+	    .attr('y', 10)
+	    .text("Hover over a bar title to see more information!");
 };

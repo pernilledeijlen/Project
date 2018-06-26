@@ -253,7 +253,7 @@ function updateScatter(error, data, yvalue, text) {
     	.attr("x", totalWidth - margin.right)
     	.attr("y", totalHeight - 10)
     	.style("text-anchor", "end")
-    	.text("amount of babies born (in thousands)");
+    	.text("amount of births (in thousands)");
 
  	// text y axis
    	svg.append("text")

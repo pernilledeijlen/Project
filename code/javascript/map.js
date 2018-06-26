@@ -41,7 +41,7 @@ function makeMap(error, data) {
 					return ['<div class="hoverinfo">',
 		                '<strong>', geo.properties.name, '</strong>',
 		                '<br>Capital: <strong>', d.city, '</strong>',
-		                '<br>Babies born: <strong>', d.value, '</strong>',
+		                '<br>Births: <strong>', d.value, '</strong>',
 		                '</div>'].join('');}},
 			popOnHover: true,
 			highlightOnHover: true,

@@ -6,6 +6,10 @@
 #countrytitle {
     text-align: center;
 }
+
+#subtitle {
+	text-align: center;
+}
 #bullet {
     position: relative;
     width: 800px;
