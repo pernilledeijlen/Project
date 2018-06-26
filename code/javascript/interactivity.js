@@ -204,6 +204,9 @@ function mouseOverLegendMap(rect) {
 	country = d3.select(".datamap")[0][0].childNodes[0].childNodes
 
 	var rgb;
+	if (rectColor == "lightgrey") {
+		rgb = "lightgrey"
+	};
 	if (rectColor == "#d4b9da") {
 		rgb = "rgb(212, 185, 218)"
 	};
@@ -255,13 +258,13 @@ function mouseOverScatterMap(circle) {
 
 // make all countries normal again
 function mouseOutScatterMap() {
-	// country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
+	country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
 
-	// for (var i = 0; i < country.length; i++) {
-	// 	// countries normal opacity again
-	// 	d3.select(country[i])
-	// 		.style("opacity", 1);
-	// }; 
+	for (var i = 0; i < country.length; i++) {
+		// countries normal opacity again
+		d3.select(country[i])
+			.style("opacity", 1);
+	}; 
 };
 
 // functions for bullet
@@ -273,7 +276,7 @@ function clickMapBullet(error, year) {
 		// nog steeds default 2008
 		for (var i = 0; i < bulletData[year - 2008].length; i++) {
 			if (bulletData[year - 2008][i][6] == country) {
-				dataMakeBulletchart(error, bulletData[year - 2008][i])
+				dataMakeBulletchart(error, bulletData[year - 2008][i], year)
 			}
 		}
 	});
@@ -288,7 +291,7 @@ function clickScatterBullet(error, year) {
 
 		for (var i = 0; i < bulletData[year - 2008].length; i++) {
 			if (bulletData[year - 2008][i][6] == country) {
-				dataMakeBulletchart(error, bulletData[year - 2008][i])
+				dataMakeBulletchart(error, bulletData[year - 2008][i], year)
 
 			};
 		};

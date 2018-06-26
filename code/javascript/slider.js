@@ -45,7 +45,7 @@ function updateSlider(error) {
 		var country = d3.select("#countrytitle")[0][0].textContent.split(":")[0]
 		for (var i = 0; i < bulletData[year - defaultSliderValue].length; i++) {
 			if (bulletData[year - defaultSliderValue][i][6] == country) {
-				dataMakeBulletchart(error, bulletData[year - defaultSliderValue][i])
+				dataMakeBulletchart(error, bulletData[year - defaultSliderValue][i], year)
 			};
 		};
 	});
