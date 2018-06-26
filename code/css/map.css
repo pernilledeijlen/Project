@@ -1,0 +1,18 @@
+/*Pernille Deijlen
+* 10747354
+* In this file you will find the styling for my map.
+*/
+
+#map {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    left: 100px;
+}
+
+#legend {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    /*left: 100px;*/
+}

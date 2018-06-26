@@ -1,0 +1,19 @@
+/*Pernille Deijlen
+* 10747354
+* In this file you will find the styling for my scatterplot.
+*/
+
+#scatter {
+    position: relative;
+    width: 600px;
+    height: 400px;
+}
+
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+  stroke-width: 1px;
+}

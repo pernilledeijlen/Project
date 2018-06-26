@@ -8,12 +8,9 @@
 var map;
 
 // making map, default year 2008
-function makeMap(error, dataInMakeMap) {
+function makeMap(error, data) {
 	if (error) throw error;
-	console.log(dataInMakeMap);
-	dataInMakeMap = dataInMakeMap[0];
-
-	console.log(mapData);
+	data = data[0];;
 
 	map = new Datamap({
 		element: document.getElementById("map"),
@@ -29,13 +26,12 @@ function makeMap(error, dataInMakeMap) {
 	 			.projection(projection);
 			return {path: path, projection: projection};
  		},
- 		data: dataInMakeMap,
+ 		data: data,
  		geographyConfig: {
 			borderWidth: 1.3,
 			borderOpacity: 1,
 			borderColor: "white",
 			popupTemplate: function(geo, d) {
-				// mouseOverMap();
 				// tooltip for countries
 				if (!d) { return ['<div class="hoverinfo">',
 		                '<strong>', geo.properties.name, '</strong>',
@@ -94,8 +90,6 @@ function makeMap(error, dataInMakeMap) {
 		.text(function(d, i){return labels[i];})
 		.attr("x", 55)
 		.attr("y", function(d, i){return 13 + i * 30;})
-
-	console.log(mapData);
 };
 
 // updating map for slider year (er gaat iets mis bij het teruggaan naar 2008)

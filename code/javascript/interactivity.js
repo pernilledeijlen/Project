@@ -32,8 +32,11 @@ function mouseOverScatter(d) {
 	// make other circles lighter
 	d3.selectAll("circle")
 		.style("opacity", function() {
-			if (circle != this) { return 0.2}
+			if (circle != this) { return 0.4}
 		});
+
+	mouseOverScatterMap(circle);
+	mouseOutScatterMap();
 };
 
 // removing tooltip when hovering over circle
@@ -57,21 +60,23 @@ function mouseOutScatter() {
 // when hovering over country on the map light up corresponding circle in scatterplot
 function mouseOverMapScatter() {
 	d3.selectAll("#map").on("mouseover", function() {
-		var countryid = d3.select(d3.event.target).data()[0].id
-		var circle = d3.select("#scatter").select("svg").selectAll("circle")[0]
+		if (d3.select(d3.event.target)["0"]["0"].nodeName == "path"){
+			var countryid = d3.select(d3.event.target).data()[0].id
+			var circle = d3.select("#scatter").select("svg").selectAll("circle")[0]
 
-		for (var i = 0; i < 21; i++) {
-			// make other circles lighter
-			if (circle[i].id != countryid) {
-				d3.select(circle[i])
-					.style("opacity", 0.2)
-			}
-			// make corresponding circle larger
-			else {
-				// check if value of circle is not NaN
-				if (isNaN(circle[i].__data__[0]) == false) {
+			for (var i = 0; i < 21; i++) {
+				// make other circles lighter
+				if (circle[i].id != countryid) {
 					d3.select(circle[i])
-						.attr("r", 8)
+						.style("opacity", 0.2)
+				}
+				// make corresponding circle larger
+				else {
+					// check if value of circle is not NaN
+					if (isNaN(circle[i].__data__[0]) == false) {
+						d3.select(circle[i])
+							.attr("r", 8)
+					}
 				}
 			}
 		}
@@ -121,23 +126,21 @@ function mouseOverLegendScatter(rect) {
 		rgb = "rgb(152, 0, 67)"
 	}
  
-	for (var i = 0; i < circle.length; i++) {
-		// make corresponding circles larger
+ 	for (var i = 0; i < circle.length; i++) {
 		if (circle[i].style.fill == rgb) {
 			d3.select(circle[i])
-				.attr("r", 8);
+				.attr("r", 8)
+				.style("opacity", 1);
 		}
-		// make other circles lighter
 		else {
 			d3.select(circle[i])
 				.style("opacity", 0.2)
 		}
-	};
+	}
 };
 
 // make all circles normal again
 function mouseOutLegendScatter(rect) {
-	var rectColor = d3.select(rect).attr("fill")
 	var circle = d3.select("#scatter").select("svg").selectAll("circle")[0]
 
 	// circles back to normal size
@@ -173,7 +176,7 @@ function mouseOverLegend() {
 			}})
 
 	mouseOverLegendScatter(rect)
-	// mouseOverLegendMap(rect)
+	mouseOverLegendMap(rect)
 };
 
 // make all rects of legend normal again
@@ -189,7 +192,7 @@ function mouseOutLegend() {
 		.style("opacity", 1)
 
 	mouseOutLegendScatter(rect)
-	// mouseOutLegendMap(rect)
+	mouseOutLegendMap(rect)
 };
 
 
@@ -197,16 +200,68 @@ function mouseOutLegend() {
 // functions for map
 // when hovering over legend highlight corresponding countries
 function mouseOverLegendMap(rect) {
-	// console.log(d3.select(rect).attr("fill"))
-	// console.log(d3.select("#map")
-	// if (they are the same color) {
-	// 	make corresponding countries highlight
-	// 	make other countries lighter
-	// }
+	var rectColor = d3.select(rect).attr("fill")
+	country = d3.select(".datamap")[0][0].childNodes[0].childNodes
+
+	var rgb;
+	if (rectColor == "#d4b9da") {
+		rgb = "rgb(212, 185, 218)"
+	};
+	if (rectColor == "#c994c7") {
+		rgb = "rgb(201, 148, 199)"
+	};
+	if (rectColor == "#df65b0") {
+		rgb = "rgb(223, 101, 176)"
+	};
+	if (rectColor == "#dd1c77") {
+		rgb = "rgb(221, 28, 119)"
+	};
+	if (rectColor == "#980043") {
+		rgb = "rgb(152, 0, 67)"
+	};
+
+	// make other countries lighter
+	for (var i = 0; i < country.length; i++) {
+		if (country[i].style.fill != rgb) {
+			d3.select(country[i])
+				.style("opacity", 0.2)
+		};
+	};
 };
 
+// make all countries normal again
 function mouseOutLegendMap(rect) {
+	country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
 
+	for (var i = 0; i < country.length; i++) {
+		// countries normal opacity again
+		d3.select(country[i])
+			.style("opacity", 1);
+	};    
+};
+
+// when hovering over scatter highlight corresponding countries
+function mouseOverScatterMap(circle) {
+	circleId = circle.id;
+	country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
+
+	for (var i = 0; i < country.length; i++){
+		if (circle.id != country[i].__data__.id) {
+			d3.select(country[i])
+				.style("opacity", 0.2);				
+		};
+	};
+};
+
+// make all countries normal again
+function mouseOutScatterMap() {
+	// country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
+
+	// for (var i = 0; i < country.length; i++) {
+	// 	// countries normal opacity again
+	// 	d3.select(country[i])
+	// 		.style("opacity", 1);
+	// }; 
 };
 
 // functions for bullet
@@ -214,7 +269,7 @@ function mouseOutLegendMap(rect) {
 function clickMapBullet(error, year) {
 	d3.selectAll("#map").on("click", function() {
 		var country = d3.select(d3.event.target).data()[0].properties.name
-		console.log(country)
+
 		// nog steeds default 2008
 		for (var i = 0; i < bulletData[year - 2008].length; i++) {
 			if (bulletData[year - 2008][i][6] == country) {
@@ -230,11 +285,11 @@ function clickScatterBullet(error, year) {
 	d3.selectAll("circle").on("click", function() {
 		var circle = this
 		var country = d3.select(circle)[0][0].__data__[3]
-		console.log(country)
 
 		for (var i = 0; i < bulletData[year - 2008].length; i++) {
 			if (bulletData[year - 2008][i][6] == country) {
 				dataMakeBulletchart(error, bulletData[year - 2008][i])
+
 			};
 		};
 	});

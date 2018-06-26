@@ -62,6 +62,6 @@ function updateRadio (error, year){
 	});
 
 	d3.select("#size").on("click", function() {
-		updateScatter(error, datasetSize[year - defaultSliderValue], "size", "city size (in km2)")
+		updateScatter(error, datasetSize[year - defaultSliderValue], "size", "city size (in thousand km2)")
 	});
 };

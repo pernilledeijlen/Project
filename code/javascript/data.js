@@ -15,10 +15,10 @@ window.onload = function() {
 
 
 	queue()
-		.defer(d3.json, "babies.json")
-		.defer(d3.json, "education.json")
-		.defer(d3.json, "information.json")
-		.defer(d3.json, "popandsize.json")
+		.defer(d3.json, "../data/babies.json")
+		.defer(d3.json, "../data/education.json")
+		.defer(d3.json, "../data/information.json")
+		.defer(d3.json, "../data/popandsize.json")
 		.awaitAll(load);
 };
 
@@ -284,3 +284,32 @@ function dataBulletchart(error, data1, data2, data3) {
 		bulletData.push(datayear);
 	};
 };
+
+// function dataBarchart() {
+// 	lange array van alle data
+// 	var babies[2008];
+// 	var babies2009;
+// 	var babies2010;
+// 	var babies2011;
+// 	var babies2012;
+// 	var babies2013;
+// 	var babies2014;
+
+// 	loop door de data
+// 	for (var i = ; ; ){
+// 		loop door jaren
+// 		for (var j = 2008; j < 2015; j++) {
+// 			if (babies[i]["year"] == j) {
+// 				babies[year] += 
+// 			}
+// 		}
+		
+// 	}
+
+// }
+
+function dataHelperBullet() {
+	d3.min()
+	d3.max()
+	d3.mean()
+}

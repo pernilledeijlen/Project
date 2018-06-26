@@ -14,6 +14,12 @@ function dataMakeBulletchart(error, data) {
 	// marker een streepje die het gemiddelde aangeeft van dat jaar van alle landen
 	// ranges zijn de kleuren, de min en max van dat jaar verdeeld de balk in 3 delen
 	// nu gemiddelde en min en max gehardcoded voor het jaar 2008
+	
+	// d3.min()
+	// d3.max()
+	// Math.ceil(d3.max())
+	// d3.mean()
+
 	var dataBullet = [
 		{"title":"babies born", "subtitle":"hello", "ranges":[1101,198719,220000], "measures":[data[0]], "markers":[22557]},
 		{"title":"CO2", "subtitle":"emissions per capita in tonnes", "ranges":[5.1,15.78,16], "measures":[data[1]], "markers":[9.76]},
