@@ -9,20 +9,20 @@
 function updateSlider(error) {
 	if (error) throw error;
 
-	var slider = d3.select("#myRange")
-	var output = d3.select("#demo")
+	var slider = d3.select("#myRange");
+	var output = d3.select("#demo");
 	// nu gehardcoded default slider value
-	var defaultSliderValue = 2008
+	var defaultSliderValue = 2008;
 
-	output.html(defaultSliderValue)
+	output.html(defaultSliderValue);
 	// choosing y axis scatterplot
-	updateRadio(error, defaultSliderValue)
+	updateRadio(error, defaultSliderValue);
 
 	// interactivity map and bullet
 	clickMapBullet(error, defaultSliderValue);
 
-	// interacitivy scatter and bullet
-	clickScatterBullet(error, defaultSliderValue)
+	// interactivity scatter and bullet
+	clickScatterBullet(error, defaultSliderValue);
 
 	// current slider value
 	slider.on("input", function() {
@@ -31,23 +31,28 @@ function updateSlider(error) {
 
 	   	// check which y axis was chosen for scatter
 	    if (d3.select("#pop").property("checked") == true) {
-			updateScatter(error, datasetPop[year - defaultSliderValue], "pop", "city population (in millions)")
+			updateScatter(error, datasetPop[year - defaultSliderValue], "pop", "city population (in millions)");
 		}
 		if (d3.select("#size").property("checked") == true) {
-			updateScatter(error, datasetSize[year - defaultSliderValue], "size", "city size (in km2)")
+			updateScatter(error, datasetSize[year - defaultSliderValue], "size", "city size (in km2)");
 		}
-		updateRadio(error, year)
-		updateMap(error, year)
-		clickMapBullet(error, year);
-		clickScatterBullet(error, year)
+		// updating with choosing y axis
+		updateRadio(error, year);
+		
+		// updating map with current year
+		updateMap(error, year);
 
-		// checking which country has been selected and updating it with year
+		// updating bulletchart with current year
 		var country = d3.select("#countrytitle")[0][0].textContent.split(":")[0]
 		for (var i = 0; i < bulletData[year - defaultSliderValue].length; i++) {
 			if (bulletData[year - defaultSliderValue][i][6] == country) {
-				dataMakeBulletchart(error, bulletData[year - defaultSliderValue][i], year)
+				dataMakeBulletchart(error, bulletData[year - defaultSliderValue][i], year);
 			};
 		};
+		
+		// updating bulletchart when map or scatter clicked with current year
+		clickMapBullet(error, year);
+		clickScatterBullet(error, year);
 	});
 };
 
@@ -55,13 +60,13 @@ function updateSlider(error) {
 function updateRadio (error, year){
 	if (error) throw error;
 
-	var defaultSliderValue = 2008
+	var defaultSliderValue = 2008;
 
 	d3.select("#pop").on("click", function() {
-		updateScatter(error, datasetPop[year - defaultSliderValue], "pop", "city population (in millions)")
+		updateScatter(error, datasetPop[year - defaultSliderValue], "pop", "city population (in millions)");
 	});
 
 	d3.select("#size").on("click", function() {
-		updateScatter(error, datasetSize[year - defaultSliderValue], "size", "city size (in thousand km2)")
+		updateScatter(error, datasetSize[year - defaultSliderValue], "size", "city size (in thousand km2)");
 	});
 };
