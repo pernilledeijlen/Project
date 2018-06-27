@@ -12,6 +12,9 @@ var datasetSize;
 var bulletData;
 var infoBullet;
 
+// amount of years, 2008 - 2014
+var yearAmount = 7;
+
 window.onload = function() {
 	queue()
 		.defer(d3.json, "../data/babies.json")
@@ -47,9 +50,9 @@ function dataMap(error, data) {
 	var begin = 2;
 	
 	// data array for each year for map
-	for (var i = 0; i < 7; i++) {
+	for (var i = 0; i < yearAmount; i++) {
 		var year = [];
-		for (var j = begin; j < 301; j += 10) {
+		for (var j = begin; j < data.length; j += 10) {
 			year.push(data[j]);
 		};
 		begin += 1;
@@ -64,7 +67,7 @@ function dataMap(error, data) {
 	// array for map data
 	mapData = [];
 	
-	for (var i = 0; i < 7; i++) {
+	for (var i = 0; i < yearAmount; i++) {
 		var year1 = {};
 		var year2 = {};
 		infoBaby[i].forEach(function(item){
@@ -97,7 +100,7 @@ function dataScatter(error, data1, data2) {
 	var begin1 = 1;
 
 	// size array for each year
-	for (var i = 0; i < 7; i++) {
+	for (var i = 0; i < yearAmount; i++) {
 		var size = [];
 		for (var j = begin1; j < 148; j += 7) {
 			size.push(popSize[j]["value"]);
@@ -110,7 +113,7 @@ function dataScatter(error, data1, data2) {
 	var begin2 = 148;
 
 	// population array for each year
-	for (var i = 0; i < 7; i++) {
+	for (var i = 0; i < yearAmount; i++) {
 		var pop = [];
 		for (var j = begin2; j < popSize.length; j += 7) {
 			pop.push(popSize[j]["value"]);
@@ -133,7 +136,7 @@ function dataScatter(error, data1, data2) {
 	var begin = 2;
 
 	// amount of babies born array for each year
-	for (var i = 0; i < 7; i++) {
+	for (var i = 0; i < yearAmount; i++) {
 		var baby = [];
 		for (var j = begin; j < babiesBorn.length; j += 10) {
 			baby.push(babiesBorn[j]);
@@ -142,44 +145,36 @@ function dataScatter(error, data1, data2) {
 		infoBaby.push(baby);
 	};
 
-	// dataset for population cities
-	datasetPop = []
-	for (var i = 0; i < 7; i++) {
-		var datayear = [];
-		for (var k = 0; k < 21; k++){
-			datapoint = [];
-			for (var j = 0; j < 30; j++) {
-				if (infoCountry[k][1] == infoBaby[i][j]["country"]) {
-					datapoint.push(parseFloat(infoBaby[i][j]["value"].replace(/[^\d\.\-]/g, "")));
-					datapoint.push(parseFloat(population[i][k].replace(/[^\d\.\-]/g, "")));
-					datapoint.push(infoCountry[k][0]);
-					datapoint.push(infoCountry[k][1]);
-					datapoint.push(infoCountry[k][2]);
-				};
-			};
-			datayear.push(datapoint)
-		};
-		datasetPop.push(datayear)
-	};
 
-	// dataset for size cities
-	datasetSize = []
-	for (var i = 0; i < 7; i++) {
-		var datayear = [];
-		for (var k = 0; k < 21; k++){
-			datapoint = [];
-			for (var j = 0; j < 30; j++) {
+	// dataset for city population and city size
+	datasetPop = [];
+	datasetSize = [];
+	for (var i = 0; i < yearAmount; i++) {
+		var datayear1 = [];
+		var datayear2 = [];
+		for (var k = 0; k < infoCountry.length / 2; k++) {
+			var datapoint1 = [];
+			var datapoint2 = [];
+			for (var j = 0; j < infoBaby[i].length; j++) {
 				if (infoCountry[k][1] == infoBaby[i][j]["country"]) {
-					datapoint.push(parseFloat(infoBaby[i][j]["value"].replace(/[^\d\.\-]/g, "")));
-					datapoint.push(parseFloat(totalSize[i][k].replace(/[^\d\.\-]/g, "")));
-					datapoint.push(infoCountry[k][0]);
-					datapoint.push(infoCountry[k][1]);
-					datapoint.push(infoCountry[k][2]);
+					datapoint1.push(parseFloat(infoBaby[i][j]["value"].replace(/[^\d\.\-]/g, "")));
+					datapoint1.push(parseFloat(population[i][k].replace(/[^\d\.\-]/g, "")));
+					datapoint1.push(infoCountry[k][0]);
+					datapoint1.push(infoCountry[k][1]);
+					datapoint1.push(infoCountry[k][2]);
+
+					datapoint2.push(parseFloat(infoBaby[i][j]["value"].replace(/[^\d\.\-]/g, "")));
+					datapoint2.push(parseFloat(totalSize[i][k].replace(/[^\d\.\-]/g, "")));
+					datapoint2.push(infoCountry[k][0]);
+					datapoint2.push(infoCountry[k][1]);
+					datapoint2.push(infoCountry[k][2]);
 				};
 			};
-			datayear.push(datapoint)
+			datayear1.push(datapoint1);
+			datayear2.push(datapoint2);
 		};
-		datasetSize.push(datayear)
+		datasetPop.push(datayear1);
+		datasetSize.push(datayear2);
 	};
 
 	// default babies vs population 2008 misschien hoeft dit niet? meteen updateslider pakken met current year
@@ -201,9 +196,9 @@ function dataBulletchart(error, data1, data2, data3) {
 	var begin = 2;
 
 	// amount of babies born array for each year
-	for (var i = 0; i < 7; i++) {
+	for (var i = 0; i < yearAmount; i++) {
 		var baby = [];
-		for (var j = begin; j < 301; j += 10) {
+		for (var j = begin; j < births.length; j += 10) {
 			baby.push(births[j]);
 		};
 		begin += 1;
@@ -214,7 +209,7 @@ function dataBulletchart(error, data1, data2, data3) {
 	var begin1 = 1;
 
 	// education array for each year
-	for (var i = 0; i < 7; i++) {
+	for (var i = 0; i < yearAmount; i++) {
 		var educCountry = [];
 		for (var j = begin1; j < educ.length; j += 10) {
 			educCountry.push(educ[j]);
@@ -225,11 +220,12 @@ function dataBulletchart(error, data1, data2, data3) {
 
 	var informationCountry = [];
 	var begin2 = 1;
+	var subjects = 4;
 
 	// other information array for each year with array for each subject
-	for (var i = 0; i < 7; i++) {
+	for (var i = 0; i < yearAmount; i++) {
 		var infoCountry = [];
-		for (var k = 0; k < 4; k++) {
+		for (var k = 0; k < subjects; k++) {
 			var subject = [];
 			for (var j = begin2; j < info.length; j += 28) {
 				subject.push(info[j]);
@@ -260,7 +256,7 @@ function dataBulletchart(error, data1, data2, data3) {
 					else {
 						datapoint.push(0)
 					};
-					for (var j = 0; j < 4; j++) {
+					for (var j = 0; j < subjects; j++) {
 						if (informationCountry[i][j][k]["value"] != "-") {
 							datapoint.push(parseFloat(informationCountry[i][j][k]["value"].replace(/[^\d\.\-]/g, "")))
 						}

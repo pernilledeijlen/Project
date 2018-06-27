@@ -45,7 +45,9 @@ function makeMap(error, data) {
 		                '</div>'].join('');}},
 			popOnHover: true,
 			highlightOnHover: true,
-			highlightFillColor: function(geo) {return geo["fillColor"] || "lightgrey"; },
+			highlightFillColor: function(geo) {
+				return geo["fillColor"] || "lightgrey";
+			},
 			highlightBorderColor: "white",
 			highlightBorderWidth: 4,
 			highlightBorderOpacity: 1
@@ -71,11 +73,15 @@ function makeMap(error, data) {
 	
 	// create legend rects
 	legend.append("rect")
-		.attr("fill", function(d, i){return colors[i];})
+		.attr("fill", function(d, i){
+			return colors[i];
+		})
 		.attr("width", 25)
 		.attr("height", 15)
 		.attr("x", 20)
-		.attr("y", function(d, i){return i * 30;});
+		.attr("y", function(d, i) {
+			return i * 30;
+		});
 
 	legend.selectAll("rect")
     	.on("mouseover", mouseOverLegend)
@@ -83,9 +89,13 @@ function makeMap(error, data) {
 	
 	// create legend text
 	legend.append("text")
-		.text(function(d, i){return labels[i];})
+		.text(function(d, i) {
+			return labels[i];
+		})
 		.attr("x", 55)
-		.attr("y", function(d, i){return 13 + i * 30;});
+		.attr("y", function(d, i) {
+			return 13 + i * 30;
+		});
 };
 
 // updating map for slider year

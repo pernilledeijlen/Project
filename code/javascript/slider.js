@@ -33,9 +33,9 @@ function updateSlider(error) {
 	    if (d3.select("#pop").property("checked") == true) {
 			updateScatter(error, datasetPop[year - defaultSliderValue], "pop", "city population (in millions)");
 		}
-		if (d3.select("#size").property("checked") == true) {
+		else {
 			updateScatter(error, datasetSize[year - defaultSliderValue], "size", "city size (in km2)");
-		}
+		};
 		// updating with choosing y axis
 		updateRadio(error, year);
 		

@@ -16,7 +16,8 @@ function dataMakeBulletchart(error, data, year) {
 	var min = [];
 	var max = [];
 	var mean = [];
-	for (var i = 0; i < 6; i++) {
+	var subjects = 6;
+	for (var i = 0; i < subjects; i++) {
 		min.push(d3.min(infoBullet[i][year - defaultYear]));
 		max.push(d3.max(infoBullet[i][year - defaultYear]));
 		mean.push(d3.mean(infoBullet[i][year - defaultYear]));
@@ -134,7 +135,9 @@ function makeBulletchart(error, data, country, city) {
 
 	title.append("text")
 		.attr("class", "title")
-		.text(function(d) {return d.title;})
+		.text(function(d) {
+			return d.title;
+		})
 		.on("mouseover", mouseOverBullet)
 		.on("mouseout", mouseOutBullet);
 };

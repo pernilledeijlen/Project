@@ -61,17 +61,25 @@ function makeScatter(error, data){
         .data(data)
         .enter()
         .append("circle")
-        	.attr("id", function(d) {return d[2];})
-            .attr("cx", function(d) {return xScale(d[0] / 1000);})
-            .attr("cy", function(d) {return yScale(d[1] / 1000000);})
+        	.attr("id", function(d) {
+        		return d[2];
+        	})
+            .attr("cx", function(d) {
+            	return xScale(d[0] / 1000);
+            })
+            .attr("cy", function(d) {
+            	return yScale(d[1] / 1000000);
+            })
             .attr("r", function(d) {
             	if (isNaN(d[0]) == true) {
-            		return 0
+            		return 0;
             	}
             	else {
-            		return 4
+            		return 4;
             	}})            	
-        	.style("fill", function(d) {return paletteScale(d[0]);});
+        	.style("fill", function(d) {
+        		return paletteScale(d[0]);
+        	});
 
 	// function for hovering over circles
     svg.selectAll("circle")
@@ -156,7 +164,7 @@ function updateScatter(error, data, yvalue, text) {
 	};
 	
 	// max y value
-	var yMaxPop = Math.ceil(d3.max(pop) / 1000000)
+	var yMaxPop = Math.ceil(d3.max(pop) / 1000000);
 	var yMaxSize = Math.ceil(d3.max(size) / 1000) + 2;
 	
 	// max x value, acces global array
@@ -175,12 +183,12 @@ function updateScatter(error, data, yvalue, text) {
 	// scaling the x-axis
 	var xScale = d3.scale.linear()
 		.domain([0, xMax])
-		.range([margin.left, totalWidth - margin.right])
+		.range([margin.left, totalWidth - margin.right]);
 
 	// scaling the y-axis
 	var yScale = d3.scale.linear()
         .domain([0, yMax])
-        .range([totalHeight - margin.bottom, margin.top])
+        .range([totalHeight - margin.bottom, margin.top]);
 
 	// colorscale
 	var paletteScale = d3.scale.threshold()
@@ -192,24 +200,30 @@ function updateScatter(error, data, yvalue, text) {
         .data(data)
         .enter()
         .append("circle")
-        	.attr("id", function(d) {return d[2];})
-            .attr("cx", function(d) {return xScale(d[0] / 1000);})
+        	.attr("id", function(d) {
+        		return d[2];
+        	})
+            .attr("cx", function(d) {
+            	return xScale(d[0] / 1000);
+            })
             	
             .attr("cy", function(d) {
 				if (yvalue == "pop") {
-					return yScale(d[1] / 1000000)
+					return yScale(d[1] / 1000000);
 				}
 				if (yvalue == "size") {
-					return yScale(d[1] / 1000)
+					return yScale(d[1] / 1000);
 				}})
             .attr("r", function(d) {
             	if (isNaN(d[0]) == true) {
-            		return 0
+            		return 0;
             	}
             	else {
-            		return 4
+            		return 4;
             	}})            	
-        	.style("fill", function(d) {return paletteScale(d[0]);});
+        	.style("fill", function(d) {
+        		return paletteScale(d[0]);
+        	});
 
     // function for hovering over circles
     svg.selectAll("circle")

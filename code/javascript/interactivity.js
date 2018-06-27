@@ -30,11 +30,12 @@ function mouseOverScatter(d) {
 		   	.text(d[4] + " is " + d[1] + " km2 and " + d[0] + " babies have been born");
 	};
 	
-	// make other circles lighter FF RETURN TWEEDE REGEL
+	// make other circles lighter
 	d3.selectAll("circle")
 		.style("opacity", function() {
-			if (circle != this) { return 0.4}
-		});
+			if (circle != this) { 
+				return 0.4;
+			}});
 
 	// function to highlight corresponding country
 	mouseOverScatterMap(circle);
@@ -64,14 +65,17 @@ function mouseOutScatter() {
 // when hovering over country on the map light up corresponding circle in scatterplot
 function mouseOverMapScatter() {
 	d3.selectAll("#map").on("mouseover", function() {
+		
 		// check if it is a country you are hovering over
 		if (d3.select(d3.event.target)["0"]["0"].nodeName == "path"){
+			
 			// get country id
 			var countryid = d3.select(d3.event.target).data()[0].id;
+			
 			// get properties of circle
 			var circle = d3.select("#scatter").select("svg").selectAll("circle")[0];
-
-			for (var i = 0; i < 21; i++) {
+			
+			for (var i = 0; i < circle.length; i++) {
 				// make other circles lighter
 				if (circle[i].id != countryid) {
 					d3.select(circle[i])
@@ -93,11 +97,12 @@ function mouseOverMapScatter() {
 // make all circles normal again
 function mouseOutMapScatter() {
 	d3.selectAll("#map").on("mouseout", function() {
+		
 		// get properties of circle
 		var circle = d3.select("#scatter").select("svg").selectAll("circle")[0];
-		
+
 		// circles back to normal size
-		for (var i = 0; i < 21; i++) {
+		for (var i = 0; i < circle.length; i++) {
 			// 	make circles smaller
 			if (circle[i].attributes.r.value == "8") {
 				d3.select(circle[i])
@@ -140,15 +145,17 @@ function mouseOverLegendScatter(rect) {
  
  	for (var i = 0; i < circle.length; i++) {
 		// if color corresponds, make circle bigger
-		if (circle[i].style.fill == rgb) {
-			d3.select(circle[i])
-				.attr("r", 8)
-				.style("opacity", 1); // kan weg????
-		}
-		// make other circles lighter
-		else {
-			d3.select(circle[i])
-				.style("opacity", 0.2);
+		if (rectColor != "lightgrey") {
+			if (circle[i].style.fill == rgb) {
+				d3.select(circle[i])
+					.attr("r", 8)
+					.style("opacity", 1); // kan weg????
+			}
+			// make other circles lighter
+			else {
+				d3.select(circle[i])
+					.style("opacity", 0.2);
+			};
 		};
 	};;
 };
@@ -188,7 +195,7 @@ function mouseOverLegend() {
 	d3.selectAll("rect")
 		.style("opacity", function() {
 			if (rect != this) {
-				return 0.2
+				return 0.2;
 			}});
 
 	// functions to highlight corresponding countries on map and scatter
@@ -228,9 +235,6 @@ function mouseOverLegendMap(rect) {
 
 	// make hex colors rgb colors
 	var rgb;
-	if (rectColor == "lightgrey") {
-		rgb = "lightgrey"
-	};
 	if (rectColor == "#d4b9da") {
 		rgb = "rgb(212, 185, 218)"
 	};
@@ -249,9 +253,11 @@ function mouseOverLegendMap(rect) {
 
 	// make other countries lighter
 	for (var i = 0; i < country.length; i++) {
-		if (country[i].style.fill != rgb) {
-			d3.select(country[i])
-				.style("opacity", 0.2);
+		if (rectColor != "lightgrey") {
+			if (country[i].style.fill != rgb) {
+				d3.select(country[i])
+					.style("opacity", 0.2);
+			};
 		};
 	};
 };
@@ -271,14 +277,13 @@ function mouseOutLegendMap(rect) {
 function mouseOverScatterMap(circle) {
 	// get properties of circle
 	circleId = circle.id;
-	console.log(circleId)
+
 	// get properties of country
 	country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
 
 	// if country does not correspond make it lighter
 	for (var i = 0; i < country.length; i++){
-		if (circle.id != country[i].__data__.id) {
-			console.log(country[i].__data__.id)
+		if (circleId != country[i].__data__.id) {
 			d3.select(country[i])
 				.style("opacity", 0.2);				
 		};
@@ -289,11 +294,11 @@ function mouseOverScatterMap(circle) {
 function mouseOutScatterMap() {
 	country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
 
-	// for (var i = 0; i < country.length; i++) {
-	// 	// countries normal opacity again
-	// 	d3.select(country[i])
-	// 		.style("opacity", 1);
-	// }; 
+	for (var i = 0; i < country.length; i++) {
+		// countries normal opacity again
+		d3.select(country[i])
+			.style("opacity", 1);
+	}; 
 };
 
 // functions for bullet
