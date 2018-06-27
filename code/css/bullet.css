@@ -10,6 +10,7 @@
 #subtitle {
 	text-align: center;
 }
+
 #bullet {
     position: relative;
     width: 800px;
@@ -51,8 +52,3 @@
 	font-size: 13px;
 	font-weight: bold;
 }
-
-/*.bullet .subtitle {
-	fill: #999;
-}
-*/

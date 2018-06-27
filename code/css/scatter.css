@@ -9,9 +9,16 @@
     height: 400px;
 }
 
+.x-axis path,
+.x-axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+  stroke-width: 1px;
+}
 
-.axis path,
-.axis line {
+.y-axis path,
+.y-axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;

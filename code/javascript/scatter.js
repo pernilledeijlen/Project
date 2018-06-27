@@ -93,7 +93,7 @@ function makeScatter(error, data){
 		.ticks(4);
 
 	svg.append("g")
-		.attr("class", "axis")
+		.attr("class", "x-axis")
 	    .attr("transform", "translate(0," + (totalHeight - margin.bottom) + ")")
 	    .call(xAxis);
 	
@@ -104,13 +104,13 @@ function makeScatter(error, data){
 			.ticks(5);
 
 	svg.append("g")
-		.attr("class", "axis")
+		.attr("class", "y-axis")
 	    .attr("transform", "translate(" + (margin.left) + ", 0)")
 	    .call(yAxis);
 
     // text x axis
     svg.append("text")
-    	.attr("class", "text")
+    	.attr("class", "x-text")
     	.attr("x", totalWidth - margin.right)
     	.attr("y", totalHeight - 10)
     	.style("text-anchor", "end")
@@ -118,7 +118,7 @@ function makeScatter(error, data){
 
  	// text y axis
    	svg.append("text")
-   		.attr("class", "poep")
+   		.attr("class", "y-text")
     	.attr("x", 25)
     	.attr("y", 20)
     	.style("text-anchor", "left")
@@ -137,11 +137,6 @@ function updateScatter(error, data, yvalue, text) {
 	var height = totalHeight - margin.top - margin.bottom;
 
 	var svg = d3.select("#scatter").select("svg")
-
-	// remove old circles, text and axis
-	svg.selectAll("circle").remove()
-	svg.selectAll("text").remove()
-	svg.selectAll("g").remove()
 	
 	// max value for all years for city population
 	var pop = [];
@@ -198,29 +193,31 @@ function updateScatter(error, data, yvalue, text) {
     // creating circles
 	svg.selectAll("circle")
         .data(data)
-        .enter()
-        .append("circle")
-        	.attr("id", function(d) {
-        		return d[2];
-        	})
-            .attr("cx", function(d) {
-            	return xScale(d[0] / 1000);
-            })
-            	
-            .attr("cy", function(d) {
-				if (yvalue == "pop") {
-					return yScale(d[1] / 1000000);
-				}
-				if (yvalue == "size") {
-					return yScale(d[1] / 1000);
-				}})
-            .attr("r", function(d) {
-            	if (isNaN(d[0]) == true) {
-            		return 0;
-            	}
-            	else {
-            		return 4;
-            	}})            	
+        .transition()
+        .duration(function(d) {
+        	if (isNaN(d[0]) == true) {
+        		return 0;
+        	}
+        	else {
+        		return 600;
+        	}})
+        .attr("cx", function(d) {
+        	return xScale(d[0] / 1000);
+        })
+        .attr("cy", function(d) {
+			if (yvalue == "pop") {
+				return yScale(d[1] / 1000000);
+			}
+			if (yvalue == "size") {
+				return yScale(d[1] / 1000);
+			}})
+        .attr("r", function(d) {
+        	if (isNaN(d[0]) == true) {
+        		return 0;
+        	}
+        	else {
+        		return 4;
+        	}})            	
         	.style("fill", function(d) {
         		return paletteScale(d[0]);
         	});
@@ -229,50 +226,28 @@ function updateScatter(error, data, yvalue, text) {
     svg.selectAll("circle")
     	.on("mouseover", mouseOverScatter)
     	.on("mouseout", mouseOutScatter);
-    	
-	// create x axis
-	var xAxis = d3.svg.axis()
-		.scale(xScale)
-		.orient("bottom")
-		.ticks(4);
-
-	svg.append("g")
-		.attr("class", "axis")
-	    .attr("transform", "translate(0," + (totalHeight - margin.bottom) + ")")
-	    .call(xAxis);
 	
 	// create y axis with different ticks
 	if (yvalue == "pop") {
 		var yAxis = d3.svg.axis()
 			.scale(yScale)
 			.orient("left")
-			.ticks(5)
+			.ticks(5);
 	}
 	else {
 		var yAxis = d3.svg.axis()
 			.scale(yScale)
 			.orient("left")
-			.ticks(3)
+			.ticks(3);
 	};
 
-	svg.append("g")
-		.attr("class", "axis")
-	    .attr("transform", "translate(" + (margin.left) + ", 0)")
-	    .call(yAxis);
+	svg.select(".y-axis")
+		.transition()
+		.duration(600)
+		.call(yAxis);
 
-    // text x axis
-    svg.append("text")
-    	.attr("class", "text")
-    	.attr("x", totalWidth - margin.right)
-    	.attr("y", totalHeight - 10)
-    	.style("text-anchor", "end")
-    	.text("amount of births (in thousands)");
-
- 	// text y axis
-   	svg.append("text")
-   		.attr("class", "text")
-    	.attr("x", 25)
-    	.attr("y", 20)
-    	.style("text-anchor", "left")
+    svg.select(".y-text")
+    	.transition()
+    	.duration(600)
     	.text(text);
 };

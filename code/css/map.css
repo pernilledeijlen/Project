@@ -7,11 +7,10 @@
     position: relative;
     width: 400px;
     height: 600px;
-    left: 60px;
+    left: 100px;
 }
 
 #maptitle {
 	text-align: right;
-	width: 400px;
-	left: 60px;
+	width: 480px;
 }

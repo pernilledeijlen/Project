@@ -141,3 +141,7 @@ function makeBulletchart(error, data, country, city) {
 		.on("mouseover", mouseOverBullet)
 		.on("mouseout", mouseOutBullet);
 };
+
+function updateBulletchart() {
+	
+}
