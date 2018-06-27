@@ -48,10 +48,10 @@ Interactiviteit tussen legenda en scatter werkend gekregen. Code netter gemaakt.
 Code netter gemaakt. De x en y as van de scatterplot vastgezet (voor size en population), zodat deze niet veranderen bij het updaten.
 
 ## week 4 day 3:
-Informatie toegevoegd aan de site om het gebruiksvriendelijk te maken.
+Informatie toegevoegd aan de site om het gebruiksvriendelijk te maken. Ook aan de updatefuncties gewerkt voor de scatterplot en bulletchart.
 
 ## week 4 day 4:
-Het report, de readme en het filmpje gemaakt. Ook de code nog een keer gecheckt op comments etc.
+Het report, de readme en het filmpje gemaakt. Ook de code nog een keer gecheckt op comments etc. Ook de code review gedaan.
 
 ## week 4 day 5:
 Presentaties.

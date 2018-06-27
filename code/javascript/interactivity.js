@@ -377,7 +377,7 @@ function mouseOverBullet(d) {
 		    .append("h5")
 		    .attr('x', 100)
 		    .attr('y', 10)
-		    .text(text);
+		    .text(text + d);
 };
 
 // go back to normal subtitle

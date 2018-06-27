@@ -49,36 +49,34 @@ function dataMakeBulletchart(error, data, year) {
 
 	// create bulletchart if there is data about births
 	if (data[0] != 0) {
-		makeBulletchart(error, dataBullet, country, city);
+		// if bulletchart is already there, use the update function
+		if (d3.select("#subtitle").selectAll("h5").empty() == true) {
+			makeBulletchart(error, dataBullet, country, city);
+		}
+		else {
+			updateBulletchart(error, dataBullet, country, city); 
+		};
 	}
 
 	// show error if there is no baby data
 	else {
-		d3.select("#countrytitle").selectAll("h3").remove();
-		d3.select("#bullet").selectAll("svg").remove();
-		d3.select("#countrytitle")
-		    .append("h3")
-		    .attr('x', 100)
-		    .attr('y', 10)
-		    .text("Sorry there is no data available for " + city + ", " + country + " for this year");
-
-		// deleting all other bulletchart information
+		// deleting all bulletchart information
 		d3.select("#subtitle").selectAll("h5").remove();
+		d3.select("#bullet").selectAll("svg").remove();
 		d3.select("#infobullet1").selectAll("p").remove();
 		d3.select("#infobullet2").selectAll("p").remove();
+		d3.select("#countrytitle").selectAll("h3").remove();
+
+		// adding title showing no data	
+		d3.select("#countrytitle")
+	    	.append("h3")
+		    .text("Sorry there is no data available for " + city + ", " + country + " for this year.");
 	};
 };
 
 // make bulletchart for chosen year and country or circle clicked
 function makeBulletchart(error, data, country, city) {
 	if (error) throw error;
-	
-	// "update functie"
-	d3.select("#countrytitle").selectAll("h3").remove();
-	d3.select("#subtitle").selectAll("h5").remove();
-	d3.select("#bullet").selectAll("svg").remove();
-	d3.select("#infobullet1").selectAll("p").remove();
-	d3.select("#infobullet2").selectAll("p").remove();
 
 	// adding information about bulletchart
 	d3.select("#infobullet1")
@@ -92,6 +90,11 @@ function makeBulletchart(error, data, country, city) {
 		 the border between medium grey and light grey displays the maximum value. The bar itself \
 		 shows the value for each subject for the country selected.");
 	
+	// if there is a title delete it
+	if (d3.select("#countrytitle").selectAll("h3").empty() == false) {
+		d3.select("#countrytitle").selectAll("h3").remove()
+	};
+
 	// add title
 	d3.select("#countrytitle")
 	    .append("h3")
@@ -142,6 +145,49 @@ function makeBulletchart(error, data, country, city) {
 		.on("mouseout", mouseOutBullet);
 };
 
-function updateBulletchart() {
+function updateBulletchart(error, data, country, city) {
+	if (error) throw error;
 	
-}
+	// update countrytitle
+	d3.select("#countrytitle").selectAll("h3")
+		.transition()
+    	.duration(600)
+    	.text(country + ": " + city);
+
+	// get margins,  height and width
+	var margin = {top: 5, right: 40, bottom: 20, left: 130};
+	var width = 800 - margin.left - margin.right;
+	var height = 50 - margin.top - margin.bottom;
+
+	// create chart
+	var chart = d3.bullet()
+		.width(width)
+		.height(height);
+
+	// ff niks laten zien wanneer er geen data is, zoals bij CO2
+	// console.log(data)
+	// for (var i = 0; i < data.length; i++) {
+	// 	if (data[i].measures == 0) {
+	// 		console.log("dan hoef ik die data nie")
+	// 		data[i] = NaN;
+	// 		console.log(data[i])
+	// 	}
+	// };
+	// console.log(data)
+
+	// update bullet data
+	d3.select("#bullet").selectAll("svg")
+		.data(data)
+		.datum(function (d, i) {
+			d.ranges = data[i].ranges;
+			d.measures = data[i].measures;
+			d.markers = data[i].markers;
+			return d;
+		})
+		.call(chart.duration(600));
+
+	// tooltip hovering over title
+	d3.select(".title")
+		.on("mouseover", mouseOverBullet)
+		.on("mouseout", mouseOutBullet);
+};
