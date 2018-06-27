@@ -19,7 +19,8 @@ function mouseOverScatter(d) {
 		d3.select("#scatter").select("svg")
 			.append("text")
 			.attr({id: "tooltipscatter", x: 110, y: 40})
-		   	.text(d[4] + " has a population of " + d[1] + " and " + d[0] + " babies have been born");
+		   	.text(d[4] + " has a population of " + d[1] + " and " + d[0] +
+		   		" babies have been born");
 	};
 
 	// add tooltip text if y axis is size MAAK EEN ELSE!!!
@@ -27,7 +28,8 @@ function mouseOverScatter(d) {
 		d3.select("#scatter").select("svg")
 			.append("text")
 			.attr({id: "tooltipscatter", x: 110, y: 40})
-		   	.text(d[4] + " is " + d[1] + " km2 and " + d[0] + " babies have been born");
+		   	.text(d[4] + " is " + d[1] + " km2 and " + d[0] +
+		   		" babies have been born");
 	};
 	
 	// make other circles lighter
@@ -342,54 +344,57 @@ function clickScatterBullet(error, year) {
 	});
 };
 // show more information about bar title
-function mouseOverBullet(d) {
-	// remove standard tooltip text
-	d3.select("#subtitle").selectAll("h5")
-		.remove()
-
+function mouseOverBullet(d, data) {
 	var hover = this
 	var text;
+	var value;
 
 	// choose tooltip text based on which title is hovered over
 	if (d3.select(hover)[0][0].__data__.title == "births") {
-		text = "amount of babies born";
+		text = " babies have been born";
+		value = dataBullet[0].measures;
 	}
-
 	else if (d3.select(hover)[0][0].__data__.title == "CO2") {
-		text = "CO2 emissions per capita in tonnes";
+		text = " tonnes CO2 emissions per capita";
+		value = dataBullet[1].measures;
 	}
 	else if (d3.select(hover)[0][0].__data__.title == "GDP") {
-		text = "GDP per capita in US dollars";
+		text = " US dollars GDP per capita";
+		value = dataBullet[2].measures;
 	}
-
 	else if (d3.select(hover)[0][0].__data__.title == "green area") {
-		text = "green area per million people in square meters";
+		text = " square meters of green area per million people";
+		value = dataBullet[3].measures;
 	}
 	else if (d3.select(hover)[0][0].__data__.title == "population density") {
-		text = "population density of city area in persons per km2";
+		text = " persons per km2, population density of city area";
+		value = dataBullet[4].measures;
 	}
-	else if (d3.select(hover)[0][0].__data__.title == "education") {
-		text = "proportion of population aged 25-64 qualified at level 5 to 8 ISCED";
+	else {
+		text = ", proportion of population aged 25-64 qualified at level 5 to 8 ISCED";
+		value = dataBullet[5].measures;
 	};
 
-	// add tooltip subtitle
-	d3.select("#subtitle")
-		    .append("h5")
-		    .attr('x', 100)
-		    .attr('y', 10)
-		    .text(text + d);
+	// update subtitle
+	if (value != 0) {
+		d3.select("#subtitle").selectAll("h5")
+			.transition()
+	    	.duration(600)
+	    	.text(value + text);
+	}
+	else {
+		d3.select("#subtitle").selectAll("h5")
+			.transition()
+	    	.duration(600)
+	    	.text("No data available");
+	};
 };
 
 // go back to normal subtitle
 function mouseOutBullet() {
-	// remove tooltip subtitle
+	// update tooltip
 	d3.select("#subtitle").selectAll("h5")
-		.remove()
-
-	// add standard tooltip text
-	d3.select("#subtitle")
-	    .append("h5")
-	    .attr('x', 100)
-	    .attr('y', 10)
-	    .text("Hover over a bar title to see more information!");
+		.transition()
+    	.duration(600)
+    	.text("Hover over a bar title to see more information!");
 };

@@ -4,6 +4,9 @@
 * In this file you will find the functions for making and updating the bulletchart.
 */
 
+// global bullet data array
+var dataBullet;
+
 // data for bullet for right year and country
 function dataMakeBulletchart(error, data, year) {
 	if (error) throw error;
@@ -32,7 +35,7 @@ function dataMakeBulletchart(error, data, year) {
 	var maxRangeEduc = Math.ceil(d3.max(infoBullet[6][5]) / 10) * 10;
 
 	// get data ready for making bulletchart
-	var dataBullet = [
+	dataBullet = [
 		{"title": "births", "subtitle": "", "ranges": [min[0],max[0],maxRangeBabies],
 		"measures": [data[0]], "markers": [mean[0]]},
 		{"title": "CO2", "subtitle": "emissions per capita in tonnes",
