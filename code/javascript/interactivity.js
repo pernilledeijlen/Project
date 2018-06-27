@@ -38,7 +38,6 @@ function mouseOverScatter(d) {
 
 	// function to highlight corresponding country
 	mouseOverScatterMap(circle);
-	mouseOutScatterMap();
 };
 
 // removing tooltip when hovering over circle
@@ -58,6 +57,8 @@ function mouseOutScatter() {
     // circles normal opacity again
     d3.selectAll("circle")
 		.style("opacity", 1);
+
+	mouseOutScatterMap();
 };
 
 // when hovering over country on the map light up corresponding circle in scatterplot
@@ -270,12 +271,14 @@ function mouseOutLegendMap(rect) {
 function mouseOverScatterMap(circle) {
 	// get properties of circle
 	circleId = circle.id;
+	console.log(circleId)
 	// get properties of country
 	country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
 
 	// if country does not correspond make it lighter
 	for (var i = 0; i < country.length; i++){
 		if (circle.id != country[i].__data__.id) {
+			console.log(country[i].__data__.id)
 			d3.select(country[i])
 				.style("opacity", 0.2);				
 		};
@@ -286,11 +289,11 @@ function mouseOverScatterMap(circle) {
 function mouseOutScatterMap() {
 	country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
 
-	for (var i = 0; i < country.length; i++) {
-		// countries normal opacity again
-		d3.select(country[i])
-			.style("opacity", 1);
-	}; 
+	// for (var i = 0; i < country.length; i++) {
+	// 	// countries normal opacity again
+	// 	d3.select(country[i])
+	// 		.style("opacity", 1);
+	// }; 
 };
 
 // functions for bullet
@@ -332,4 +335,56 @@ function clickScatterBullet(error, year) {
 			};
 		};
 	});
+};
+// show more information about bar title
+function mouseOverBullet(d) {
+	// remove standard tooltip text
+	d3.select("#subtitle").selectAll("h5")
+		.remove()
+
+	var hover = this
+	var text;
+
+	// choose tooltip text based on which title is hovered over
+	if (d3.select(hover)[0][0].__data__.title == "births") {
+		text = "amount of babies born";
+	}
+
+	else if (d3.select(hover)[0][0].__data__.title == "CO2") {
+		text = "CO2 emissions per capita in tonnes";
+	}
+	else if (d3.select(hover)[0][0].__data__.title == "GDP") {
+		text = "GDP per capita in US dollars";
+	}
+
+	else if (d3.select(hover)[0][0].__data__.title == "green area") {
+		text = "green area per million people in square meters";
+	}
+	else if (d3.select(hover)[0][0].__data__.title == "population density") {
+		text = "population density of city area in persons per km2";
+	}
+	else if (d3.select(hover)[0][0].__data__.title == "education") {
+		text = "proportion of population aged 25-64 qualified at level 5 to 8 ISCED";
+	};
+
+	// add tooltip subtitle
+	d3.select("#subtitle")
+		    .append("h5")
+		    .attr('x', 100)
+		    .attr('y', 10)
+		    .text(text);
+};
+
+// go back to normal subtitle
+function mouseOutBullet() {
+	// remove tooltip subtitle
+	d3.select("#subtitle").selectAll("h5")
+		.remove()
+
+	// add standard tooltip text
+	d3.select("#subtitle")
+	    .append("h5")
+	    .attr('x', 100)
+	    .attr('y', 10)
+	    .text("Hover over a bar title to see more information!");
 };

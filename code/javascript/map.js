@@ -59,7 +59,7 @@ function makeMap(error, data) {
 	// creating map legend
 	var svg = d3.select(".datamap");
 
-	var labels = ["no data", "0 - 10", "10 - 20", "20 - 30", "30 - 40", "> 40"];
+	var labels = ["no data", "0 - 10000", "10000 - 20000", "20000 - 30000", "30000 - 40000", "> 40000"];
 	var colors = ["lightgrey", "#d4b9da", "#c994c7", "#df65b0", "#dd1c77", "#980043"];
 	var dataLegend = [10, 40, 70, 90, 120, 150];
 
@@ -80,12 +80,6 @@ function makeMap(error, data) {
 	legend.selectAll("rect")
     	.on("mouseover", mouseOverLegend)
     	.on("mouseout", mouseOutLegend);
-
-	// legend.append("text")
-	//     .attr("class", "legendtitle")
-	//     .attr("x", 140)
-	//     .attr("y", 73)
-	//     .text("Babies born in thousands");
 	
 	// create legend text
 	legend.append("text")

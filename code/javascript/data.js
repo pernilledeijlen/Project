@@ -6,15 +6,13 @@
 
 // gobal data arrays
 var mapData;
+var uberData = {};
 var datasetPop;
 var datasetSize;
 var bulletData;
 var infoBullet;
-var uberData = {};
 
 window.onload = function() {
-
-
 	queue()
 		.defer(d3.json, "../data/babies.json")
 		.defer(d3.json, "../data/education.json")
@@ -67,27 +65,26 @@ function dataMap(error, data) {
 	mapData = [];
 	
 	for (var i = 0; i < 7; i++) {
-		let timTest = {};
-		let uberTest = {};
+		var year1 = {};
+		var year2 = {};
 		infoBaby[i].forEach(function(item){
 			var countrycode = item["countrycode"];
 			var value = item["value"];
 			var city = item["city"];
-			uberTest[countrycode] = {city: city, value: value, fillColor: value == "-" ? "lightgrey" : paletteScale(value)};
+			year2[countrycode] = {city: city, value: value, fillColor: value == "-" ? "lightgrey" : paletteScale(value)};
 			if (value == "-") {
-				timTest[countrycode] = {city: city, value: value, fillColor: "lightgrey"};
+				year1[countrycode] = {city: city, value: value, fillColor: "lightgrey"};
 			}
 			else {
-				timTest[countrycode] = {city: city, value: value, fillColor: paletteScale(value)};
+				year1[countrycode] = {city: city, value: value, fillColor: paletteScale(value)};
 			};
 		});
-		mapData.push(timTest);
-		uberData[2008 + i] = uberTest;
+		mapData.push(year1);
+		uberData[2008 + i] = year2;
 	};
 
 	// make default map for year 2008
 	makeMap(error, mapData);
-
 };
 
 // data for scatterplot in right format
@@ -245,14 +242,20 @@ function dataBulletchart(error, data1, data2, data3) {
 
 	// all data together for bulletchart
 	bulletData = [];
+	// data about babies to be able to calculate the minimum, maximum and average
+	var babies1 = [];
+	var babies2 = [];
 	for (var i = 0; i < informationCountry.length; i++) {
 		var datayear = [];
+		var datayear2 = [];
 		for (var k = 0; k < informationCountry[i][0].length; k++) {
 			var datapoint = [];
 			for (var l = 0; l < infoBaby[i].length; l++) {
 				if (informationCountry[i][0][k]["country"] == infoBaby[i][l]["country"]) {
 					if (infoBaby[i][l]["value"] != "-") {
-						datapoint.push(parseFloat(infoBaby[i][l]["value"].replace(/[^\d\.\-]/g, "")));
+						datayear2.push(parseInt(infoBaby[i][l]["value"]));
+						babies2.push(parseInt(infoBaby[i][l]["value"]));
+						datapoint.push(parseInt(infoBaby[i][l]["value"]));
 					}
 					else {
 						datapoint.push(0)
@@ -283,121 +286,73 @@ function dataBulletchart(error, data1, data2, data3) {
 			datayear.push(datapoint);
 		};
 		bulletData.push(datayear);
+		babies1.push(datayear2);
 	};
 
 	// arrays for each year with the data so the minimum, maximum and average can be calculated
-	// array with baby data for each year
-	var babies1 = [];
-	// array with all baby data
-	var babies2 = [];
-	for (var i = 0; i < infoBaby.length; i++) {
-		var year = [];
-		for (var j = 0; j < infoBaby[i].length; j++) {
-			if (infoBaby[i][j]["value"] != "-") {
-				year.push(parseInt(infoBaby[i][j]["value"]));
-				babies2.push(parseInt(infoBaby[i][j]["value"]));
-			};
-		};
-		babies1.push(year)
-	};
-
-	// array with CO2 data for each year
+	// array with data for each year
 	var CO21 = [];
-	// array with all CO2 data
-	var CO22 = [];
-	for (var i = 0; i < bulletData.length; i++) {
-		var year = [];
-		for (var j = 0; j < bulletData[i].length; j++) {
-			if (bulletData[i][j][1] != 0) {
-				year.push(bulletData[i][j][1]);
-				CO22.push(bulletData[i][j][1]);	
-			};
-		};
-		CO21.push(year)
-	};
-
-	// array with GDP data for each year
 	var GDP1 = [];
-	// array with all GDP data
-	var GDP2 = [];
-	for (var i = 0; i < bulletData.length; i++) {
-		var year = [];
-		for (var j = 0; j < bulletData[i].length; j++) {
-			if (bulletData[i][j][2] != 0) {
-				year.push(bulletData[i][j][2]);
-				GDP2.push(bulletData[i][j][2]);	
-			};
-		};
-		GDP1.push(year)
-	};
-
-	// array with green area data for each year
 	var green1 = [];
-	// array with all green area data
-	var green2 = [];
-	for (var i = 0; i < bulletData.length; i++) {
-		var year = [];
-		for (var j = 0; j < bulletData[i].length; j++) {
-			if (bulletData[i][j][3] != 0) {
-				year.push(bulletData[i][j][3]);	
-				green2.push(bulletData[i][j][3]);
-			};
-		};
-		green1.push(year)
-	};
-
-	// array with all population density data
 	var popDens1 = [];
-	// array with population density data for each year
-	var popDens2 = [];
-	for (var i = 0; i < bulletData.length; i++) {
-		var year = [];
-		for (var j = 0; j < bulletData[i].length; j++) {
-			if (bulletData[i][j][4] != 0) {
-				year.push(bulletData[i][j][4]);
-				popDens2.push(bulletData[i][j][4]);
-			};
-		};
-		popDens1.push(year)
-	};
-
-	// array with education data for each year
 	var education1 = [];
-	// array with all education data
+	// array with all data
+	var CO22 = [];
+	var GDP2 = [];
+	var green2 = [];
+	var popDens2 = [];
 	var education2 = [];
 	for (var i = 0; i < bulletData.length; i++) {
-		var year = [];
+		var year1 = [];
+		var year2 = [];
+		var year3 = [];
+		var year4 = [];
+		var year5 = [];
 		for (var j = 0; j < bulletData[i].length; j++) {
+			if (bulletData[i][j][1] != 0) {
+				year1.push(bulletData[i][j][1]);
+				CO22.push(bulletData[i][j][1]);	
+			};
+			if (bulletData[i][j][2] != 0) {
+				year2.push(bulletData[i][j][2]);
+				GDP2.push(bulletData[i][j][2]);
+			};
+			if (bulletData[i][j][3] != 0) {
+				year3.push(bulletData[i][j][3]);	
+				green2.push(bulletData[i][j][3]);
+			};
+			if (bulletData[i][j][4] != 0) {
+				year4.push(bulletData[i][j][4]);
+				popDens2.push(bulletData[i][j][4]);
+			};
 			if (bulletData[i][j][5] != 0) {
-				year.push(bulletData[i][j][5]);
+				year5.push(bulletData[i][j][5]);
 				education2.push(bulletData[i][j][5]);
 			};
 		};
-		education1.push(year)
+		CO21.push(year1);
+		GDP1.push(year2);
+		green1.push(year3);
+		popDens1.push(year4);
+		education1.push(year5);
 	};
 
 	// all data in one big array
 	var allData = [];
-	allData.push(babies2)
-	allData.push(CO22)
-	allData.push(GDP2)
-	allData.push(green2)
-	allData.push(popDens2)
-	allData.push(education2)
+	allData.push(babies2);
+	allData.push(CO22);
+	allData.push(GDP2);
+	allData.push(green2);
+	allData.push(popDens2);
+	allData.push(education2);
 
 	// put everything in one global data array
 	infoBullet = [];
-	infoBullet.push(babies1)
-	infoBullet.push(CO21)
-	infoBullet.push(GDP1)
-	infoBullet.push(green1)
-	infoBullet.push(popDens1)
-	infoBullet.push(education1)
-	infoBullet.push(allData)
+	infoBullet.push(babies1);
+	infoBullet.push(CO21);
+	infoBullet.push(GDP1);
+	infoBullet.push(green1);
+	infoBullet.push(popDens1);
+	infoBullet.push(education1);
+	infoBullet.push(allData);
 };
-
-// function dataBarchart() {
-// 	lange array van alle data
-//	pak van infoBullet[0]
-
-// };

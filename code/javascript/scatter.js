@@ -21,31 +21,25 @@ function makeScatter(error, data){
 		.attr("height", totalHeight)
 		.attr("width", totalWidth);
 
-	// max value for all years for amount of babies born PAK DIT UIT NIEUWE GLOBAL ARRAY VOOR BULLET
+	// max value for all years for amount of babies born and city population
 	var babies = [];
+	var pop = [];
 	for (var i = 0; i < datasetPop.length; i++) {
 		for (var j = 0; j < datasetPop[i].length; j++) {
 			if (isNaN(datasetPop[i][j][0]) == false) {
 				babies.push(datasetPop[i][j][0]);
+			};
+			if (isNaN(datasetPop[i][j][1]) == false) {
+				pop.push(datasetPop[i][j][1])
 			};
 		};
 	};
 	
 	// max x value
 	var xMax = Math.ceil(d3.max(babies) / 10000) * 10;
-
-	// max value for all years for population PAK DIT UIT NIEUWE GLOBAL ARRAY VOOR BULLET
-	var pop = [];
-	for (var i = 0; i < datasetPop.length; i++) {
-		for (var j = 0; j < datasetPop[i].length; j++) {
-			if (isNaN(datasetPop[i][j][1]) == false) {
-				pop.push(datasetPop[i][j][1])
-			}
-		}
-	};
 	
 	// max y value
-	var yMax = Math.ceil(d3.max(pop) / 1000000)
+	var yMax = Math.ceil(d3.max(pop) / 1000000);
 	
 	// scaling the x axis
 	var xScale = d3.scale.linear()
@@ -57,12 +51,7 @@ function makeScatter(error, data){
         .domain([0, yMax])
         .range([totalHeight - margin.bottom, margin.top]);
 
-	// min and max values amount of babies born for colorscheme (zelf bepaalt, london erg hoge uitschieter)
-	// PAK DIT UIT NIEUWE GLOBAL ARRAY VOOR BULLET, kan ik de echte max dan omitten??
-	var minValue = 1089;
-	var maxValue = 38030;
-
-	// colorscale
+	// made my own logical color scale
 	var paletteScale = d3.scale.threshold()
 		.domain([10000, 20000, 30000, 40000])
 		.range(["#d4b9da", "#c994c7", "#df65b0", "#dd1c77", "980043"]);
@@ -104,7 +93,7 @@ function makeScatter(error, data){
 	var yAxis = d3.svg.axis()
 			.scale(yScale)
 			.orient("left")
-			.ticks(4);
+			.ticks(5);
 
 	svg.append("g")
 		.attr("class", "axis")
@@ -117,7 +106,7 @@ function makeScatter(error, data){
     	.attr("x", totalWidth - margin.right)
     	.attr("y", totalHeight - 10)
     	.style("text-anchor", "end")
-    	.text("amount of babies born (in thousands)");
+    	.text("amount of births (in thousands)");
 
  	// text y axis
    	svg.append("text")
@@ -141,25 +130,22 @@ function updateScatter(error, data, yvalue, text) {
 
 	var svg = d3.select("#scatter").select("svg")
 
-	// remove old circles, text and axis UPDATE FUNCTIE met transition!
+	// remove old circles, text and axis
 	svg.selectAll("circle").remove()
 	svg.selectAll("text").remove()
 	svg.selectAll("g").remove()
 	
-	// max value for all years for population in millions GEBRUIK GLOBAL ARRAY BULLETTTT
+	// max value for all years for city population
 	var pop = [];
 	for (var i = 0; i < datasetPop.length; i++) {
 		for (var j = 0; j < datasetPop[i].length; j++) {
 			if (isNaN(datasetPop[i][j][1]) == false) {
-				pop.push(datasetPop[i][j][1])
-			}
-		}
+				pop.push(datasetPop[i][j][1]);
+			};
+		};
 	};
 	
-	// max y value
-	var yMaxPop = Math.ceil(d3.max(pop) / 1000000)
-	
-	// max value for all years for size in thousands
+	// max value for all years for city size
 	var size = [];
 	for (var i = 0; i < datasetSize.length; i++) {
 		for (var j = 0; j < datasetSize[i].length; j++) {
@@ -170,20 +156,11 @@ function updateScatter(error, data, yvalue, text) {
 	};
 	
 	// max y value
+	var yMaxPop = Math.ceil(d3.max(pop) / 1000000)
 	var yMaxSize = Math.ceil(d3.max(size) / 1000) + 2;
-
-	// max value for axis for all years for amount of babies born in thousands
-	var babies = [];
-	for (var i = 0; i < datasetPop.length; i++) {
-		for (var j = 0; j < datasetPop[i].length; j++) {
-			if (isNaN(datasetPop[i][j][0]) == false) {
-				babies.push(datasetPop[i][j][0])
-			}
-		}
-	};
 	
-	// max x value
-	var xMax = Math.ceil(d3.max(babies) / 10000) * 10;
+	// max x value, acces global array
+	var xMax = Math.ceil(d3.max(infoBullet[6][0]) / 10000) * 10;
 
 	// max value for y axis
 	var yMax;
