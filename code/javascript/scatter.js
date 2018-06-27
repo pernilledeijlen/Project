@@ -4,16 +4,16 @@
 * In this file you will find the functions for making and updating the scatterplot.
 */
 
-// making default scatterplot for year 2008 and y axis population
+// making scatterplot with default year 2008 and y axis population
 function makeScatter(error, data){
 	if (error) throw error;
 
 	// setting the size of the canvas
-	var margin = {top: 40, right: 100, bottom: 60, left: 100}
-	var totalWidth = 600
-	var totalHeight = 400
-	var width = totalWidth - margin.left - margin.right
-	var height = totalHeight - margin.top - margin.bottom
+	var margin = {top: 40, right: 100, bottom: 60, left: 100};
+	var totalWidth = 600;
+	var totalHeight = 400;
+	var width = totalWidth - margin.left - margin.right;
+	var height = totalHeight - margin.top - margin.bottom;
 	
 	// creating svg
 	var svg = d3.select("#scatter")
@@ -21,18 +21,20 @@ function makeScatter(error, data){
 		.attr("height", totalHeight)
 		.attr("width", totalWidth);
 
-	// max value for all years for amount of babies born
+	// max value for all years for amount of babies born PAK DIT UIT NIEUWE GLOBAL ARRAY VOOR BULLET
 	var babies = [];
 	for (var i = 0; i < datasetPop.length; i++) {
 		for (var j = 0; j < datasetPop[i].length; j++) {
 			if (isNaN(datasetPop[i][j][0]) == false) {
-				babies.push(datasetPop[i][j][0])
-			}
-		}
+				babies.push(datasetPop[i][j][0]);
+			};
+		};
 	};
+	
+	// max x value
 	var xMax = Math.ceil(d3.max(babies) / 10000) * 10;
 
-	// max value for all years for population
+	// max value for all years for population PAK DIT UIT NIEUWE GLOBAL ARRAY VOOR BULLET
 	var pop = [];
 	for (var i = 0; i < datasetPop.length; i++) {
 		for (var j = 0; j < datasetPop[i].length; j++) {
@@ -41,23 +43,26 @@ function makeScatter(error, data){
 			}
 		}
 	};
+	
+	// max y value
 	var yMax = Math.ceil(d3.max(pop) / 1000000)
 	
-	// scaling the x-axis
+	// scaling the x axis
 	var xScale = d3.scale.linear()
 		.domain([0, xMax])
-		.range([margin.left, totalWidth - margin.right])
+		.range([margin.left, totalWidth - margin.right]);
 
-	// scaling the y-axis
+	// scaling the y axis
 	var yScale = d3.scale.linear()
         .domain([0, yMax])
-        .range([totalHeight - margin.bottom, margin.top])
+        .range([totalHeight - margin.bottom, margin.top]);
 
 	// min and max values amount of babies born for colorscheme (zelf bepaalt, london erg hoge uitschieter)
+	// PAK DIT UIT NIEUWE GLOBAL ARRAY VOOR BULLET, kan ik de echte max dan omitten??
 	var minValue = 1089;
 	var maxValue = 38030;
 
-	// made my own logical color scale
+	// colorscale
 	var paletteScale = d3.scale.threshold()
 		.domain([10000, 20000, 30000, 40000])
 		.range(["#d4b9da", "#c994c7", "#df65b0", "#dd1c77", "980043"]);
@@ -79,24 +84,27 @@ function makeScatter(error, data){
             	}})            	
         	.style("fill", function(d) {return paletteScale(d[0]);});
 
+	// function for hovering over circles
     svg.selectAll("circle")
     	.on("mouseover", mouseOverScatter)
     	.on("mouseout", mouseOutScatter);
 
+	// create x axis
 	var xAxis = d3.svg.axis()
 		.scale(xScale)
 		.orient("bottom")
 		.ticks(4);
 
-	var yAxis = d3.svg.axis()
-			.scale(yScale)
-			.orient("left")
-			.ticks(4);
-
 	svg.append("g")
 		.attr("class", "axis")
 	    .attr("transform", "translate(0," + (totalHeight - margin.bottom) + ")")
 	    .call(xAxis);
+	
+	// create y axis
+	var yAxis = d3.svg.axis()
+			.scale(yScale)
+			.orient("left")
+			.ticks(4);
 
 	svg.append("g")
 		.attr("class", "axis")
@@ -133,11 +141,12 @@ function updateScatter(error, data, yvalue, text) {
 
 	var svg = d3.select("#scatter").select("svg")
 
+	// remove old circles, text and axis UPDATE FUNCTIE met transition!
 	svg.selectAll("circle").remove()
 	svg.selectAll("text").remove()
 	svg.selectAll("g").remove()
 	
-	// max value for all years for population in millions
+	// max value for all years for population in millions GEBRUIK GLOBAL ARRAY BULLETTTT
 	var pop = [];
 	for (var i = 0; i < datasetPop.length; i++) {
 		for (var j = 0; j < datasetPop[i].length; j++) {
@@ -146,6 +155,8 @@ function updateScatter(error, data, yvalue, text) {
 			}
 		}
 	};
+	
+	// max y value
 	var yMaxPop = Math.ceil(d3.max(pop) / 1000000)
 	
 	// max value for all years for size in thousands
@@ -157,6 +168,8 @@ function updateScatter(error, data, yvalue, text) {
 			}
 		}
 	};
+	
+	// max y value
 	var yMaxSize = Math.ceil(d3.max(size) / 1000) + 2;
 
 	// max value for axis for all years for amount of babies born in thousands
@@ -168,6 +181,8 @@ function updateScatter(error, data, yvalue, text) {
 			}
 		}
 	};
+	
+	// max x value
 	var xMax = Math.ceil(d3.max(babies) / 10000) * 10;
 
 	// max value for y axis
@@ -190,7 +205,7 @@ function updateScatter(error, data, yvalue, text) {
         .domain([0, yMax])
         .range([totalHeight - margin.bottom, margin.top])
 
-	// made my own logical color scale
+	// colorscale
 	var paletteScale = d3.scale.threshold()
 		.domain([10000, 20000, 30000, 40000])
 		.range(["#d4b9da", "#c994c7", "#df65b0", "#dd1c77", "980043"]);
@@ -219,29 +234,28 @@ function updateScatter(error, data, yvalue, text) {
             	}})            	
         	.style("fill", function(d) {return paletteScale(d[0]);});
 
-    // tooltip
+    // function for hovering over circles
     svg.selectAll("circle")
     	.on("mouseover", mouseOverScatter)
     	.on("mouseout", mouseOutScatter);
     	
-
+	// create x axis
 	var xAxis = d3.svg.axis()
 		.scale(xScale)
 		.orient("bottom")
 		.ticks(4);
 
+	svg.append("g")
+		.attr("class", "axis")
+	    .attr("transform", "translate(0," + (totalHeight - margin.bottom) + ")")
+	    .call(xAxis);
+	
+	// create y axis
 	var yAxis = d3.svg.axis()
 		.scale(yScale)
 		.orient("left")
 		.ticks(5);
 
-	// create x axis
-	svg.append("g")
-		.attr("class", "axis")
-	    .attr("transform", "translate(0," + (totalHeight - margin.bottom) + ")")
-	    .call(xAxis);
-
-	// create y axis
 	svg.append("g")
 		.attr("class", "axis")
 	    .attr("transform", "translate(" + (margin.left) + ", 0)")

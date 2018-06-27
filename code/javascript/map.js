@@ -7,10 +7,10 @@
 // global map variable
 var map;
 
-// making map, default year 2008
+// making map with default year 2008
 function makeMap(error, data) {
 	if (error) throw error;
-	data = data[0];;
+	data = data[0];
 
 	map = new Datamap({
 		element: document.getElementById("map"),
@@ -52,7 +52,7 @@ function makeMap(error, data) {
 		}
 	});
 
-	// interactivity map and scatter
+	// when hovering over map show corresponding circle on scatter
 	mouseOverMapScatter();
 	mouseOutMapScatter();
 
@@ -67,14 +67,15 @@ function makeMap(error, data) {
 	.append("g").selectAll(".legend")
 		.data(dataLegend)
 		.enter().append("g")
-		.attr("class", "legend")
-		
+		.attr("class", "legend");
+	
+	// create legend rects
 	legend.append("rect")
 		.attr("fill", function(d, i){return colors[i];})
 		.attr("width", 25)
 		.attr("height", 15)
 		.attr("x", 20)
-		.attr("y", function(d, i){return i * 30;})
+		.attr("y", function(d, i){return i * 30;});
 
 	legend.selectAll("rect")
     	.on("mouseover", mouseOverLegend)
@@ -85,14 +86,15 @@ function makeMap(error, data) {
 	//     .attr("x", 140)
 	//     .attr("y", 73)
 	//     .text("Babies born in thousands");
-
+	
+	// create legend text
 	legend.append("text")
 		.text(function(d, i){return labels[i];})
 		.attr("x", 55)
-		.attr("y", function(d, i){return 13 + i * 30;})
+		.attr("y", function(d, i){return 13 + i * 30;});
 };
 
-// updating map for slider year (er gaat iets mis bij het teruggaan naar 2008)
+// updating map for slider year
 function updateMap(error, year) {
 	if (error) throw error;
 
