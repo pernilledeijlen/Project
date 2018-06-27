@@ -165,7 +165,7 @@ function updateScatter(error, data, yvalue, text) {
 	
 	// max y value
 	var yMaxPop = Math.ceil(d3.max(pop) / 1000000);
-	var yMaxSize = Math.ceil(d3.max(size) / 1000) + 2;
+	var yMaxSize = Math.ceil(d3.max(size) / 1000);
 	
 	// max x value, acces global array
 	var xMax = Math.ceil(d3.max(infoBullet[6][0]) / 10000) * 10;
@@ -241,11 +241,19 @@ function updateScatter(error, data, yvalue, text) {
 	    .attr("transform", "translate(0," + (totalHeight - margin.bottom) + ")")
 	    .call(xAxis);
 	
-	// create y axis
-	var yAxis = d3.svg.axis()
-		.scale(yScale)
-		.orient("left")
-		.ticks(5);
+	// create y axis with different ticks
+	if (yvalue == "pop") {
+		var yAxis = d3.svg.axis()
+			.scale(yScale)
+			.orient("left")
+			.ticks(5)
+	}
+	else {
+		var yAxis = d3.svg.axis()
+			.scale(yScale)
+			.orient("left")
+			.ticks(3)
+	};
 
 	svg.append("g")
 		.attr("class", "axis")
