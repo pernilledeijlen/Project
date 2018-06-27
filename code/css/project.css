@@ -17,14 +17,37 @@
 
 #information {
     position: relative;
-    width: 600px;
-    height: 120px;
+    font-size: 13px;
+/*    width: 500px;
+    height: 200px;*/
+    text-align: left;
+}
+
+#infomap {
+    font-style: italic;
+    font-size: 13px;
+}
+
+#infoscatter {
+    font-style: italic;
+    font-size: 13px;
+}
+
+#infobullet1 {
+    font-style: italic;
+    font-size: 13px;
+}
+
+#infobullet2 {
+    position: relative;
+    font-size: 13px;
+    text-align: left;
 }
 
 #space {
     position: relative;
     width: 600px;
-    height: 400px;
+    height: 100px;
 }
 
 #bottomtext {

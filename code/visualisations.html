@@ -36,8 +36,7 @@ localhost: py -m http.server 8888 & hard reload: crtl f5 -->
 	</head>
 	<body>
 		<div class="jumbotron text-center">
-	  		<h1>Babies in Europe</h1>
-	  		<h4>amount of babies born in European capitals</h4> 
+	  		<h1>Europe and babies</h1> 
 		</div>
 
 		<nav class="navbar navbar-default">
@@ -56,30 +55,50 @@ localhost: py -m http.server 8888 & hard reload: crtl f5 -->
 		  <input type="range" min="2008" max="2014" value="0" step="1" class="slider" id="myRange">
 		  <p></p>
 		  <p>Year: <span id="demo"></span></p>
+		  <p>Use the slider to change the year!</p>
 		</div>
 
 		<div class="container-fluid">
-			  	<div class="row">
-			    	<div class="col-sm-6">
-				      	<h3>A map with the amount of babies</h3>
-				      	<div id="map"></div>
-			    	</div>
-			    	<div class="col-sm-6">
-			    		<div id="information"></div>
-				     	<h3>A scatter with more info</h3>
-				     	<h5>Choose the y axis</h5>
-			    		<div class="radio">
-				    		<form>
-								<input type="radio" id="pop" name="var" checked=> city population<br>
-								<input type="radio" id="size" name="var"> city size<br>
-							</form>
-						</div>
-				      	<div id="scatter"></div>
-			    	</div>
-			  	</div>
-		  	<h3 id="countrytitle"></h3>
-		  	<h5 id="subtitle"></h5>
-		  	<div id="bullet"></div>
+		  	<div class="row">
+		    	<div class="col-sm-6">
+			      	<h3 id="maptitle">Babies born in European capitals</h3>
+			      	<br>
+			      	<div id="map"></div>
+		    	</div>
+		    	<div class="col-sm-6">
+		    		<div id="information">
+		    			<p id="infomap">map of Europe</p>
+			      		<p>The map shows from light to dark how many babies were born in capitals of European countries. Hover over the map to see exactly how many babies were born and which dot in the scatterplot belongs to that city. Click on a country and scroll down for more information. When hovering over the legend the corresponding countries in the map and scatterplot will light up.</p>
+			      		<p id="infoscatter">scatterplot</p>
+			      		<p>Use the click buttons to choose which variable you want on the y axis. When hovering over a dot, you will see the exact amounts and the corresponding country on the map will light up! Click on a dot and scroll down for more information.</p>
+		    		</div>
+			     	<h3>Babies born vs city population or size</h3>
+			     	<h5>Choose the y axis</h5>
+		    		<div class="radio">
+			    		<form>
+							<input type="radio" id="pop" name="var" checked=> city population<br>
+							<input type="radio" id="size" name="var"> city size<br>
+						</form>
+					</div>
+			      	<div id="scatter"></div>
+		    	</div>
+		  	</div>
+		  	<div class="row">
+		    	<div class="col-sm-9">
+			      	<h3 id="countrytitle"></h3>
+	  				<h5 id="subtitle"></h5>
+			      	<div id="bullet"></div>
+		    	</div>
+		    	<div class="col-sm-3">
+		    		<br>
+		    		<br>
+		    		<br>
+		    		<br>
+		    		<br>
+					<div id="infobullet1"></div>
+					<div id="infobullet2"></div>
+		    	</div>
+		    </div>		  	
 		</div>
 	
 		<div id="space"></div>

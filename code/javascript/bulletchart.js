@@ -79,7 +79,35 @@ function makeBulletchart(error, data, country, city) {
 	d3.select("#countrytitle").selectAll("h3").remove()
 	d3.select("#subtitle").selectAll("h5").remove()
 	d3.select("#bullet").selectAll("svg").remove()
+	d3.select("#infobullet1").selectAll("p").remove()
+	d3.select("#infobullet2").selectAll("p").remove()
+
+	// adding information about bulletchart
+	d3.select("#infobullet1")
+		.append("p")
+		.text("bulletchart");
+	d3.select("#infobullet2")
+		.append("p")
+		.text("In this chart you will find more information on variables that might be of influence \
+		 on the amount of births. The black line displays the average value of all cities in that \
+		 specific year. The border between dark grey and medium grey displays the minimum value and \
+		 the border between medium grey and light grey displays the maximum value. The bar itself \
+		 shows the value for each subject for the country selected.");
 	
+	// add title
+	d3.select("#countrytitle")
+	    .append("h3")
+	    .attr('x', 100)
+	    .attr('y', 10)
+	    .text(country + ": " + city);
+
+	// add subtitle
+	d3.select("#subtitle")
+	    .append("h5")
+	    .attr('x', 100)
+	    .attr('y', 10)
+	    .text("Hover over a bar title to see more information!");
+
 	// get margins,  height and width
 	var margin = {top: 5, right: 40, bottom: 20, left: 130};
 	var width = 800 - margin.left - margin.right;
@@ -109,47 +137,20 @@ function makeBulletchart(error, data, country, city) {
 
 	title.append("text")
 		.attr("class", "title")
-		.text(function(d) { return d.title; })
+		.text(function(d) {return d.title;})
 		.on("mouseover", mouseOverTitle)
 		.on("mouseout", mouseOutTitle);
-
-	// title.append("text")
-	// 	.attr("class", "subtitle")
-	// 	.attr("dy", "1em")
-	// 	.text(function(d) { return d.subtitle; });
-
-	// hover over title tooltip with more explanaiton about it
-
-	// add title
-	d3.select("#countrytitle")
-	    .append("h3")
-	    .attr('x', 100)
-	    .attr('y', 10)
-	    .text(country + ": " + city);
-
-	d3.select("#subtitle")
-	    .append("h5")
-	    .attr('x', 100)
-	    .attr('y', 10)
-	    .text("Hover over a bar title to see more information!");
 };
 
 function mouseOverTitle(d) {
+	// remove standard tooltip text
 	d3.select("#subtitle").selectAll("h5")
 		.remove()
-
-	var hover = this;
-	console.log(d3.select(hover));
-	// console.log(d3.select(".title")[0][0].__data__.title)
-	
-	// title = d3.selectAll(".title")[0]
-	// console.log(title)
-	// console.log(title.length)
-	
 
 	var hover = this
 	var text;
 
+	// choose tooltip text based on which title is hovered over
 	if (d3.select(hover)[0][0].__data__.title == "births") {
 		text = "amount of babies born";
 	}
@@ -169,28 +170,22 @@ function mouseOverTitle(d) {
 	}
 	else if (d3.select(hover)[0][0].__data__.title == "education") {
 		text = "proportion of population aged 25-64 qualified at level 5 to 8 ISCED";
-		// een link maken van ISCED naar een pagina met wat dit is????
-	}
+	};
+
+	// add tooltip subtitle
 	d3.select("#subtitle")
 		    .append("h5")
 		    .attr('x', 100)
 		    .attr('y', 10)
 		    .text(text);
-
-	// // hij select nu telkens de eerste svg, dus die met titel babies born
-	// d3.select("#bullet").select("svg")
-	// 		.append("text")
-	// 		.attr("id", "tooltipbullet")
-	// 		.attr("x", cordX)
-	// 		.attr("y", cordY)
-	// 	   	.text(text);
 };
 
 function mouseOutTitle() {
-	// remove tooltip text
+	// remove tooltip subtitle
 	d3.select("#subtitle").selectAll("h5")
 		.remove()
 
+	// add standard tooltip text
 	d3.select("#subtitle")
 	    .append("h5")
 	    .attr('x', 100)
