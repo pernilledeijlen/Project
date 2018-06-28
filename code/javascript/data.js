@@ -292,12 +292,14 @@ function dataBulletchart(error, data1, data2, data3) {
 	var green1 = [];
 	var popDens1 = [];
 	var education1 = [];
+
 	// array with all data
 	var CO22 = [];
 	var GDP2 = [];
 	var green2 = [];
 	var popDens2 = [];
 	var education2 = [];
+
 	for (var i = 0; i < bulletData.length; i++) {
 		var year1 = [];
 		var year2 = [];
@@ -305,6 +307,7 @@ function dataBulletchart(error, data1, data2, data3) {
 		var year4 = [];
 		var year5 = [];
 		for (var j = 0; j < bulletData[i].length; j++) {
+			// add data in right array
 			if (bulletData[i][j][1] != 0) {
 				year1.push(bulletData[i][j][1]);
 				CO22.push(bulletData[i][j][1]);	
