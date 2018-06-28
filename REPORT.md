@@ -9,7 +9,7 @@ Pernille Deijlen
 Het doel van deze pagina is om de verschillen van het aantal geboortes tussen hoofdsteden van Europa te laten zien en welke variabelen hier eventueel invloed op hebben.
 
 ## screenshot
-![sketch4](doc/presentation1.PNG)
+![sketch4](doc/Presentation1.PNG)
 
 ## technical design
 
