@@ -4,6 +4,127 @@
 * In this file you will find all the functions for interactivity between visualisations.
 */
 
+// functions for map
+// when hovering over legend highlight corresponding countries
+function mouseOverLegendMap(rect) {
+	// get properties of rect
+	var rectColor = d3.select(rect).attr("fill");
+	// get properties of country
+	country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
+
+	// make hex colors rgb colors
+	var rgb;
+	if (rectColor == "#d4b9da") {
+		rgb = "rgb(212, 185, 218)"
+	};
+	if (rectColor == "#c994c7") {
+		rgb = "rgb(201, 148, 199)"
+	};
+	if (rectColor == "#df65b0") {
+		rgb = "rgb(223, 101, 176)"
+	};
+	if (rectColor == "#dd1c77") {
+		rgb = "rgb(221, 28, 119)"
+	};
+	if (rectColor == "#980043") {
+		rgb = "rgb(152, 0, 67)"
+	};
+
+	// make other countries lighter
+	for (var i = 0; i < country.length; i++) {
+		if (rectColor != "lightgrey") {
+			if (country[i].style.fill != rgb) {
+				d3.select(country[i])
+					.style("opacity", 0.2);
+			};
+		};
+	};
+};
+
+// make all countries normal again
+function mouseOutLegendMap(rect) {
+	country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
+
+	for (var i = 0; i < country.length; i++) {
+		// countries normal opacity again
+		d3.select(country[i])
+			.style("opacity", 1);
+	};    
+};
+
+// when hovering over scatter highlight corresponding countries
+function mouseOverScatterMap(circle) {
+	// get properties of circle
+	circleId = circle.id;
+
+	// get properties of country
+	country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
+
+	// if country does not correspond make it lighter
+	for (var i = 0; i < country.length; i++){
+		if (circleId != country[i].__data__.id) {
+			d3.select(country[i])
+				.style("opacity", 0.2);				
+		};
+	};
+};
+
+// make all countries normal again
+function mouseOutScatterMap() {
+	country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
+
+	for (var i = 0; i < country.length; i++) {
+		// countries normal opacity again
+		d3.select(country[i])
+			.style("opacity", 1);
+	}; 
+};
+
+
+// functions for legend
+// when hovering over legend make rect bigger and other rects lighter
+function mouseOverLegend() {
+	// get properties of rect
+	var rect = this;
+
+	// make rect bigger
+	d3.select(rect)
+		.attr("width", 30)
+		.attr("height", 20);
+
+	// make other rects lighter RETURN NORMAAL
+	d3.selectAll("rect")
+		.style("opacity", function() {
+			if (rect != this) {
+				return 0.2;
+			}});
+
+	// functions to highlight corresponding countries on map and scatter
+	mouseOverLegendScatter(rect);
+	mouseOverLegendMap(rect);
+};
+
+// make all rects of legend normal again
+function mouseOutLegend() {
+	// get properties of rect
+	var rect = this;
+	
+	// make rect normal size again
+	d3.select(rect)
+		.transition().delay(200)
+	    .attr("width", 25)
+		.attr("height", 15);
+
+	// make opacity of all rects normal again
+	d3.selectAll("rect")
+		.style("opacity", 1);
+
+	// functions to highlight corresponding countries on map and scatter
+	mouseOutLegendScatter(rect);
+	mouseOutLegendMap(rect);
+};
+
+
 // functions for scatterplot
 // tooltip when hovering over circle, attr tooltip x and y ff apart
 function mouseOverScatter(d) {
@@ -181,127 +302,6 @@ function mouseOutLegendScatter(rect) {
 		.style("opacity", 1);
 };
 
-
-// functions for legend
-// when hovering over legend make rect bigger and other rects lighter
-function mouseOverLegend() {
-	// get properties of rect
-	var rect = this;
-
-	// make rect bigger
-	d3.select(rect)
-		.attr("width", 30)
-		.attr("height", 20);
-
-	// make other rects lighter RETURN NORMAAL
-	d3.selectAll("rect")
-		.style("opacity", function() {
-			if (rect != this) {
-				return 0.2;
-			}});
-
-	// functions to highlight corresponding countries on map and scatter
-	mouseOverLegendScatter(rect);
-	mouseOverLegendMap(rect);
-};
-
-// make all rects of legend normal again
-function mouseOutLegend() {
-	// get properties of rect
-	var rect = this;
-	
-	// make rect normal size again
-	d3.select(rect)
-		.transition().delay(200)
-	    .attr("width", 25)
-		.attr("height", 15);
-
-	// make opacity of all rects normal again
-	d3.selectAll("rect")
-		.style("opacity", 1);
-
-	// functions to highlight corresponding countries on map and scatter
-	mouseOutLegendScatter(rect);
-	mouseOutLegendMap(rect);
-};
-
-
-
-// functions for map
-// when hovering over legend highlight corresponding countries
-function mouseOverLegendMap(rect) {
-	// get properties of rect
-	var rectColor = d3.select(rect).attr("fill");
-	// get properties of country
-	country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
-
-	// make hex colors rgb colors
-	var rgb;
-	if (rectColor == "#d4b9da") {
-		rgb = "rgb(212, 185, 218)"
-	};
-	if (rectColor == "#c994c7") {
-		rgb = "rgb(201, 148, 199)"
-	};
-	if (rectColor == "#df65b0") {
-		rgb = "rgb(223, 101, 176)"
-	};
-	if (rectColor == "#dd1c77") {
-		rgb = "rgb(221, 28, 119)"
-	};
-	if (rectColor == "#980043") {
-		rgb = "rgb(152, 0, 67)"
-	};
-
-	// make other countries lighter
-	for (var i = 0; i < country.length; i++) {
-		if (rectColor != "lightgrey") {
-			if (country[i].style.fill != rgb) {
-				d3.select(country[i])
-					.style("opacity", 0.2);
-			};
-		};
-	};
-};
-
-// make all countries normal again
-function mouseOutLegendMap(rect) {
-	country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
-
-	for (var i = 0; i < country.length; i++) {
-		// countries normal opacity again
-		d3.select(country[i])
-			.style("opacity", 1);
-	};    
-};
-
-// when hovering over scatter highlight corresponding countries
-function mouseOverScatterMap(circle) {
-	// get properties of circle
-	circleId = circle.id;
-
-	// get properties of country
-	country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
-
-	// if country does not correspond make it lighter
-	for (var i = 0; i < country.length; i++){
-		if (circleId != country[i].__data__.id) {
-			d3.select(country[i])
-				.style("opacity", 0.2);				
-		};
-	};
-};
-
-// make all countries normal again
-function mouseOutScatterMap() {
-	country = d3.select(".datamap")[0][0].childNodes[0].childNodes;
-
-	for (var i = 0; i < country.length; i++) {
-		// countries normal opacity again
-		d3.select(country[i])
-			.style("opacity", 1);
-	}; 
-};
 
 // functions for bullet
 // when you click on a country show corresponding bulletchart
