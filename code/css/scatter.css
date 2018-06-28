@@ -30,3 +30,11 @@
   shape-rendering: crispEdges;
   stroke-width: 1px;
 }
+
+.x-text {
+  font-size: 13px;
+}
+
+.y-text {
+  font-size: 13px;
+}

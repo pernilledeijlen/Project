@@ -89,6 +89,7 @@ function makeMap(error, data) {
 	
 	// create legend text
 	legend.append("text")
+		.attr("class", "legendtext")
 		.text(function(d, i) {
 			return labels[i];
 		})

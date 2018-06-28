@@ -52,7 +52,7 @@ function dataMakeBulletchart(error, data, year) {
 	// create bulletchart if there is data about births
 	if (data[0] != 0) {
 		// if bulletchart is already there, use the update function
-		if (d3.select("#subtitle").selectAll("h5").empty() == true) {
+		if (d3.select("#countrytitle").selectAll("h3").empty() == true) {
 			makeBulletchart(error, dataBullet, country, city, year);
 		}
 		else {
@@ -70,8 +70,8 @@ function dataMakeBulletchart(error, data, year) {
 		d3.select("#countrytitle").selectAll("h3").remove();
 
 		// adding title showing no data	
-		d3.select("#countrytitle")
-	    	.append("h3")
+		d3.select("#subtitle")
+	    	.append("h5")
 		    .text("Sorry there is no data available for " + city + ", " +
 		    	country + " for " + year + ".");
 	};
@@ -92,10 +92,13 @@ function makeBulletchart(error, data, country, city, year) {
 		 specific year. The border between dark grey and medium grey displays the minimum value and \
 		 the border between medium grey and light grey displays the maximum value. The bar itself \
 		 shows the value for each subject for the country selected.");
+
+	// d3.select("#infobullet2")
+	// 	.attr("class", "bulletborder")
 	
 	// if there is a title delete it
-	if (d3.select("#countrytitle").selectAll("h3").empty() == false) {
-		d3.select("#countrytitle").selectAll("h3").remove()
+	if (d3.select("#subtitle").selectAll("h5").empty() == false) {
+		d3.select("#subtitle").selectAll("h5").remove()
 	};
 
 	// add title
