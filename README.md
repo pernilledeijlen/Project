@@ -3,7 +3,7 @@
 Pernille Deijlen
 10747354
 
-[project](https://pernilledeijlen.github.io/Project/)
+[project](https://pernilledeijlen.github.io/Project/ | width=100)
 
 # project: babies in Europe
 
