@@ -36,28 +36,27 @@ function dataMakeBulletchart(error, data, year) {
 
 	// get data ready for making bulletchart
 	dataBullet = [
-		{"title": "births", "subtitle": "", "ranges": [min[0],max[0],maxRangeBabies],
+		{"title": "births", "ranges": [min[0],max[0],maxRangeBabies],
 		"measures": [data[0]], "markers": [mean[0]]},
-		{"title": "CO2", "subtitle": "emissions per capita in tonnes",
-		"ranges": [min[1],max[1],maxRangeCO2], "measures": [data[1]], "markers": [mean[1]]},
-		{"title": "GDP", "subtitle": "per capita in US $", "ranges": [min[2],max[2],maxRangeGDP],
-		"measures": [data[2]], "markers": [mean[2]]},
-		{"title": "green area", "subtitle": "square meters per million people ",
-		"ranges": [min[3],max[3],maxRangeGreen], "measures": [data[3]], "markers": [mean[3]]},
-		{"title": "population density", "subtitle": "people per km2",
-		"ranges": [min[4],max[4],maxRangePopDens], "measures": [data[4]], "markers": [mean[4]]},
-		{"title": "education", "subtitle": "proportion of popluation aged 25-64 qualified at level \
-		5 to 8 ISCED", "ranges": [min[5],max[5],maxRangeEduc], "measures": [data[5]],
+		{"title": "CO2", "ranges": [min[1],max[1],maxRangeCO2], "measures": [data[1]],
+		"markers": [mean[1]]},
+		{"title": "GDP", "ranges": [min[2],max[2],maxRangeGDP], "measures": [data[2]],
+		"markers": [mean[2]]},
+		{"title": "green area",	"ranges": [min[3],max[3],maxRangeGreen],
+		"measures": [data[3]], "markers": [mean[3]]},
+		{"title": "population density", "ranges": [min[4],max[4],maxRangePopDens],
+		"measures": [data[4]], "markers": [mean[4]]},
+		{"title": "education", "ranges": [min[5],max[5],maxRangeEduc], "measures": [data[5]],
 		"markers": [mean[5]]}];
 
 	// create bulletchart if there is data about births
 	if (data[0] != 0) {
 		// if bulletchart is already there, use the update function
 		if (d3.select("#subtitle").selectAll("h5").empty() == true) {
-			makeBulletchart(error, dataBullet, country, city);
+			makeBulletchart(error, dataBullet, country, city, year);
 		}
 		else {
-			updateBulletchart(error, dataBullet, country, city); 
+			updateBulletchart(error, dataBullet, country, city, year); 
 		};
 	}
 
@@ -73,12 +72,13 @@ function dataMakeBulletchart(error, data, year) {
 		// adding title showing no data	
 		d3.select("#countrytitle")
 	    	.append("h3")
-		    .text("Sorry there is no data available for " + city + ", " + country + " for this year.");
+		    .text("Sorry there is no data available for " + city + ", " +
+		    	country + " for " + year + ".");
 	};
 };
 
 // make bulletchart for chosen year and country or circle clicked
-function makeBulletchart(error, data, country, city) {
+function makeBulletchart(error, data, country, city, year) {
 	if (error) throw error;
 
 	// adding information about bulletchart
@@ -103,7 +103,7 @@ function makeBulletchart(error, data, country, city) {
 	    .append("h3")
 	    .attr('x', 100)
 	    .attr('y', 10)
-	    .text(country + ": " + city);
+	    .text(country + ": " + city + " (" + year + ")");
 
 	// add subtitle
 	d3.select("#subtitle")
@@ -148,14 +148,14 @@ function makeBulletchart(error, data, country, city) {
 		.on("mouseout", mouseOutBullet);
 };
 
-function updateBulletchart(error, data, country, city) {
+function updateBulletchart(error, data, country, city, year) {
 	if (error) throw error;
 	
 	// update countrytitle
 	d3.select("#countrytitle").selectAll("h3")
 		.transition()
     	.duration(600)
-    	.text(country + ": " + city);
+    	.text(country + ": " + city + " (" + year + ")");
 
 	// get margins,  height and width
 	var margin = {top: 5, right: 40, bottom: 20, left: 130};
@@ -166,17 +166,6 @@ function updateBulletchart(error, data, country, city) {
 	var chart = d3.bullet()
 		.width(width)
 		.height(height);
-
-	// ff niks laten zien wanneer er geen data is, zoals bij CO2
-	// console.log(data)
-	// for (var i = 0; i < data.length; i++) {
-	// 	if (data[i].measures == 0) {
-	// 		console.log("dan hoef ik die data nie")
-	// 		data[i] = NaN;
-	// 		console.log(data[i])
-	// 	}
-	// };
-	// console.log(data)
 
 	// update bullet data
 	d3.select("#bullet").selectAll("svg")

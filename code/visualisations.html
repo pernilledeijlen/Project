@@ -72,13 +72,15 @@ localhost: py -m http.server 8888 & hard reload: crtl f5 -->
 			      		<p id="infoscatter">scatterplot</p>
 			      		<p>Use the click buttons to choose which variable you want on the y axis. When hovering over a dot, you will see the exact amounts and the corresponding country on the map will light up! Click on a dot and scroll down for more information.</p>
 		    		</div>
-			     	<h3>Babies born vs city population or size</h3>
-			     	<h5>Choose the y axis</h5>
-		    		<div class="radio">
-			    		<form>
-							<input type="radio" id="pop" name="var" checked=> city population<br>
-							<input type="radio" id="size" name="var"> city size<br>
-						</form>
+		    		<div id="scattertitle">
+				     	<h3>Babies born vs city population or size</h3>
+				     	<h5>Choose the y axis</h5>
+			    		<div class="radio">
+				    		<form>
+								<input type="radio" id="pop" name="var" checked=> city population<br>
+								<input type="radio" id="size" name="var"> city size<br>
+							</form>
+						</div>
 					</div>
 			      	<div id="scatter"></div>
 		    	</div>

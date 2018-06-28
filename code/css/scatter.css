@@ -7,6 +7,12 @@
     position: relative;
     width: 600px;
     height: 400px;
+    left: 27px;
+}
+
+#scattertitle {
+  text-align: center;
+  width: 700px;
 }
 
 .x-axis path,
