@@ -8,10 +8,10 @@ Pernille Deijlen
 # project: babies in Europe
 
 ## purpose
-Het doel van deze pagina is om de verschillen binnen Eu
-
-## screenshots
+Het doel van deze pagina is om de verschillen tussen hoofdsteden van Europa te laten zien. Als eerste zie je de kaart van Europa gebaseerd op het aantal geboren babies in het gekozen jaar van de slider en daarnaast de scatterplot die dit aantal geboren babies uitzet tegen de grootte en de populatie van de stad.
 ![sketch](doc/slide1.PNG)
+
+
 ![sketch](doc/slide2.PNG)
 ![sketch](doc/slide3.PNG)
 
