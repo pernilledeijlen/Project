@@ -4,7 +4,7 @@
 // based on the work of Clint Ivy, Jamie Love, and Jason Davies.
 // http://projects.instantcognition.com/protovis/bulletchart/
 d3.bullet = function() {
-  var orient = "left", // TODO top & bottom
+  var orient = "left",
       reverse = false,
       duration = 0,
       ranges = bulletRanges,
@@ -14,7 +14,7 @@ d3.bullet = function() {
       height = 30,
       tickFormat = null;
 
-  // For each small multiple…
+  // For each small multiple
   function bullet(g) {
     g.each(function(d, i) {
       var rangez = ranges.call(this, d, i).slice().sort(d3.descending),
@@ -22,24 +22,24 @@ d3.bullet = function() {
           measurez = measures.call(this, d, i).slice().sort(d3.descending),
           g = d3.select(this);
 
-      // Compute the new x-scale.
+      // Compute the new x-scale
       var x1 = d3.scale.linear()
           .domain([0, Math.max(rangez[0], markerz[0], measurez[0])])
           .range(reverse ? [width, 0] : [0, width]);
 
-      // Retrieve the old x-scale, if this is an update.
+      // Retrieve the old x-scale, if this is an update
       var x0 = this.__chart__ || d3.scale.linear()
           .domain([0, Infinity])
           .range(x1.range());
 
-      // Stash the new scale.
+      // Stash the new scale
       this.__chart__ = x1;
 
-      // Derive width-scales from the x-scales.
+      // Derive width-scales from the x-scales
       var w0 = bulletWidth(x0),
           w1 = bulletWidth(x1);
 
-      // Update the range rects.
+      // Update the range rects
       var range = g.selectAll("rect.range")
           .data(rangez);
 
@@ -59,7 +59,7 @@ d3.bullet = function() {
           .attr("width", w1)
           .attr("height", height);
 
-      // Update the measure rects.
+      // Update the measure rects
       var measure = g.selectAll("rect.measure")
           .data(measurez);
 
@@ -81,7 +81,7 @@ d3.bullet = function() {
           .attr("x", reverse ? x1 : 0)
           .attr("y", height / 3);
 
-      // Update the marker lines.
+      // Update the marker lines
       var marker = g.selectAll("line.marker")
           .data(markerz);
 
@@ -103,16 +103,16 @@ d3.bullet = function() {
           .attr("y1", height / 6)
           .attr("y2", height * 5 / 6);
 
-      // Compute the tick format.
+      // Compute the tick format
       var format = tickFormat || x1.tickFormat(8);
 
-      // Update the tick groups.
+      // Update the tick groups
       var tick = g.selectAll("g.tick")
           .data(x1.ticks(8), function(d) {
             return this.textContent || format(d);
           });
 
-      // Initialize the ticks with the old scale, x0.
+      // Initialize the ticks with the old scale, x0
       var tickEnter = tick.enter().append("g")
           .attr("class", "tick")
           .attr("transform", bulletTranslate(x0))
@@ -128,13 +128,13 @@ d3.bullet = function() {
           .attr("y", height * 7 / 6)
           .text(format);
 
-      // Transition the entering ticks to the new scale, x1.
+      // Transition the entering ticks to the new scale, x1
       tickEnter.transition()
           .duration(duration)
           .attr("transform", bulletTranslate(x1))
           .style("opacity", 1);
 
-      // Transition the updating ticks to the new scale, x1.
+      // Transition the updating ticks to the new scale, x1
       var tickUpdate = tick.transition()
           .duration(duration)
           .attr("transform", bulletTranslate(x1))
@@ -147,7 +147,7 @@ d3.bullet = function() {
       tickUpdate.select("text")
           .attr("y", height * 7 / 6);
 
-      // Transition the exiting ticks to the new scale, x1.
+      // Transition the exiting ticks to the new scale, x1
       tick.exit().transition()
           .duration(duration)
           .attr("transform", bulletTranslate(x1))
