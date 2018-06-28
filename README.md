@@ -7,9 +7,9 @@ Pernille Deijlen
 
 # project: babies in Europe
 
-## purpose
+## purpose and screenshots
 Het doel van deze pagina is om de verschillen tussen hoofdsteden van Europa te laten zien. Als eerste zie je de kaart van Europa gebaseerd op het aantal geboren babies in het default jaar 2008 en daarnaast de scatterplot die dit aantal geboren babies uitzet tegen de grootte en de populatie van de stad.
-![sketch1](doc/slide1.PNG)
+![sketch1](doc/photo1.PNG)
 
 Je kunt via de slider het jaar aanpassen en de y-as van de scatterplot veranderen door de andere box te selecteren. Wanneer je over de legenda hovert zie je de bijbehorende landen in de kaart en op de scatterplot.
 ![sketch2](doc/slide2.PNG)
