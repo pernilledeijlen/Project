@@ -71,7 +71,7 @@ function dataMakeBulletchart(error, data, year) {
 		
 		// delete border of information box
 		d3.select("#infobullet2")
-			.style("opacity", 0)
+			.style("opacity", 0);
 
 		// adding title showing no data	
 		d3.select("#subtitle")

@@ -310,15 +310,38 @@ function clickMapBullet(error, year) {
 		// get properties of country
 		var country = d3.select(d3.event.target).data()[0].properties.name;
 		
-		// default slider year cHECK FF
+		// default slider year
 		var defaultYear = 2008;
+		var data;
 		
 		// when country clicked create bulletchart
 		for (var i = 0; i < bulletData[year - defaultYear].length; i++) {
 			if (bulletData[year - defaultYear][i][6] == country) {
+				data = bulletData[year - defaultYear][i]
 				dataMakeBulletchart(error, bulletData[year - defaultYear][i], year);
 			};
 		};
+
+		// if country on map has no further data to show, show error
+		if (data == undefined) {
+			// deleting all bulletchart information
+			d3.select("#subtitle").selectAll("h5").remove();
+			d3.select("#bullet").selectAll("svg").remove();
+			d3.select("#infobullet1").selectAll("p").remove();
+			d3.select("#infobullet2").selectAll("p").remove();
+			d3.select("#countrytitle").selectAll("h3").remove();
+			
+			// delete border of information box
+			d3.select("#infobullet2")
+				.style("opacity", 0);
+
+			// adding title showing no data	
+			d3.select("#subtitle")
+		    	.append("h5")
+			    .text("Sorry there is no data available for " +
+			    	country + " for " + year + ".");
+		};
+		
 	});
 };
 
