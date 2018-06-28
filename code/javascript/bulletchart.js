@@ -93,7 +93,7 @@ function makeBulletchart(error, data, country, city, year) {
 		.style("opacity", 1)
 		.append("p")
 		.text("In this chart you will find more information on variables that might be of influence \
-		 on the amount of births. The black line displays the average value of all cities in that \
+		 on the number of births. The black line displays the average value of all cities in that \
 		 specific year. The border between dark grey and medium grey displays the minimum value and \
 		 the border between medium grey and light grey displays the maximum value. The bar itself \
 		 shows the value for each subject for the country selected.");
