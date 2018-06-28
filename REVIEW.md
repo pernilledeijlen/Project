@@ -1,3 +1,8 @@
+# author
+
+Pernille Deijlen
+10747354
+
 # project
 
 ## review
