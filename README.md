@@ -5,18 +5,17 @@ Pernille Deijlen
 
 [Mijn project](https://pernilledeijlen.github.io/Project/)
 
-# current state project
+# project: babies in Europe
+
+## purpose
 
 ## screenshots
-<!-- ![sketch](doc/sketch.PNG) -->
+![sketch](doc/slide1.PNG)
+![sketch](doc/slide2.PNG)
+![sketch](doc/slide3.PNG)
 
-## features
-XXXXXX
 
-## data sources
-De data komt van Eurostat en OECD:
--	[eurostat](http://ec.europa.eu/eurostat/data/database)
--	[OECD](https://data.oecd.org/)
+## copyright
 
 
 

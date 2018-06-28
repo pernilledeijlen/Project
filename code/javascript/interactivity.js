@@ -21,10 +21,10 @@ function mouseOverScatter(d) {
 			.attr({id: "tooltipscatter", x: 110, y: 40})
 		   	.text(d[4] + " has a population of " + d[1] + " and " + d[0] +
 		   		" babies have been born");
-	};
+	}
 
-	// add tooltip text if y axis is size MAAK EEN ELSE!!!
-	if (d3.select("#size").property("checked") == true) {
+	// add tooltip text if y axis is size
+	else {
 		d3.select("#scatter").select("svg")
 			.append("text")
 			.attr({id: "tooltipscatter", x: 110, y: 40})
