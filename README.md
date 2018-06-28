@@ -10,7 +10,7 @@ Pernille Deijlen
 ## purpose
 
 ## screenshots
-![sketch](doc/slide1.PNG)
+![sketch](doc/Slide1.PNG)
 ![sketch](doc/slide2.PNG)
 ![sketch](doc/slide3.PNG)
 
