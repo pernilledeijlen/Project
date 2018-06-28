@@ -8,22 +8,22 @@ Pernille Deijlen
 # project: babies in Europe
 
 ## purpose
-Het doel van deze pagina is om de verschillen tussen hoofdsteden van Europa te laten zien. Als eerste zie je de kaart van Europa gebaseerd op het aantal geboren babies in het gekozen jaar van de slider en daarnaast de scatterplot die dit aantal geboren babies uitzet tegen de grootte en de populatie van de stad.
-![sketch](doc/slide1.PNG)
+Het doel van deze pagina is om de verschillen tussen hoofdsteden van Europa te laten zien. Als eerste zie je de kaart van Europa gebaseerd op het aantal geboren babies in het default jaar 2008 en daarnaast de scatterplot die dit aantal geboren babies uitzet tegen de grootte en de populatie van de stad.
+![sketch1](doc/slide1.PNG)
 
+Je kunt via de slider het jaar aanpassen en de y-as van de scatterplot veranderen door de andere box te selecteren. Wanneer je over de legenda hovert zie je de bijbehorende landen in de kaart en op de scatterplot.
+![sketch2](doc/slide2.PNG)
 
-![sketch](doc/slide2.PNG)
-![sketch](doc/slide3.PNG)
-
+Wanneer je klikt op een land op de kaart of op een land van de scatterplot komt de bulletchart te voorschijn met meer informatie.
+![sketch3](doc/slide3.PNG)
 
 ## copyright
 De algemene voorwaarden voor gebruik, reproductie en distributie van de code zijn te vinden in LICENSE.
 
--	D3 - Copyright 2010-2017 Mike Bostock
--	D3 tip - Copyright (c) 2013 Justin Palmer
--	D3 datamaps - Copyright (c) 2012 Mark DiMarco
--	D3 bullet - Copyright (c) 2018 Mike Bostock
--	Bootstrap - Copyright (c) 2011-2018 Twitter, Inc and Copyright (c) 2011-2018 The Bootstrap Authors
+-	D3 - Released under the BSD 3-Clause "New" or "Revised" License and Copyright 2010-2017 Mike Bostock
+-	D3 datamaps - Released under the MIT License and Copyright (c) 2012 Mark DiMarco
+-	D3 bullet - Released under the GNU General Public License and Copyright (c) 2018 Mike Bostock
+-	Bootstrap - Released under the MIT license, Copyright (c) 2011-2018 Twitter, Inc and Copyright (c) 2011-2018 The Bootstrap Authors
 
 
 
