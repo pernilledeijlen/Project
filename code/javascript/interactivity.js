@@ -338,7 +338,6 @@ function clickScatterBullet(error, year) {
 		for (var i = 0; i < bulletData[year - defaultYear].length; i++) {
 			if (bulletData[year - defaultYear][i][6] == country) {
 				dataMakeBulletchart(error, bulletData[year - defaultYear][i], year);
-
 			};
 		};
 	});
