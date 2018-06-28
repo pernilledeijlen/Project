@@ -3,13 +3,13 @@
 Pernille Deijlen
 10747354
 
-[project](https://pernilledeijlen.github.io/Project/ | width=100)
+[project](https://pernilledeijlen.github.io/Project/)
 
 # project: babies in Europe
 
 ## purpose and screenshots
 Het doel van deze pagina is om de verschillen van het aantal geboortes tussen hoofdsteden van Europa te laten zien en welke variabelen hier eventueel invloed op hebben. Als eerste zie je de kaart van Europa gebaseerd op het aantal geboren babies in het default jaar 2008 en daarnaast de scatterplot die dit aantal geboren babies uitzet tegen de grootte en de populatie van de stad.
-![final1](doc/photo1.PNG)
+![final1](doc/photo1.PNG | width=100)
 
 Je kunt via de slider het jaar aanpassen en de y-as van de scatterplot veranderen door de andere box te selecteren. Wanneer je bijvoorbeeld over de legenda hovert zie je de bijbehorende landen in de kaart en op de scatterplot.
 ![final2](doc/slide2.PNG)
