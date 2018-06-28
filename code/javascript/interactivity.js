@@ -339,7 +339,7 @@ function clickMapBullet(error, year) {
 			d3.select("#subtitle")
 		    	.append("h5")
 			    .text("Sorry there is no data available for " +
-			    	country + " for " + year + ".");
+			    	 country + ".");
 		};
 		
 	});
