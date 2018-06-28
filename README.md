@@ -9,13 +9,13 @@ Pernille Deijlen
 
 ## purpose and screenshots
 Het doel van deze pagina is om de verschillen van het aantal geboortes tussen hoofdsteden van Europa te laten zien en welke variabelen hier eventueel invloed op hebben. Als eerste zie je de kaart van Europa gebaseerd op het aantal geboren babies in het default jaar 2008 en daarnaast de scatterplot die dit aantal geboren babies uitgetzet tegen de grootte en de populatie van de stad.
-![sketch1](doc/photo1.PNG)
+![final1](doc/photo1.PNG)
 
 Je kunt via de slider het jaar aanpassen en de y-as van de scatterplot veranderen door de andere box te selecteren. Wanneer je bijvoorbeeld over de legenda hovert zie je de bijbehorende landen in de kaart en op de scatterplot.
-![sketch2](doc/slide2.PNG)
+![final2](doc/slide2.PNG)
 
 Wanneer je klikt op een land op de kaart of op een land van de scatterplot komt de bulletchart te voorschijn met meer informatie.
-![sketch3](doc/slide3.PNG)
+![final3](doc/slide3.PNG)
 
 ## copyright
 De algemene voorwaarden voor gebruik, reproductie en distributie van de code zijn te vinden in LICENSE.
