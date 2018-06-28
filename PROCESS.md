@@ -30,16 +30,16 @@ Verder gewerkt aan de lay-out en aan de scatterplot.
 Dropdown menu gemaakt voor de y-as van de scatterplot, slider afgemaakt voor map en scatter, ingezoomd op de kaart en een tooltip voor de scatterplot.
 
 ## week 3 day 2:
-
+Ik heb gewerkt aan de legenda voor de map. Was even lastig die op een goede plek te krijgen.
 
 ## week 3 day 3:
-
+Begonnen met het maken van de bulletchart. Data in de juiste format krijgen.
 
 ## week 3 day 4:
-
+Verder gewerkt aan het maken van de bulletchart. Nog geen update functie, maar remove.
 
 ## week 3 day 5:
-
+Gezorgd dat bulletchart update met jaar, scatter en map.
 
 ## week 4 day 1:
 Interactiviteit tussen legenda en scatter werkend gekregen. Code netter gemaakt.
@@ -54,5 +54,5 @@ Informatie toegevoegd aan de site om het gebruiksvriendelijk te maken. Ook aan d
 Het report, de readme en het filmpje gemaakt. Ook de code nog een keer gecheckt op comments etc. Ook de code review gedaan.
 
 ## week 4 day 5:
-Presentaties.
+Presentatiedag!
 

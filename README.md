@@ -18,7 +18,7 @@ Wanneer je klikt op een land op de kaart of op een land van de scatterplot komt 
 ![final3](doc/slide3.PNG)
 
 ## copyright
-De algemene voorwaarden voor gebruik, reproductie en distributie van de code zijn te vinden in LICENSE.
+De algemene voorwaarden voor gebruik, reproductie en distributie van de code zijn te vinden in LICENSE.md.
 
 -	D3 - Released under the BSD 3-Clause "New" or "Revised" License and Copyright 2010-2017 Mike Bostock.
 -	D3 datamaps - Released under the MIT License and Copyright (c) 2012 Mark DiMarco.
