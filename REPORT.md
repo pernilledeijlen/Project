@@ -24,7 +24,9 @@ De data bestaat uit vier CSV files die ik heb omgezet naar JSON files. Deze word
 
 In **map.js** staan de functies *makeMap()* waar de kaart gemaakt wordt en de functie *updateMap()* waar deze wordt geupdate. Ik heb een globale variable map zodat beide functies hierbij kunnen. In *makeMap()* wordt gezorgd dat de map is "ingezoomd" op Europa. Ook is er een tooltip gemaakt die het land, de hoofdstad en de exacte waarde weergeeft. Hier worden ook de functies *mouseOverMapScatter()* en *mouseOutMapScatter()* aangeroepen. In de functie *updateMap()* wordt er nieuwe data meegegeven van het jaar van de slider en wordt de map opnieuw ingekleurd met kleuren gebaseerd op de nieuwe values.
 
-In **scatter.js** staan ook twee functies, *makeScatter()* en *updateScatter()*.
+In **scatter.js** staan ook twee functies, *makeScatter()* en *updateScatter()*. Bij het maken van de scatterplot wordt eerst de maximum value voor alle jaren bepaald voor de x-as, het aantal geboortes, en de y-as, de populatie. Dit doe ik zodat de waarden van de assen altijd hetzelfde blijven, en je door de jaren heen beter kan vergelijken. Vervolgens kun je met de slider het jaar aanpassen, en met de tickbox een andere y-as kiezen. De scatterplot wordt vervolgens aangepast met *updateScatter()*, deze functie krijgt dan de juiste data mee. Hier wordt ook de maximum bepaalt voor alle jaren voor de grootte, zodat deze as ook altijd hetzelfde blijft. In beide functies worden ook *mouseOverScatter()* en *mouseOutScatter()* aangeroepen wanneer er over een stip gehoverd wordt.
+
+Veranderingen door het aanpassen van de slider of door een andere y-as te kiezen worden verwerkt in **update.js**. Het aanpassen van de slider gaat via *updateSlider()*. Als eerste heb je het default jaar, 2008. Wanneer de y-as hier wordt aangepast, wordt de functie *updateRadio()* aangeroepen. Ook wordt de bulletchart gemaakt wanneer er op de kaart wordt geklikt, *clickMapBullet()*, of wanneer er op een stip wordt geklikt, *clickScatterBullet()*. Wanneer de slider wordt aangepast
 
 
 ## challenges
